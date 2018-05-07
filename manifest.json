@@ -10,7 +10,7 @@
 		"name": "1.0",/*应用版本名称*/
 		"code": ""
 	},
-	"description": "nativeObj模式底部选项卡 + 底部悬浮大球图标 + webview模式子窗口官方示例",/*应用描述信息*/
+	"description": "",/*应用描述信息*/
 	"icons": {
 		"72": "icon.png"
 	},
@@ -244,9 +244,7 @@
 					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
 				]
 			},
-			"orientation": [
-				"portrait-primary"
-			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"orientation": ["portrait-primary","landscape-primary","landscape-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
