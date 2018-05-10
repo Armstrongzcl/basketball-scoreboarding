@@ -1,8 +1,8 @@
 var util = {
 	options: {
-		ACTIVE_COLOR: "#007aff",
+		ACTIVE_COLOR: "#00aaff",
 		NORMAL_COLOR: "#000",
-		subpages: ["html/tab-webview-subpage-chat.html", "html/tab-webview-subpage-contact.html"]
+		subpages: ["html/tab-webview-subpage-contact.html"]
 	},
 	/**
 	 *  简单封装了绘制原生view控件的方法
@@ -77,11 +77,13 @@ var util = {
 	toggleNview: function(currIndex) {
 		currIndex = currIndex * 2;
 		// 重绘当前tag 包括icon和text，所以执行两个重绘操作
+		
 		util.updateSubNView(currIndex, util.options.ACTIVE_COLOR);
 		util.updateSubNView(currIndex + 1, util.options.ACTIVE_COLOR);
 		// 重绘兄弟tag 反之排除当前点击的icon和text
-		for(var i = 0; i < 8; i++) {
+		for(var i = 0; i < 4; i++) {
 			if(i !== currIndex && i !== currIndex + 1) {
+//				mui.alert(util.options.NORMAL_COLOR,i);
 				util.updateSubNView(i, util.options.NORMAL_COLOR);
 			}
 		}
@@ -101,6 +103,7 @@ var util = {
 			nviewEvent = plus.nativeObj.View.getViewById("tabBar"), // 获取nview控件对象
 			nviewObj = self.getStyle().subNViews[0], // 获取nview对象的属性
 			currTag = nviewObj.tags[currIndex]; // 获取当前需重绘的tag
+
 
 		nviewEvent.drawText(currTag.text, currTag.position, util.changeColor(currTag.textStyles, color), currTag.id);
 	}

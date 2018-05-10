@@ -96,7 +96,7 @@
 					}, {
 						tag: 'font',
 						id: 'icon',
-						text: '+', //此为字体图标Unicode码'\e600'转换为'\ue600'
+						text: '\u254b', //此为字体图标Unicode码'\e600'转换为'\ue600'
 						position: {
 							top: '0px',
 							left: '5px',
@@ -131,11 +131,12 @@
 						pageW = window.innerWidth,
 						currIndex = 0;
 					
-						
+					
 					/**
 					 * 根据判断view控件点击位置判断切换的tab
 					 */
 					nview.addEventListener('click', function(e) {
+					
 						var clientX = e.clientX;
 						if(clientX > 0 && clientX <= parseInt(pageW * 0.4)) {
 							currIndex = 0;
@@ -148,18 +149,21 @@
 						} else {
 							targetPage = plus.webview.currentWebview();
 						}
-
+						
 						if(targetPage == activePage) {
 							return;
 						}
-
-						if(currIndex !== 3) { 
+						
+						if(currIndex <1) { 
 							//底部选项卡切换
 							util.toggleNview(currIndex);
 							// 子页面切换
 							util.changeSubpage(targetPage, activePage, aniShow);
 							//更新当前活跃的页面
 							activePage = targetPage;
+						}
+						else{
+							plus.webview.open('html/new-webview.html', 'new', {}, 'slide-in-right', 300);
 						}
 
 					});
