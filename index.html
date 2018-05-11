@@ -36,6 +36,7 @@
 					swipeBack: true //启用右滑关闭功能
 				});
 				mui.plusReady(function() {
+					
 					var self = plus.webview.currentWebview(),
 						leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
 
@@ -96,7 +97,8 @@
 					}, {
 						tag: 'font',
 						id: 'icon',
-						text: '\u254b', //此为字体图标Unicode码'\e600'转换为'\ue600'
+//						text: '\u254b', //此为字体图标Unicode码'\e600'转换为'\ue600'
+						text: "开始",
 						position: {
 							top: '0px',
 							left: '5px',
@@ -116,22 +118,29 @@
 					//自定义监听图标点击事件
 					var active_color = '#fff';
 					drawNativeIcon.addEventListener('click', function(e) {
-						mui.alert('开始进行比赛记录', '开始比赛');
+//						mui.alert('开始进行比赛记录', '开始比赛');
+						plus.webview.open('html/chooseMode.html', 'mode', {}, 'slide-in-right', 300);
 					});
 					// 中间凸起图标绘制及监听点击完毕
 
 					// 创建子webview窗口 并初始化
-					var aniShow = {};
-					util.initSubpage(aniShow);
+//					var aniShow = {};
+					
 					
 					var 	nview = plus.nativeObj.View.getViewById('tabBar'),
-						activePage = plus.webview.currentWebview(),
+						activePage,
 						targetPage,
 						subpages = util.options.subpages,
 						pageW = window.innerWidth,
 						currIndex = 0;
+					var aniShow= {};
+					util.initSubpage(aniShow);
 					
-					
+					targetPage=plus.webview.getWebviewById(subpages[currIndex]);
+					util.toggleNview(currIndex);
+							// 子页面切换
+					util.changeSubpage(targetPage, activePage, aniShow);
+					activePage = targetPage;
 					/**
 					 * 根据判断view控件点击位置判断切换的tab
 					 */
@@ -142,28 +151,30 @@
 							currIndex = 0;
 						} else if(clientX > parseInt(pageW * 0.6)) {
 							currIndex = 1;
-						} 
+						}else{
+							console.log("-1");
+							currIndex=-1;
+						}
 						// 匹配对应tab窗口	
-						if(currIndex > 0) {
-							targetPage = plus.webview.getWebviewById(subpages[currIndex - 1]);
-						} else {
-							targetPage = plus.webview.currentWebview();
+						if(currIndex >=0) {
+							console.log(subpages[currIndex])
+							targetPage = plus.webview.getWebviewById(subpages[currIndex]);
+						} else{
+							return;
 						}
 						
 						if(targetPage == activePage) {
 							return;
 						}
-						
-						if(currIndex <1) { 
-							//底部选项卡切换
+						if(currIndex <2) { 
+							//底部选项卡切
 							util.toggleNview(currIndex);
 							// 子页面切换
 							util.changeSubpage(targetPage, activePage, aniShow);
 							//更新当前活跃的页面
 							activePage = targetPage;
-						}
-						else{
-							plus.webview.open('html/new-webview.html', 'new', {}, 'slide-in-right', 300);
+						}else{
+							plus.webview.open('html/teamsInfo.html', 'new', {}, 'slide-in-right', 300);
 						}
 
 					});
