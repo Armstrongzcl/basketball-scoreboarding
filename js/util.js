@@ -2,7 +2,7 @@ var util = {
 	options: {
 		ACTIVE_COLOR: "#00aaff",
 		NORMAL_COLOR: "#000",
-		subpages: ["html/recent-games-list.html","html/team-info.html"]
+		subpages: ["html/recent-games-list.html","html/team-list.html"]
 	},
 	/**
 	 *  简单封装了绘制原生view控件的方法
