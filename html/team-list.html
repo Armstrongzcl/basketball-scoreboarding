@@ -7,7 +7,6 @@
 		<title>new webview</title>
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/teamUtil.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
 //			var webview_detail = null; //详情页webview
 //			var titleNView = { //详情页原生导航配置
@@ -72,6 +71,15 @@
 						id: 'teamInfo.html'
 					});
 				});
+				var addTeamPage=null;
+				mui('.mui-content').on('tap','button',function(e){
+					if(!addTeamPage){
+						addTeamPage=plus.webview.getWebviewById('addTeam.html');
+					}
+					mui.openWindow({
+						id: 'addTeam.html'
+					});
+				});
 			})
 		</script>
 		<link href="../css/mui.min.css" rel="stylesheet" />
@@ -80,6 +88,10 @@
 	<body>
 
 		<div class="mui-content">
+			<div class="mui-card-content-inner">
+				<button type="button" class="mui-btn mui-btn-success mui-icon mui-icon-plus">添加球队</button>
+			</div>
+			
 			<div class="mui-card" style="margin-bottom: 0px;">
 
 				<ul class="mui-table-view">
@@ -94,6 +106,9 @@
 				preloadPages:[{
     id:'teamInfo.html',
     url:'team-info.html'           
+  },{
+  	id:'addTeam.html',
+  	url:'add-team.html'
   }
   ]
 			});
