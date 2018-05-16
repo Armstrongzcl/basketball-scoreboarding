@@ -1,4 +1,4 @@
-张一驰 模式选择界面 mode-choose.html 
+﻿张一弛 模式选择界面 mode-choose.html 
 罗翱放 娱乐记分板 
 王锴 近期比赛: recent-games-list.html ，game-info.html 
 赵传磊 球队信息：team-info.html,team-list.html 
