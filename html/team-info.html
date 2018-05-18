@@ -8,14 +8,13 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
 		<style>
-			.title{
+			.title {
 				margin: 20px 15px 7px;
 				color: #6d6d72;
 				font-size: 15px;
 			}
-			
 		</style>
 	</head>
 
@@ -27,36 +26,58 @@
 		<div class="mui-content">
 			<div class="mui-content-padded">
 				<form class="mui-input-group">
-					
+
 					<div class="mui-input-row">
 						<label>球队名</label>
-						<input type="text" name="teamName" id="teamName" class="mui-input-clear" disabled="true"/>
+						<input type="text" name="teamName" id="teamName" class="mui-input-clear" disabled="true" value="骑士"/>
 					</div>
-					
+
 					<div class="mui-input-row">
 						<label>教练名</label>
-						<input type="text" name="coachName" id="coachName" disabled="true"/>
+						<input type="text" name="coachName" id="coachName" disabled="true" value="泰伦卢"/>
 					</div>
 					<div class="mui-input-row">
 						<label>班级</label>
-						<input type="text" name="className" id="className" disabled="true"/>
+						<input type="text" name="className" id="className" disabled="true" value="一年级"/>
 					</div>
-				</form>
-				<div class="mui-card">
+
+					<div class="mui-card">
 						<div class="mui-card-header">
 							球员
 						</div>
+						<div class="mui-card-content">
 
-							<div class="mui-content-padded">
-								<input type="text" name="className" id="className" disabled="true" value="yi"/>
-							<input type="text" name="className" id="className" disabled="true" value="er"/>
-							<input type="text" name="className" id="className" disabled="true" value="yi"/>
-							<input type="text" name="className" id="className" disabled="true" value="yi"/>
-							<input type="text" name="className" id="className" disabled="true" value="yi"/>	
+							<div class="mui-row">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerName" disabled="true" value="詹姆斯" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerNumber" value="23" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerPosition" disabled="true" value="小前锋" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="IsLineup" disabled="true" value="首发" />
+								</div>
 							</div>
-
+							<div class="mui-row">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerName" disabled="true" value="勒夫" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerNumber" value="13" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerPosition" disabled="true" value="大前锋" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="IsLineup" disabled="true" value="首发" />
+								</div>
+							</div>
 						</div>
-				</div>
+					</div>
+				</form>
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>

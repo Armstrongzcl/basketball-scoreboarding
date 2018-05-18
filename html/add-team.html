@@ -3,14 +3,72 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>添加球队</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		<div >
-			添加球队
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">添加球队</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<form class="mui-input-group">
+
+					<div class="mui-input-row">
+						<label>球队名</label>
+						<input type="text" name="teamName" id="teamName" class="mui-input-clear" disabled="true" />
+					</div>
+
+					<div class="mui-input-row">
+						<label>教练名</label>
+						<input type="text" name="coachName" id="coachName" disabled="true" />
+					</div>
+					<div class="mui-input-row">
+						<label>班级</label>
+						<input type="text" name="className" id="className" disabled="true" />
+					</div>
+
+					<div class="mui-card">
+						<div class="mui-card-header">
+							球员
+						</div>
+						<div class="mui-card-content">
+
+							<div class="mui-row">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerName" disabled="true" value="詹姆斯" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerNumber" value="23" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerPosition" disabled="true" value="小前锋" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="IsLineup" disabled="true" value="首发" />
+								</div>
+							</div>
+							<div class="mui-row">
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerName" disabled="true" value="勒夫" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerNumber" value="13" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="playerPosition" disabled="true" value="大前锋" />
+								</div>
+								<div class="mui-col-sm-3 mui-col-xs-3">
+									<input type="text" name="IsLineup" disabled="true" value="首发" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
