@@ -1,2 +1,6 @@
 unpackage/
 unpackage/release/*
+
+*.txt
+*.md
+*.pdf
