@@ -304,7 +304,6 @@
 					"html/team-info.html",
 					"html/team-list.html",
 					"html/mode-choose.html"
-
 				],
 				"priority": 0
 			},
@@ -365,7 +364,6 @@
 				],
 				"refer": [],
 				"priority": 0
-
 			},
 			"html/team-list.html": {
 				"resources": [],
@@ -374,7 +372,13 @@
 					"html/add-team.html"
 				],
 				"priority": 0
-
+			},
+			"html/recent-games-list.html": {
+				"resources": [],
+				"refer": [
+					"html/game-info.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {
@@ -383,7 +387,6 @@
 				"css/mui.css"
 			]
 		}
-
 	},"fullscreen":false,
 	"unpackage":[
 	  "css/mui.css",
