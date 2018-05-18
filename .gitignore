@@ -1,6 +1,12 @@
-unpackage/
+﻿unpackage/
 unpackage/release/*
 
 *.txt
+
 *.md
+
 *.pdf
+
+*.txt
+
+*.md
