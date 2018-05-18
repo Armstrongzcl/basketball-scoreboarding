@@ -6,13 +6,102 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" href="../css/standard.mode.boarding.css" />
 	</head>
 
 	<body>
+		
 		<script src="../js/mui.min.js"></script>
-		<script type="text/javascript">
-			mui.init()
+        <script type="text/javascript">
+			mui.init({
+                 beforeback: function() { //退出前当前面恢复横屏 
+                 mui.plusReady(function() {
+                 plus.screen.lockOrientation("portrait-primary"); 
+                 });
+                 //返回true，继续页面关闭逻辑
+                 return true;
+                 }
+             })
+			mui.plusReady(function(){
+//				plus.screen.lockOrientation("landscape-primary")
+				plus.navigator.setFullscreen(true)
+				$("#content").css({"height":plus.screen.resolutionHeight,"width":plus.screen.resolutionWidth})
+			})
 		</script>
+		<div id="content">
+		
+		<div class="mui-row" id="top">
+		<div class="mui-col-xs-4" id = "overviewOfTeam1">
+			<ul class="mui-table-view" id = "team1">
+				<li class="mui-table-view-cell" id = "teamName1">队伍1</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+			</ul>
+			
+		</div>
+		<div class = "mui-col-xs-4">
+			<div class="mui-col-xs-12" id = "scoreBoard">
+				<div class="mui-row">
+				
+				<div class = "mui-col-xs-4 score-record" id="score-record1">
+				 12
+			    </div>
+			    <div class="mui-col-xs-2" id="symbol">:</div>
+			    <div class= "mui-col-xs-4 score-record" id ="score-record2">
+				    12
+			    </div>
+			    	
+				</div>
+			    
+			</div>
+			<div class="mui-col-xs-6" id = "timeControl">
+				<p id= "timeSymbol">Time</p>
+				<p id ="restTime">12:00</p>
+			</div>
+			<div class = "mui-col-xs-6" id = "countDown">
+				24
+			</div>
+			
+		</div>
+		<div class="mui-col-xs-4" id = "overviewOfTeam2">
+			<ul class="mui-table-view" id= "team2">
+				<li class="mui-table-view-cell" id = "teamName1">队伍2</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell">队员</li>
+			</ul>
+		</div>
+		</div>
+		<div class="mui-row" id="bottom">
+		<div class="mui-col-sm-5" id= "buttonGroupOfTeam1" >
+			<button class="mui-btn mui-btn-green control-btn" id="foul1">犯规</button>
+			<button class="mui-btn mui-btn-green control-btn" id="backboard1">篮板</button>
+			<button class="mui-btn mui-btn-green control-btn" id="assist1">助攻</button>
+			<button class="mui-btn mui-btn-green control-btn" id ="score1">得分</button>
+			
+		</div>
+		<div class="mui-col-sm-2" id = "gameControlButton">
+			<div class="mui-row">
+				<button class="mui-btn mui-btn-yellow" id="start">开始</button>
+			    <button class="mui-btn mui-btn-yellow" id ="pause">暂停</button>
+			</div>
+			
+		</div>
+		<div class="mui-col-sm-5" id= "buttonGroupOfTeam2" >
+			<button class="mui-btn mui-btn-green control-btn" id="score2">得分</button>
+			<button class="mui-btn mui-btn-green control-btn" id = "assist2">助攻</button>
+			<button class="mui-btn mui-btn-green control-btn" id ="backboard2">篮板</button>
+			<button class="mui-btn mui-btn-green control-btn" id="foul2">犯规</button>
+		</div>
+		</div>
+		</div>
+
 	</body>
 
 </html>
