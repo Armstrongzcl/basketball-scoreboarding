@@ -27,7 +27,7 @@
 		"Audio": {
 			"description": "访问麦克风"
 		},
-		
+
 		"Cache": {
 			"description": "管理应用缓存"
 		},
@@ -37,7 +37,7 @@
 		"Console": {
 			"description": "跟踪调试输出日志"
 		},
-		
+
 		"Device": {
 			"description": "访问设备信息"
 		},
@@ -84,8 +84,7 @@
 		"Barcode": {
 			"description": "管理二维码扫描插件"
 		},
-		
-		
+
 		"Webview": {
 			"description": "窗口管理"
 		},
@@ -212,12 +211,15 @@
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
 				"permissions": ["<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-feature android:name=\"android.hardware.camera\"/>"]
+
 			},
 			"orientation": ["portrait-primary","landscape-primary","landscape-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+
 					 /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+
 					"iphone": {
 						"normal": "", /*iPhone3/3GS程序图标，分辨率：57x57*/
 						"retina": "", /*iPhone4程序图标，分辨率：114x114*/
@@ -242,6 +244,7 @@
 						"settings-normal": "",/*iPad设置页面程序图标，分辨率：29x29*/
 						"settings-retina": ""
 					},"appstore":"images/basketball.png"
+
 				},
 				"android": {
 					"mdpi": "", /*普通屏程序图标，分辨率：48x48*/
@@ -301,6 +304,7 @@
 					"html/team-info.html",
 					"html/team-list.html",
 					"html/mode-choose.html"
+
 				],
 				"priority": 0
 			},
@@ -361,6 +365,7 @@
 				],
 				"refer": [],
 				"priority": 0
+
 			},
 			"html/team-list.html": {
 				"resources": [],
@@ -369,6 +374,7 @@
 					"html/add-team.html"
 				],
 				"priority": 0
+
 			}
 		},
 		"idle": {
@@ -377,6 +383,7 @@
 				"css/mui.css"
 			]
 		}
+
 	},"fullscreen":false,
 	"unpackage":[
 	  "css/mui.css",
