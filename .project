@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>basketball</name>
+=======
+
+	<name>basketball-scoreboarding</name>
+>>>>>>> 346b825c4b80c9d5651c64cb924f72e7c49b1f73
 	<comment>Create By HBuilder</comment>
 	<projects>
 	</projects>
@@ -23,6 +28,10 @@
 	<filteredResources>
 		<filter>
 			<id>1525629854976</id>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 346b825c4b80c9d5651c64cb924f72e7c49b1f73
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -41,6 +50,10 @@
 		</filter>
 		<filter>
 			<id>1525658787406</id>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 346b825c4b80c9d5651c64cb924f72e7c49b1f73
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -50,6 +63,10 @@
 		</filter>
 		<filter>
 			<id>1525658787439</id>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 346b825c4b80c9d5651c64cb924f72e7c49b1f73
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -66,6 +83,7 @@
 				<arguments>1.0-name-matches-false-false-node_modules</arguments>
 			</matcher>
 		</filter>
+<<<<<<< HEAD
 		<filter>
 			<id>1526229940305</id>
 			<name></name>
@@ -84,5 +102,7 @@
 				<arguments>1.0-name-matches-false-false-node_modules</arguments>
 			</matcher>
 		</filter>
+=======
+>>>>>>> 346b825c4b80c9d5651c64cb924f72e7c49b1f73
 	</filteredResources>
 </projectDescription>
