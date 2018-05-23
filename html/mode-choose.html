@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-	
 
 	<head>
 		<meta charset="UTF-8">
@@ -10,23 +9,50 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 	</head>
 
-	<body>	
+	<body>
 		<div>
-		<p>选择模式</p>
+			<p>选择模式</p>
 		</div>
 		<div>
-		<button><a href="easy-mode-boarding.html">娱乐模式</a></button>
-		<button><a href="standard-mode-boarding.html">专业模式</a></button>
+			<img />
+			<h4>球队一</h4>
+			<select class="" style="width: 100px;">
+				<option value="">---请选择---</option>
+				<option value="1">骑士</option>
+				<option value="2">勇士</option>
+				<option value="3">凯尔特人</option>
+				<option value="4">火箭</option>
+			</select>
 		</div>
 		<div>
-			<button><a href="game-info.html">开始计分</a></button>
+			<img />
+			<h4>球队二</h4>
+			<select class="" style="width: 100px;">
+				<option value="">---请选择---</option>
+				<option value="1">骑士</option>
+				<option value="2">勇士</option>
+				<option value="3">凯尔特人</option>
+				<option value="4">火箭</option>
+			</select>
 		</div>
-		
+
+		<div class="mui-input-row mui-radio mui-left">
+			<label>娱乐模式</label>
+			<input name="radio1" type="radio">
+		</div>
+			<div class="mui-input-row mui-radio mui-left">
+			<label>专业模式</label>
+			<input name="radio1" type="radio">
+		</div>
+
+		<div>
+			<!--请自己加入超链接 谢谢！-->
+			<button type="button" class="mui-btn mui-btn-danger mui-btn-outlined">开始比赛</button>
+		</div>
+
 	</body>
 	<script>
-			mui.plusReady(function(){
-				plus.screen.lockOrientation("landscape");
-			});
+
 	</script>
-  	
+
 </html>
