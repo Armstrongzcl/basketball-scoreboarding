@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>basketball</name>
+
+	<name>basketball-scoreboarding</name>
 	<comment>Create By HBuilder</comment>
 	<projects>
 	</projects>
@@ -23,6 +24,7 @@
 	<filteredResources>
 		<filter>
 			<id>1525629854976</id>
+
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -41,6 +43,7 @@
 		</filter>
 		<filter>
 			<id>1525658787406</id>
+
 			<name></name>
 			<type>26</type>
 			<matcher>
@@ -50,6 +53,7 @@
 		</filter>
 		<filter>
 			<id>1525658787439</id>
+
 			<name></name>
 			<type>26</type>
 			<matcher>

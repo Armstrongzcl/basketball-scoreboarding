@@ -8,6 +8,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../css/mui.min.css">
+		<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 		<style>
 			html,
 			body {
@@ -24,72 +25,28 @@
 	</head>
 
 	<body>
+
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
 			<div class="mui-scroll">
 				<div class="title">
-					最近比赛面板（待完成）
+					最近比赛
 				</div>
-				<ul class="mui-table-view mui-table-view-chevron">
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 1</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 2</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 3</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 4</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 5</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 6</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 7</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 8</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 9</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 10</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 11</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 12</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 13</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 14</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 15</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 16</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 17</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 18</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 19</a>
-					</li>
-					<li class="mui-table-view-cell">
-						<a href="" class="mui-navigate-right">Item 20</a>
-					</li>
+				<ul id="game" class="mui-table-view mui-table-view-chevron">
+					<script>
+						getGames();
+						function getGames() {
+							$.getJSON("../datas/games.json", function(result) {
+								$.each(result, function(gaid, item) {
+									$("#game").append("<li class='mui-table-view-cell'><a  class='mui-navigate-right' style='text-align:center' onclick = 'openDetail()'>" + item.firstTeam + "&nbsp&nbspVS&nbsp&nbsp" + item.secondTeam + "<br><br>" + item.firstScore + "&nbsp&nbsp:&nbsp&nbsp" + item.secondScore + "</a></li>");
+								});
+							})
+						}
+						function openDetail(){
+							mui.openWindow("game-info.html");
+						}
+						
+					</script>
+
 				</ul>
 			</div>
 		</div>
@@ -100,7 +57,7 @@
 				pullRefresh: {
 					container: '#pullrefresh',
 					down: {
-						style:'circle',
+						style: 'circle',
 						callback: pulldownRefresh
 					},
 					up: {
