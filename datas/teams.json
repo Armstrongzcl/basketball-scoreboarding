@@ -76,12 +76,12 @@
 },
 {
 	"teamname":"勇士",
-	"coach":"泰伦卢",
-	"class":"三年二班",
+	"coach":"nn",
+	"class":"三年一班",
 	"staff":[
 		{
-			"name":"詹姆斯",
-			"position":"小前锋",
+			"name":"欧文",
+			"position":"得分后卫",
 			"number":"23",
 			"lineup": true
 		},

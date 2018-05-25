@@ -9,6 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 		<style>
 			.title {
 				margin: 20px 15px 7px;
@@ -16,6 +17,8 @@
 				font-size: 15px;
 			}
 		</style>
+		<script src="../js/mui.min.js"></script>
+		
 	</head>
 
 	<body>
@@ -29,16 +32,16 @@
 
 					<div class="mui-input-row">
 						<label>球队名</label>
-						<input type="text" name="teamName" id="teamName" class="mui-input-clear" disabled="true" value="骑士"/>
+						<input type="text" name="teamName" id="teamName" class="mui-input-clear" disabled="true" value=""/>
 					</div>
 
 					<div class="mui-input-row">
 						<label>教练名</label>
-						<input type="text" name="coachName" id="coachName" disabled="true" value="泰伦卢"/>
+						<input type="text" name="coachName" id="coachName" disabled="true" value=""/>
 					</div>
 					<div class="mui-input-row">
 						<label>班级</label>
-						<input type="text" name="className" id="className" disabled="true" value="一年级"/>
+						<input type="text" name="className" id="className" disabled="true" value=""/>
 					</div>
 
 					<div class="mui-card">
@@ -49,30 +52,30 @@
 
 							<div class="mui-row">
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="playerName" disabled="true" value="詹姆斯" />
+									<input type="text" name="playerName" disabled="true" value="" />
 								</div>
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="playerNumber" value="23" />
+									<input type="text" name="playerNumber" value="" />
 								</div>
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="playerPosition" disabled="true" value="小前锋" />
+									<input type="text" name="playerPosition" disabled="true" value="" />
 								</div>
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="IsLineup" disabled="true" value="首发" />
+									<input type="text" name="IsLineup" disabled="true" value="" />
 								</div>
 							</div>
 							<div class="mui-row">
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="playerName" disabled="true" value="勒夫" />
+									<input type="text" name="playerName" disabled="true" value="" />
 								</div>
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="playerNumber" value="13" />
+									<input type="text" name="playerNumber" value="" />
 								</div>
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="playerPosition" disabled="true" value="大前锋" />
+									<input type="text" name="playerPosition" disabled="true" value="" />
 								</div>
 								<div class="mui-col-sm-3 mui-col-xs-3">
-									<input type="text" name="IsLineup" disabled="true" value="首发" />
+									<input type="text" name="IsLineup" disabled="true" value="" />
 								</div>
 							</div>
 						</div>
@@ -80,13 +83,52 @@
 				</form>
 			</div>
 		</div>
-		<script src="../js/mui.min.js"></script>
-		<script type="text/javascript">
+		
+	<script type="text/javascript">
 			mui.init({
 				swipeBack: true
-			})
+			});
+//			mui.ready(function(){
+				document.addEventListener("InfoId",function(event){
+					var id=event.detail.id;
+					if(!id){
+						return;
+					}
+					var info=getInfo(id);
+					var teamname=document.getElementById("teamName");
+					teamname.value=info["teamname"];
+					var coachname=document.getElementById("coachName");
+					coachname.value=info["coach"];
+					setValue("className",info["class"]);
+				});
+//			});
+			function setValue(id,value){
+				var ele=document.getElementById(id);
+				ele.value=value;
+			}
+			function getInfo(id){
+				var a;
+				$.ajaxSetup({async:false});
+				$.getJSON("../datas/teams.json",function(teamList){
+					var team;
+					var arr=id.split("_");
+					if(arr.length<1){
+						return;
+					}
+					var index=parseInt(arr[0]);
+//					alert(index);
+					a=teamList[index];
+//					alert(a);
+					return;
+				});
+				return a;
+				
+			};
+			
+			mui.back = function() {
+				plus.webview.currentWebview().hide("auto", 300);
+			}
 		</script>
-
 	</body>
 
 </html>

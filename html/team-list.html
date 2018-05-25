@@ -8,73 +8,73 @@
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-//			var webview_detail = null; //详情页webview
-//			var titleNView = { //详情页原生导航配置
-//				backgroundColor: '#f7f7f7', //导航栏背景色
-//				titleText: '', //导航栏标题
-//				titleColor: '#000000', //文字颜色
-//				type: 'transparent', //透明渐变样式
-//				autoBackButton: true, //自动绘制返回箭头
-//				splitLine: { //底部分割线
-//					color: '#cccccc'
-//				}
-//			}
-//			mui.plusReady(function() {
-//				//预加载详情页
-//				webview_detail = mui.preload({
-//					url: 'team-info.html',
-//					id: 'teamInfo.html',
-//					styles: {
-//						"render": "always",
-//						"popGesture": "close",
-//						"bounce": "vertical",
-//						"bounceBackground": "#efeff4",
-//						"titleNView": titleNView
-//					}
-//				});
-//			});
-//			function open_detail(id) {
-//				//触发子窗口变更新闻详情
-//				mui.fire(webview_detail, 'InfoId', {
-//					id:id
-//				});
-//
-//				//更改详情页原生导航条信息
-//				titleNView.titleText = "球队信息";
-//				webview_detail.setStyle({
-//					"titleNView": titleNView
-//				});
-//				setTimeout(function() {
-//					webview_detail.show("slide-in-right", 300);
-//				}, 150);
-//			}
+			//			var webview_detail = null; //详情页webview
+			//			var titleNView = { //详情页原生导航配置
+			//				backgroundColor: '#f7f7f7', //导航栏背景色
+			//				titleText: '', //导航栏标题
+			//				titleColor: '#000000', //文字颜色
+			//				type: 'transparent', //透明渐变样式
+			//				autoBackButton: true, //自动绘制返回箭头
+			//				splitLine: { //底部分割线
+			//					color: '#cccccc'
+			//				}
+			//			}
+			//			mui.plusReady(function() {
+			//				//预加载详情页
+			//				webview_detail = mui.preload({
+			//					url: 'team-info.html',
+			//					id: 'teamInfo.html',
+			//					styles: {
+			//						"render": "always",
+			//						"popGesture": "close",
+			//						"bounce": "vertical",
+			//						"bounceBackground": "#efeff4",
+			//						"titleNView": titleNView
+			//					}
+			//				});
+			//			});
+			//			function open_detail(id) {
+			//				//触发子窗口变更新闻详情
+			//				mui.fire(webview_detail, 'InfoId', {
+			//					id:id
+			//				});
+			//
+			//				//更改详情页原生导航条信息
+			//				titleNView.titleText = "球队信息";
+			//				webview_detail.setStyle({
+			//					"titleNView": titleNView
+			//				});
+			//				setTimeout(function() {
+			//					webview_detail.show("slide-in-right", 300);
+			//				}, 150);
+			//			}
 
 			$(document).ready(function() {
 				addLi();
-				
-				
+
 				var detailPage = null;
 				//添加列表项的点击事件
 				mui('.mui-content').on('tap', 'a', function(e) {
-					var id = this.getAttribute('id');
-//					open_detail(id);
+					var infoid = this.parentElement.getAttribute('id');
+					//					open_detail(id);
 					//获得详情页面
 					if(!detailPage) {
 						detailPage = plus.webview.getWebviewById('teamInfo.html');
 					}
 					//触发详情页面的newsId事件
+//					alert(infoid);
 					mui.fire(detailPage, 'InfoId', {
-						id: id
+						id: infoid
 					});
 					//打开详情页面          
 					mui.openWindow({
 						id: 'teamInfo.html'
 					});
 				});
-				var addTeamPage=null;
-				mui('.mui-content').on('tap','button',function(e){
-					if(!addTeamPage){
-						addTeamPage=plus.webview.getWebviewById('addTeam.html');
+				var addTeamPage = null;
+				mui('.mui-content').on('tap', 'button', function(e) {
+					if(!addTeamPage) {
+						addTeamPage = plus.webview.getWebviewById('addTeam.html');
 					}
 					mui.openWindow({
 						id: 'addTeam.html'
@@ -91,7 +91,7 @@
 			<div class="mui-card-content-inner">
 				<button type="button" class="mui-btn mui-btn-success mui-icon mui-icon-plus">添加球队</button>
 			</div>
-			
+
 			<div class="mui-card" style="margin-bottom: 0px;">
 
 				<ul class="mui-table-view">
@@ -102,15 +102,14 @@
 
 		<script>
 			mui.init({
-				swipeBack: true,//启用右滑关闭功能
-				preloadPages:[{
-    id:'teamInfo.html',
-    url:'team-info.html'           
-  },{
-  	id:'addTeam.html',
-  	url:'add-team.html'
-  }
-  ]
+				swipeBack: true, //启用右滑关闭功能
+				preloadPages: [{
+					id: 'teamInfo.html',
+					url: 'team-info.html'
+				}, {
+					id: 'addTeam.html',
+					url: 'add-team.html'
+				}]
 			});
 
 			function addLi() {
@@ -118,7 +117,7 @@
 					var list = document.body.querySelector('.mui-table-view');
 					$.each(teamList, function(i, n) {
 						var li = document.createElement('li');
-						li.id = i + n["teamname"];
+						li.id = i + "_" + n["teamname"];
 						li.className = 'mui-table-view-cell';
 						li.innerHTML = '<a class="mui-navigate-right">' + n["teamname"] + '</a>';
 						list.appendChild(li);
