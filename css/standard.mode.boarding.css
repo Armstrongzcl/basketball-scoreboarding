@@ -1,0 +1,172 @@
+#content{
+	position: absolute;
+	overflow: hidden;
+	width: auto;
+/*	background-color: #6641E2;*/
+}
+
+#overviewOfTeam1{
+	padding-top: 3%;
+	padding-left: 3%;
+	padding-bottom: 3%;
+}
+#overviewOfTeam2{
+	padding-top: 3%;
+	padding-right: 3%;
+	padding-bottom: 3%;
+}
+#teamName1 {
+	color: #6641E2;
+	font-weight: bold;
+}
+#team1{
+	
+}
+#team1 li{
+	
+    height: 35px ;
+	font-size: small;
+}
+#team2 li{
+	
+    height: 35px ;
+	font-size: small;
+}
+#symbol{
+	padding: 5%;
+	padding-top: 15%;
+	font-size: 3em;
+}
+.score-record{
+	
+	padding: 5%;
+	padding-top: 10%;
+	border: solid;
+	border-color: #007AFF;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	font-size: 3em;
+}
+#scoreBoard{
+	margin-left: 3%;
+}
+#timeControl{
+	border: solid;
+	border-color: #6641E2;
+	border-radius: 10px;
+	margin-top: 10%;
+	margin-left: 35%;
+	margin-right: 35%;
+	padding: 2%;
+	width: 70px;
+	height: 70px;
+}
+#timeControl p{
+	font-size: 1em;
+	text-align: center;
+}
+#timeSymbol{
+	color: #00FFFF;
+	border-bottom: solid;
+	border-bottom-color: #8A6DE9;
+	padding-bottom: 5px;
+}
+#restTime{
+	color: #CF2D28;
+}
+
+#countDown{
+	width: 2.3em;
+	height: 2.3em;
+	border: solid;
+	border-color: #00FFFF;
+	text-align: center;
+	border-radius: 100%;
+	margin-top: 5%;
+	margin-left: 35%;
+	margin-right: 35%;
+	font-size: 2em;
+	padding: 10%;
+}
+
+#bottom{
+     position: absolute;
+     top:80%;
+ 	 
+}
+#buttonGroupOfTeam1{
+    border: dashed;
+    border-color: #999999;
+    border-width: thin;
+    border-top-right-radius: 50px;
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 30px;
+    background-color: white;
+}
+#buttonGroupOfTeam2{
+	
+	border: dashed;
+	border-color: #999999;
+	border-width: thin;
+	border-top-right-radius: 100px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 30px;
+    background-color: white;
+}
+#gameControlButton{
+	margin-top: -1em;
+	padding: 3%;
+	padding-left: 4%;
+	padding-top: 0%;
+}
+.control-btn{
+    width: 50px;
+	height: 50px;
+	text-align: center;
+	border-radius: 100%;
+	border: dashed;
+	border-color:cyan;
+	margin: 0.57em;
+	margin-bottom: 0;
+}
+#start{
+	color: #8A6DE9;
+}
+#pause{
+	color: #8A6DE9;
+	margin-top: 0.5em;
+}
+#score1{
+	margin-top: -1em;
+	margin-right: -0.5em;
+}
+#foul1{
+	
+	margin-top: 0.8em;
+	margin-bottom: -0.5em;
+	margin-left: 0;
+}
+#backboard1{
+	margin-top: -1em;
+}
+#assist1{
+	margin-top: 0.8em;
+	margin-bottom: -0.5em;
+}
+#score2{
+	margin-top: -1em;
+	margin-left: -0.2em;
+}
+#foul2{
+	margin-top: 0.8em;
+	margin-bottom: -0.5em;
+	margin-right: 0;
+}
+#backboard2{
+	margin-top: -1em;
+}
+#assist2{
+	margin-top: 0.8em;
+	margin-bottom: -0.5em;
+}
