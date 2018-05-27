@@ -10,29 +10,61 @@
 	</head>
 
 	<body>
+		<div class="mui-content">
+			<div class="">
+				
+			</div>
+		</div>
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init();
-			function getInfo(id){
-				var a;
-				$.ajaxSetup({async:false});
-				$.getJSON("../datas/teams.json",function(teamList){
-					var team;
-					var arr=id.split("_");
-					if(arr.length<1){
-						return;
-					}
-					var index=parseInt(arr[0]);
-//					alert(index);
-					a=teamList[index];
-//					alert(a);
-					return;
-//					teamList[];
-				});
-				alert(a["teamname"]);
-			};
-			getInfo("0_sss")
+//			function getInfo(id){
+//				var a;
+//				$.ajaxSetup({async:false});
+//				$.getJSON("../datas/teams.json",function(teamList){
+//					var team;
+//					var arr=id.split("_");
+//					if(arr.length<1){
+//						return;
+//					}
+//					var index=parseInt(arr[0]);
+////					alert(index);
+//					a=teamList[index];
+////					alert(a);
+//					return;
+////					teamList[];
+//				});
+//				alert(a["teamname"]);
+//			};
+//			getInfo("0_sss")
 		</script>
 	</body>
 
 </html>
+
+
+plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+
+					fs.root.getFile('datas/test.json', {
+						create: true
+					}, function(fileEntry) {
+						var reader = null;
+						fileEntry.file(function(file) {
+							reader = new plus.io.FileReader();
+							reader.onloadend = function(e) {
+								oldTeams = e.target.result;
+								if(oldTeams != "") {
+									teamsList = JSON.parse(oldTeams);
+									alert(teamsList.length);
+									a=teamsList[index];
+								}
+							}
+							reader.readAsText(file);
+						}, function(e) {
+							alert(e.message);
+						});
+
+					})
+				}, function(e) {
+					alert("Request file system failed: " + e.message);
+				});
