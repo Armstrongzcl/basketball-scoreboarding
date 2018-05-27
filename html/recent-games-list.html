@@ -8,6 +8,7 @@
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../css/mui.min.css">
+		<script type="text/javascript" src="../js/mui.min.js"></script>
 		<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
 		<style>
 			html,
@@ -34,17 +35,20 @@
 				<ul id="game" class="mui-table-view mui-table-view-chevron">
 					<script>
 						getGames();
+
 						function getGames() {
-							$.getJSON("../games.json", function(result) {
+							$.getJSON("../datas/games.json", function(result) {
 								$.each(result, function(gaid, item) {
-									$("#game").append("<li class='mui-table-view-cell'><a  class='mui-navigate-right' style='text-align:center' onclick = 'openDetail()'>" + item.firstTeam + "&nbsp&nbspVS&nbsp&nbsp" + item.secondTeam + "<br><br>" + item.firstScore + "&nbsp&nbsp:&nbsp&nbsp" + item.secondScore + "</a></li>");
+									$("#game").append("<li class='mui-table-view-cell'><a  class='mui-navigate-right' style='text-align:center' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" + item.firstName + "&nbsp&nbspVS&nbsp&nbsp" + item.secondName + "<br><br>" + item.firstScore + "&nbsp&nbsp:&nbsp&nbsp" + item.secondScore + "</a></li>");
 								});
 							})
 						}
-						function openDetail(){
-							mui.openWindow("game-info.html");
+
+						function openDetail(gaid) {
+							mui.openWindow({
+								url: "game-info.html?id="+gaid,
+							});
 						}
-						
 					</script>
 
 				</ul>
