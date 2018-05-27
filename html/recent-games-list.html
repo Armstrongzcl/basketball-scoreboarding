@@ -41,7 +41,7 @@
 								$.each(result, function(gaid, item) {
 									$("#game").append("<li class='mui-table-view-cell'><a  class='mui-navigate-right' style='text-align:center' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" + item.firstName + "&nbsp&nbspVS&nbsp&nbsp" + item.secondName + "<br><br>" + item.firstScore + "&nbsp&nbsp:&nbsp&nbsp" + item.secondScore + "</a></li>");
 								});
-							})
+							});
 						}
 
 						function openDetail(gaid) {

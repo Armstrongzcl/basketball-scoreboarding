@@ -374,7 +374,9 @@
 				"priority": 0
 			},
 			"html/recent-games-list.html": {
-				"resources": [],
+				"resources": [
+					"datas/games.json"
+				],
 				"refer": [
 					"html/game-info.html"
 				],
