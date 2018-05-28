@@ -316,16 +316,14 @@ window.onload=function(){
                 var datestr1;
                 fileReader.onloadend = function(e){
                 	var datestr = e.target.result;
+                	var date;
                 	if(datestr ==""){
-                		alert("6666")
-//                  file.createWriter(function(writer){
-//  				    writer.write("[]");
-//  				},function(e){
-//  			
-//  				})
-//              }
+                    date =[];
+                }else{
+                	date =JSON.parse(datestr);
+                }
                
-                	var date = JSON.parse(datestr);
+                	
                 	var id= {};
     			id["firstName"] = " aaa ";
     			id["firstCoach"] = " bbb";
