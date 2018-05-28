@@ -19,6 +19,8 @@
                  beforeback: function() { //退出前当前面恢复横屏 
                  mui.plusReady(function() {
                  plus.screen.lockOrientation("portrait-primary"); 
+                 var targetPage = plus.webview.getWebviewById("html/recent-games-list.html");
+				 targetPage.reload();
                  });
                  //返回true，继续页面关闭逻辑
                  return true;
@@ -29,6 +31,10 @@
 				plus.navigator.setFullscreen(true)
 				$("#content").css({"height":plus.screen.resolutionHeight,"width":plus.screen.resolutionWidth})
 			})
+//			mui.back(function(){
+//				var targetPage = plus.webview.getWebviewById("html/recent-games-list.html");
+//				targetPage.reload();
+//			})
 		</script>
 		<div id="content">
 		
@@ -45,12 +51,13 @@
 			
 		</div>
 		<div class = "mui-col-xs-4">
+			<button class="mui-btn mui-btn-grey" id= "end">结束比赛</button>
 			<div class="mui-col-xs-12" id = "scoreBoard">
 				<div class="mui-row">
 				
-				<div class = "mui-col-xs-4 score-record" id="score-record0">12  </div>
+				<div class = "mui-col-xs-4 score-record" id="score-record0">0 </div>
 			    <div class="mui-col-xs-2" id="symbol">:</div>
-			    <div class= "mui-col-xs-4 score-record" id ="score-record1">12</div>
+			    <div class= "mui-col-xs-4 score-record" id ="score-record1">0</div>
 			    	
 				</div>
 			    
@@ -98,6 +105,49 @@
 		</div>
 		</div>
 		</div>
+		<!--<script type="text/javascript">
+			mui.plusReady(function(){
+				-->
+				
+<!--//				plus.io.resolveLocalFileSystemURL(path,function(entry){
+//				
+////					entry.createWriter(function(writer){
+//////						alert("aaaaaaaaaaaaaaaaaaaaaaaaa")
+////						
+////						
+////						writer.onwrite =function(){
+////							alert("success")
+////						}
+////						writer.write("ccccccc");
+////						
+////					},function(e1){
+////						alert(e1.message)
+////					})
+//					entry.file(function(file){
+//						var fileReader= new plus.io.FileReader(file);
+//						fileReader.readAsText(file,"utf-8")
+//						fileReader.onloadend =function(ewt){
+//							alert("11:" +ewt.target.result);
+//						}
+////                      var fileWriter  =new plus.io.FileWriter(file);
+////						fileWriter.onwriteend = function(){
+////							alert("failed")
+////						}
+////						fileWriter.onwrite =function(){
+////							alert("success")
+////						}
+////						fileWriter.write("aaaaaaaaaaaaaaaa");
+//						
+//						
+//					},function(e){
+//						alert("333")
+//					})
+//					
+//				},function(e){
+//					alert("Resolve file url failed: "+e.message);
+//				})
+//			})-->
+<!--		</script>-->
 <div id="subWindow" class="mui-popover">
   <ul class="mui-table-view" id="actualsubWindow">
     <!--<li class="mui-table-view-cell"><a href="#">1</a></li>

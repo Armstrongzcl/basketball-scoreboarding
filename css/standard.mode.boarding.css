@@ -37,6 +37,14 @@
 	padding-top: 15%;
 	font-size: 3em;
 }
+#end{
+    margin-left: 30%;
+    margin-right: 30%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    color: #8A6DE9;    
+}
+
 .score-record{
 	
 	padding: 5%;
@@ -44,7 +52,7 @@
 	border: solid;
 	border-color: #007AFF;
 	width: 80px;
-	height: 80px;
+	height: 60px;
 	text-align: center;
 	font-size: 3em;
 }
@@ -55,7 +63,7 @@
 	border: solid;
 	border-color: #6641E2;
 	border-radius: 10px;
-	margin-top: 10%;
+	margin-top: 3%;
 	margin-left: 35%;
 	margin-right: 35%;
 	padding: 2%;

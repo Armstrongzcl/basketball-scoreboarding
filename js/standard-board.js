@@ -21,20 +21,23 @@ window.onload=function(){
 		var team1=new Array();
 		var team2=new Array();
 		team1.foulNumber=0;
-	team2.foulNumber=0;
+	    team2.foulNumber=0;
 		var teamContent1="骑士";
 		var teamContent2="勇士";
+	
     $.ajaxSetup({async:false});
 	var x=function(){
 		$.getJSON('../datas/teams.json',function(data){
 		$.each(data, function(index,info) {
 			if(info["teamname"]==teamContent1){
+				document.getElementById("teamName1").innerText = info["teamname"];
 				$.each(info["staff"], function(index,info) {
 					var team1_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
 					team1.push(team1_player);
 				});
 			}
 			if(info["teamname"]==teamContent2){
+				document.getElementById("teamName2").innerText = info["teamname"];
 				$.each(info["staff"], function(index,info) {
 					var team2_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
 					team2.push(team2_player);
@@ -56,11 +59,13 @@ window.onload=function(){
 	}
 	var start=document.getElementById("start")
 	var mainTimeNode=document.getElementById("restTime");
+	var totelTime = 0;
 	var tmp=0;
 	var status=0;
 	start.addEventListener('click',function(){
 		if(tmp==0){
 		var mainTime=document.getElementById("restTime").textContent;
+		totelTime = mainTime;
 		var time=new Array();
 		time=mainTime.split(":");
 		var minute=parseInt(time[0]);
@@ -296,4 +301,171 @@ window.onload=function(){
        		tmp=0;
        	}
        })
+    var old_back = mui.back;
+    mui.back = function(){
+    	var button =["确定","取消"]
+    	mui.confirm("是否保存比赛信息？","退出",button,function(e){
+    		if(e.index ==0){
+    			
+    			  plus.io.requestFileSystem(plus.io.PRIVATE_DOC,function(fs){
+    		fs.root.getFile("datas/recent_games.json",{create:true},function(file){
+
+    			
+                var fileReader = new plus.io.FileReader();
+                fileReader.readAsText(file,"utf-8");
+                var datestr1;
+                fileReader.onloadend = function(e){
+                	var datestr = e.target.result;
+                	if(datestr ==""){
+                		alert("6666")
+//                  file.createWriter(function(writer){
+//  				    writer.write("[]");
+//  				},function(e){
+//  			
+//  				})
+//              }
+               
+                	var date = JSON.parse(datestr);
+                	var id= {};
+    			id["firstName"] = " aaa ";
+    			id["firstCoach"] = " bbb";
+    			id["firstClass"] = "aaad";
+    			id["secondName"] = "fdgdf";
+    			id["secondCoach"] = "sdfsdf";
+    			id["secondClass"] = "fdsfsdf";
+    			id["firstScore"] = "23";
+    			id["secondScore"]= "54";
+    			id["official_match_time"] = totelTime;
+    			id["single_game_time"] = totelTime/2;
+    			id["half_time"] = 3;
+    			id["break_time"] = 5;
+    			id["each_full"] =  5;
+    			id["personal_full"] = 5;
+    			var firstTeam =[];
+    			var secondTeam = [];
+    			for(var i= 0; i <team1.length;i++){
+    				var player = {};
+    				player["name"] = team1[i].name;
+    				player["number"]= team1[i].number;
+    				player["position"]  =team1[i].position;
+    				player["lineup"] = team1[i].status;
+    				player["score"] = team1[i].score;
+    				player["foul"] = team1[i].foul;
+    				player["asts"] = team1[i].assistant;
+    				firstTeam.push(player);
+    			}
+    			for(var i= 0; i <team2.length;i++){
+    				var player = {};
+    				player["name"] = team2[i].name;
+    				player["number"]= team2[i].number;
+    				player["position"]  =team2[i].position;
+    				player["lineup"] = team2[i].status;
+    				player["score"] = team2[i].score;
+    				player["foul"] = team2[i].foul;
+    				player["asts"] = team2[i].assistant;
+    				secondTeam.push(player);
+    			}
+    			id["firstTeam"] = firstTeam;
+    			id["secondTeam"] = secondTeam;
+    			
+    		
+    			date.push(id);
+    			datestr1 =JSON.stringify(date);
+                	
+
+                
+    			}
+    			 file.createWriter(function(writer){
+                		alert(datestr1);
+    				    writer.write(datestr1);
+    				    writer.onwrite =old_back()
+    				},function(e){
+    			
+    				})
+                    
+    		},function(e){
+    		
+    		})
+    	})
+    			
+    			
+    		}else{
+    			old_back();
+    		}
+    	})
+    }
+    mui.plusReady(function(){   
+    var end = document.getElementById("end");
+    var path = plus.io.convertLocalFileSystemURL("../datas/recent_games.json");
+    
+    
+
+    end.addEventListener("tap",function(){
+        
+        mui.back();
+//  	var readJson = function(){
+//  		$.getJSON(path,function(date){
+//  			var id= {};
+//  			id["firstName"] = " aaa ";
+//  			id["firstCoach"] = " bbb";
+//  			id["firstClass"] = "aaad";
+//  			id["secondName"] = "fdgdf";
+//  			id["secondCoach"] = "sdfsdf";
+//  			id["secondClass"] = "fdsfsdf";
+//  			id["firstScore"] = "23";
+//  			id["secondScore"]= "54";
+//  			id["official_match_time"] = totelTime;
+//  			id["single_game_time"] = totelTime/2;
+//  			id["half_time"] = 3;
+//  			id["break_time"] = 5;
+//  			id["each_full"] =  5;
+//  			id["personal_full"] = 5;
+//  			var firstTeam =[];
+//  			var secondTeam = [];
+//  			for(var i= 0; i <team1.length;i++){
+//  				var player = {};
+//  				player["name"] = team1[i].name;
+//  				player["number"]= team1[i].number;
+//  				player["position"]  =team1[i].position;
+//  				player["lineup"] = team1[i].status;
+//  				player["score"] = team1[i].score;
+//  				player["foul"] = team1[i].foul;
+//  				player["asts"] = team1[i].assistant;
+//  				firstTeam.push(player);
+//  			}
+//  			for(var i= 0; i <team2.length;i++){
+//  				var player = {};
+//  				player["name"] = team2[i].name;
+//  				player["number"]= team2[i].number;
+//  				player["position"]  =team2[i].position;
+//  				player["lineup"] = team2[i].status;
+//  				player["score"] = team2[i].score;
+//  				player["foul"] = team2[i].foul;
+//  				player["asts"] = team2[i].assistant;
+//  				secondTeam.push(player);
+//  			}
+//  			id["firstTeam"] = firstTeam;
+//  			id["secondTeam"] = secondTeam;
+//  			
+//  			date.push(id);
+//  			var datestr =JSON.stringify(date);
+//
+//  			
+////  			var FileWriter = plus.android.importClass("java.io.FileWriter")
+////              var BufferedWriter = plus.android.importClass("java.io.BufferedWriter");
+////              var fw = new FileWriter(path,true);
+////              var bw=  new BufferedWriter(fw);
+////              try{
+////      			bw.write(datestr);
+////      			bw.close();
+////     		    	fw.close();
+////  			}catch(e){
+////      			alert("aaa: ")
+////  			}  
+//			})		
+//  		    
+//  		}
+//  	readJson();
+    	})				
+	})
 }
