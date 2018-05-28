@@ -366,7 +366,15 @@
 			"html/team-list.html": {
 				"resources": [],
 				"refer": [
-					"html/team-info.html"
+					"html/team-info.html",
+					"html/add-team.html"
+				],
+				"priority": 0
+			},
+			"html/recent-games-list.html": {
+				"resources": [],
+				"refer": [
+					"html/game-info.html"
 				],
 				"priority": 0
 			}
