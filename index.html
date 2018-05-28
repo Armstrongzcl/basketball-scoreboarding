@@ -23,11 +23,11 @@
 	</head>
 
 	<body>
-		<div class="mui-content">
+		<!--<div class="mui-content">
 			<div class="title">
 				
 			</div>
-		</div>
+		</div>-->
 
 		<script src="js/util.js"></script>
 		<script type="text/javascript">
@@ -37,7 +37,6 @@
 
 				});
 				mui.plusReady(function() {
-					
 					var self = plus.webview.currentWebview(),
 						leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
 
@@ -158,7 +157,7 @@
 						}
 						// 匹配对应tab窗口	
 						if(currIndex >=0) {
-							console.log(subpages[currIndex])
+							console.log(subpages[currIndex]);
 							targetPage = plus.webview.getWebviewById(subpages[currIndex]);
 						} else{
 							return;
