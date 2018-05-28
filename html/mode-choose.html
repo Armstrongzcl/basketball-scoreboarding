@@ -15,8 +15,8 @@
 		<p>选择模式</p>
 		</div>
 		<div>
-		<button class="buttonA"><a href="easy-mode-boarding.html" style="color: black">娱乐模式</a></button>
-		<button class="buttonA"><a href="standard-mode-boarding.html" style="color: black">专业模式</a></button>
+		<button class="buttonA easy-mode" ><a href="#" style="color: black">娱乐模式</a></button>
+		<button class="buttonA standard-mode"><a href="#" style="color: black">专业模式</a></button>
 		</div>
 		<!--<div>
 			<button><a href="game-info.html">开始计分</a></button>
@@ -24,6 +24,12 @@
 		
 	</body>
 	<script>
+		mui(".easy-mode").on("tap","a",function(){
+			mui.openWindow("easy-mode-boarding.html","easy-mode-boarding",{}, 'slide-in-right', 300);
+		});
+		mui(".standard-mode").on("tap","a",function(){
+			mui.openWindow("standard-mode-boarding.html","easy-mode-boarding",{}, 'slide-in-right', 300);
+		})
 //			mui.plusReady(function(){
 //				plus.screen.lockOrientation("landscape");
 //			});
