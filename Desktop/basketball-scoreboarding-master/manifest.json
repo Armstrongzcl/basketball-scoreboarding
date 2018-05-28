@@ -10,14 +10,12 @@
 		"name": "1.0",/*应用版本名称*/
 		"code": ""
 	},
-
+	"fullscreen":false,
 	"description": "",/*应用描述信息*/
 	"icons": {
 		"72": "icon.png"
 	},
-
-	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
-
+	"launch_path": "html/easy-mode-boarding.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -30,11 +28,9 @@
 		"Audio": {
 			"description": "访问麦克风"
 		},
-
 		"Messaging": {
 			"description": "短彩邮件插件"
 		},
-
 		"Cache": {
 			"description": "管理应用缓存"
 		},
@@ -44,11 +40,9 @@
 		"Console": {
 			"description": "跟踪调试输出日志"
 		},
-
 		"Contacts": {
 			"description": "访问系统联系人信息"
 		},
-
 		"Device": {
 			"description": "访问设备信息"
 		},
@@ -101,7 +95,6 @@
 		"Speech": {
 			"description": "管理语音识别插件"
 		},
-
 		"Webview": {
 			"description": "窗口管理"
 		},
@@ -227,10 +220,6 @@
 				"keystore": "",/*Android应用打包使用的密钥库文件*/
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-
-<<<<<<< HEAD
-				"permissions": ["<uses-permission android:name=\"android.permission.WRITE_HISTORY_BOOKMARKS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SYNC_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_APN_SETTINGS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_HISTORY_BOOKMARKS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.WRITE_USER_DICTIONARY\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>","<uses-permission android:name=\"android.permission.ACCESS_CHECKIN_PROPERTIES\"/>","<uses-permission android:name=\"android.permission.WRITE_PROFILE\"/>","<uses-permission android:name=\"android.permission.WRITE_GSERVICES\"/>","<uses-permission android:name=\"android.permission.WRITE_SECURE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_CALENDAR\"/>","<uses-permission android:name=\"android.permission.WRITE_SOCIAL_STREAM\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.WRITE_CALL_LOG\"/>"]
-=======
 				"permissions": [
 					"<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
 					"<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
@@ -255,13 +244,12 @@
 					"<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
 					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
 				]
->>>>>>> lafbranch
-
 			},
 			"orientation": ["portrait-primary","landscape-primary","landscape-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
 					"iphone": {
 						"normal": "", /*iPhone3/3GS程序图标，分辨率：57x57*/
 						"retina": "", /*iPhone4程序图标，分辨率：114x114*/
@@ -285,8 +273,7 @@
 						"spotlight-retina7": "",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
 						"settings-normal": "",/*iPad设置页面程序图标，分辨率：29x29*/
 						"settings-retina": ""
-					},"appstore":"images/basketball.png"
-
+					}
 				},
 				"android": {
 					"mdpi": "", /*普通屏程序图标，分辨率：48x48*/
@@ -338,15 +325,10 @@
 					"fonts/iconfont.ttf",
 					"html/tab-webview-subpage-chat.html",
 					"js/util.js",
-
-					"html/tab-webview-subpage-contact.html",
-					"html/recent-games-list.html"
+					"html/tab-webview-subpage-contact.html"
 				],
 				"refer": [
-					"html/new-webview.html",
-					"html/team-info.html",
-					"html/team-list.html",
-					"html/mode-choose.html"
+					"html/new-webview.html"
 				],
 				"priority": 0
 			},
@@ -407,21 +389,6 @@
 				],
 				"refer": [],
 				"priority": 0
-			},
-			"html/team-list.html": {
-				"resources": [],
-				"refer": [
-					"html/team-info.html",
-					"html/add-team.html"
-				],
-				"priority": 0
-			},
-			"html/recent-games-list.html": {
-				"resources": [],
-				"refer": [
-					"html/game-info.html"
-				],
-				"priority": 0
 			}
 		},
 		"idle": {
@@ -430,9 +397,5 @@
 				"css/mui.css"
 			]
 		}
-	},"fullscreen":false,
-	"unpackage":[
-	  "css/mui.css",
-	  "js/mui.js"
-	]
+	},"fullscreen":false
 }
