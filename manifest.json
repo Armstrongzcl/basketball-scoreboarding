@@ -10,7 +10,6 @@
 		"name": "1.0",/*应用版本名称*/
 		"code": ""
 	},
-
 	"description": "",/*应用描述信息*/
 	"icons": {
 		"72": "icon.png"
@@ -34,7 +33,6 @@
 		"Messaging": {
 			"description": "短彩邮件插件"
 		},
-
 		"Cache": {
 			"description": "管理应用缓存"
 		},
@@ -101,7 +99,6 @@
 		"Speech": {
 			"description": "管理语音识别插件"
 		},
-
 		"Webview": {
 			"description": "窗口管理"
 		},
@@ -237,6 +234,7 @@
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+
 					"iphone": {
 						"normal": "", /*iPhone3/3GS程序图标，分辨率：57x57*/
 						"retina": "", /*iPhone4程序图标，分辨率：114x114*/
@@ -313,7 +311,6 @@
 					"fonts/iconfont.ttf",
 					"html/tab-webview-subpage-chat.html",
 					"js/util.js",
-
 					"html/tab-webview-subpage-contact.html",
 					"html/recent-games-list.html"
 				],
