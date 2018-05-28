@@ -23,20 +23,20 @@
 	</head>
 
 	<body>
-		<div class="mui-content">
+		<!--<div class="mui-content">
 			<div class="title">
 				
 			</div>
-		</div>
+		</div>-->
 
 		<script src="js/util.js"></script>
 		<script type="text/javascript">
 			(function() {
 				mui.init({
 					swipeBack: true //启用右滑关闭功能
+
 				});
 				mui.plusReady(function() {
-					
 					var self = plus.webview.currentWebview(),
 						leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
 
@@ -120,6 +120,7 @@
 					drawNativeIcon.addEventListener('click', function(e) {
 //						mui.alert('开始进行比赛记录', '开始比赛');
 						plus.webview.open('html/mode-choose.html', 'mode', {}, 'slide-in-right', 300);
+//                      plus.screen.lockOrientation("landscape-primary");
 					});
 					// 中间凸起图标绘制及监听点击完毕
 
@@ -157,7 +158,7 @@
 						}
 						// 匹配对应tab窗口	
 						if(currIndex >=0) {
-							console.log(subpages[currIndex])
+							console.log(subpages[currIndex]);
 							targetPage = plus.webview.getWebviewById(subpages[currIndex]);
 						} else{
 							return;

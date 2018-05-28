@@ -5,14 +5,331 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<style type="text/css">
+			#openPopover {
+				display: none;
+			}
+		</style>
+		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			.title {
+				margin: 20px 15px 7px;
+				color: #6d6d72;
+				font-size: 15px;
+			}
+		</style>
+		<script src="../js/mui.min.js"></script>
 	</head>
 
 	<body>
-		<script src="../js/mui.min.js"></script>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">球队信息</h1>
+			<button class="mui-btn mui-btn-blue mui-pull-right">修改</button>
+		</header>
+		<div class="mui-content">
+			<div class="mui-content-padded">
+				<form class="mui-input-group">
+
+					<div class="mui-input-row">
+						<label>球队名</label>
+						<input type="text" name="teamName" id="teamName" class="mui-input-clear" disabled="true" value="" />
+					</div>
+
+					<div class="mui-input-row">
+						<label>教练名</label>
+						<input type="text" name="coachName" id="coachName" disabled="true" value="" />
+					</div>
+					<div class="mui-input-row">
+						<label>班级</label>
+						<input type="text" name="className" id="className" disabled="true" value="" />
+					</div>
+
+					<div class="mui-card">
+						<div class="mui-card-header">
+							球员
+						</div>
+						<div class="mui-card-content staff">
+
+						</div>
+					</div>
+				</form>
+
+				<a href="#popover" id="openPopover" class="mui-btn mui-btn-blue add-player">添加球员</a>
+				<div id="popover" class="mui-popover mui-popover-action mui-popover-bottom">
+
+					<ul class="mui-table-view">
+						<div class="mui-input-group">
+
+							<li class="mui-row">
+								<!--<div class="mui-input-group">-->
+								<div class="mui-input-row">
+									<label>姓名：</label>
+									<input type="text" class="mui-input-clear" id="playername" placeholder="请输入姓名">
+								</div>
+								<!--</div>-->
+							</li>
+							<li class="mui-row">
+								<!--<div class="mui-input-group">-->
+								<div class="mui-input-row">
+									<label>号码：</label>
+									<input type="text" class="mui-input-clear" id="playernumber" placeholder="请输入号码">
+								</div>
+								<!--</div>-->
+							</li>
+							<li class="mui-row">
+								<!--<div class="mui-input-group">-->
+								<div class="mui-input-row">
+									<label>位置：</label>
+									<select class="mui-input-group" id="playerposition">
+										<option value="小前锋">小前锋</option>
+										<option value="大前锋">大前锋</option>
+										<option value="中锋">中锋</option>
+										<option value="得分后卫">得分后卫</option>
+										<option value="控球后卫">控球后卫</option>
+									</select>
+								</div>
+								<!--</div>-->
+							</li>
+							<li class="mui-row">
+								<!--<div class="mui-input-group">-->
+								<div class="mui-input-row">
+									<label>轮换：</label>
+									<select class="mui-input-group" id="playerLineup">
+										<option value="首发">首发</option>
+										<option value="替补">替补</option>
+									</select>
+								</div>
+								<!--</div>-->
+							</li>
+
+							<li class="mui-row">
+								<div class="mui-button-row">
+									<button type="button" id="done" class="mui-btn mui-btn-primary">确认</button>
+									<button type="button" id="cancel" class="mui-btn mui-btn-danger">取消</button>
+								</div>
+
+							</li>
+						</div>
+					</ul>
+
+				</div>
+
+			</div>
+		</div>
 		<script type="text/javascript">
-			mui.init()
+			mui.init({
+				swipeBack: true
+			});
+			var id;
+			var index;
+			document.addEventListener("InfoId", function(event) {
+				id = event.detail.id;
+				if(!id) {
+					return;
+				}
+				var arr = id.split("_");
+				if(arr.length < 1) {
+					alert("传入错误");
+				}
+				index = parseInt(arr[0]);
+				getInfo(index);
+				//				var teamname = document.getElementById("teamName");
+				//				teamname.value = info["teamname"];
+				//				var coachname = document.getElementById("coachName");
+				//				coachname.value = info["coach"];
+				//				setValue("className", info["class"]);
+				//				var staff = info["staff"];
+				//				var players = document.body.querySelector('.staff');
+				//				mui.each(staff, function(i, n) {
+				//					var tmp = addPlayer(i, n);
+				//					players.appendChild(tmp);
+				//				})
+			});
+
+			var btn = document.getElementsByTagName("button")[0];
+
+			btn.addEventListener("tap", function(event) {
+				var inputEles = document.getElementsByTagName("input");
+				if(this.innerText != "修改") {
+					//					saveInfo();
+					saveInfo();
+					this.innerText = "修改";
+					this.className = "mui-btn mui-btn-blue mui-pull-right";
+					$.each(inputEles, function(i, n) {
+						n.disabled = "true";
+					});
+					return;
+				}
+
+				this.innerText = "完成";
+				this.className = "mui-btn mui-btn-success mui-pull-right";
+				$.each(inputEles, function(i, n) {
+					n.disabled = "";
+				});
+
+			});
+
+			function setValue(eleId, value) {
+				var ele = document.getElementById(eleId);
+				ele.value = value;
+			}
+
+			function getInfo(index) {
+				var info = null;
+				var oldteams;
+				var teamsList = [];
+				var reader = new plus.io.FileReader();
+				reader.onloadend = function(e) {
+					oldTeams = e.target.result;
+					if(oldTeams != "") {
+						teamsList = JSON.parse(oldTeams);
+						//						alert(teamsList.length);
+						info = teamsList[index];
+						var teamname = document.getElementById("teamName");
+						teamname.value = info["teamname"];
+						var coachname = document.getElementById("coachName");
+						coachname.value = info["coach"];
+						setValue("className", info["class"]);
+						var staff = info["staff"];
+						var players = document.body.querySelector('.staff');
+						mui.each(staff, function(i, n) {
+							var tmp = addPlayer(i, n);
+							players.appendChild(tmp);
+						})
+					}
+				};
+				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+					fs.root.getFile('datas/test.json', {
+						create: true
+					}, function(fileEntry) {
+						//						var reader = null;
+						fileEntry.file(function(file) {
+							reader.readAsText(file);
+						}, function(e) {
+							alert(e.message);
+						});
+
+					})
+				}, function(e) {
+					alert("Request file system failed: " + e.message);
+				});
+
+			};
+
+			function addPlayer(i, n) {
+				var ele = document.createElement('div');
+				ele.className = "mui-row player-row";
+				var lineup = n["lineup"] ? "首发" : "替补";
+				ele.innerHTML = '<div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerName" disabled="true" value="' + n["name"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" disabled="true" name="playerNumber" value="' + n["number"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerPosition" disabled="true" value="' + n["position"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="IsLineup" disabled="true" value="' + lineup + '" /></div>';
+				return ele;
+			}
+
+			function saveInfo() {
+				var team = {};
+				var teamname = document.getElementById("teamName").value;
+				var coachname = document.getElementById("coachName").value;
+				var className = document.getElementById("className").value;
+				var players = document.getElementsByClassName("player-row");
+				var staff = new Array();
+				mui.each(players, function(i, n) {
+					var player = {};
+					var childs = n.childNodes;
+					//					alert(childs.length);
+					player["name"] = childs[0].firstChild.value;
+					player["number"] = childs[1].firstChild.value;
+					player["position"] = childs[2].firstChild.value;
+					//					alert(player["name"]);
+					player["lineup"] = childs[3].firstChild.value == "首发" ? true : false;
+					staff.push(player);
+				});
+				team["teamname"] = teamname;
+				team["coach"] = coachname;
+				team["class"] = className;
+				team["staff"] = staff;
+				saveToFile(team);
+			}
+
+			function saveToFile(teams) {
+				var teamsList = [];
+				var oldTeams = "";
+				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+
+					fs.root.getFile('datas/test.json', {
+						create: true
+					}, function(fileEntry) {
+						var reader = null;
+						fileEntry.file(function(file) {
+							reader = new plus.io.FileReader();
+							reader.onloadend = function(e) {
+								oldTeams = e.target.result;
+								if(oldTeams != "") {
+									teamsList = JSON.parse(oldTeams);
+								}
+//								alert(index);
+//								alert(teamsList.length);
+
+								teamsList[index] = teams;
+								writeTo(fileEntry, teamsList);
+							}
+							reader.readAsText(file);
+						}, function(e) {
+							alert(e.message);
+						});
+
+					})
+				}, function(e) {
+					alert("Request file system failed: " + e.message);
+				});
+			}
+
+			function writeTo(fileEntry, teamsList) {
+				fileEntry.createWriter(function(writer) {
+
+					writer.write(JSON.stringify(teamsList));
+					writer.onerror = function(e) {
+						alert("失败" + JSON.stringify(e));
+					};
+					writer.onwrite = function(e) {
+//						alert("写入");
+					}
+
+				})
+			}
+			mui.back = function() {
+				var page = plus.webview.getWebviewById("html/team-list.html");
+				if(btn.innerText != "修改") {
+					var btnArray = ['否', '是'];
+					mui.confirm('是否保存', '', btnArray, function(e) {
+						if(e.index == 1) {
+							saveInfo();
+						}
+						page.reload();
+						reset();
+						plus.webview.currentWebview().hide("auto", 400);
+					})
+				} else {
+					page.reload();
+					reset();
+					plus.webview.currentWebview().hide("auto", 400);
+				}
+
+			}
+
+			function reset() {
+				btn.innerText = "修改";
+				btn.className = "mui-btn mui-btn-blue mui-pull-right";
+				var players = document.body.querySelector('.staff');
+				while(players.hasChildNodes()) {
+					players.removeChild(players.firstChild);
+				}
+			}
 		</script>
+
 	</body>
 
 </html>

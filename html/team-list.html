@@ -6,19 +6,108 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>new webview</title>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.plusReady(function(){
+				
+			
+				addLi();
+
+				var detailPage = null;
+				//添加列表项的点击事件
+				mui('.mui-content').on('tap', 'a', function(e) {
+					var infoid = this.parentElement.getAttribute('id');
+					//获得详情页面
+					if(!detailPage) {
+						detailPage = plus.webview.getWebviewById('teamInfo.html');
+					}
+					//触发详情页面的newsId事件
+					//					alert(infoid);
+					mui.fire(detailPage, 'InfoId', {
+						id: infoid
+					});
+					//打开详情页面          
+					mui.openWindow({
+						id: 'teamInfo.html'
+					});
+				});
+				var addTeamPage = null;
+				mui('.mui-content').on('tap', 'button', function(e) {
+					if(!addTeamPage) {
+						addTeamPage = plus.webview.getWebviewById('addTeam.html');
+					}
+					mui.openWindow({
+						id: 'addTeam.html'
+					});
+				});
+			})
+		</script>
 		<link href="../css/mui.min.css" rel="stylesheet" />
 	</head>
 
 	<body>
-		
+
 		<div class="mui-content">
-			<p style="margin-top:20px;margin-left: 20px;">球队列表面板（待完成）</p>
+			<div class="mui-card-content-inner">
+				<button type="button" class="mui-btn mui-btn-success mui-icon mui-icon-plus">添加球队</button>
+			</div>
+			<div class="mui-card" style="margin-bottom: 0px;">
+
+				<ul class="mui-table-view">
+
+				</ul>
+			</div>
 		</div>
 
 		<script>
 			mui.init({
-				swipeBack: true //启用右滑关闭功能
+
+				swipeBack: true, //启用右滑关闭功能
+				preloadPages: [{
+					id: 'teamInfo.html',
+					url: 'team-info.html'
+				}, {
+					id: 'addTeam.html',
+					url: 'add-team.html'
+				}]
 			});
+
+			function addLi() {
+				var reader = new plus.io.FileReader();
+				reader.onloadend = function(e) {
+					oldTeams = e.target.result;
+					if(oldTeams != "") {
+						teamsList = JSON.parse(oldTeams);
+						var list = document.body.querySelector('.mui-table-view');
+						$.each(teamsList, function(i, n) {
+							var li = document.createElement('li');
+							li.id = i + "_" + n["teamname"];
+							li.className = 'mui-table-view-cell';
+							li.innerHTML = '<a class="mui-navigate-right">' + n["teamname"] + '</a>';
+							list.appendChild(li);
+						});
+					}
+				};
+				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+					fs.root.getFile('datas/test.json', {
+						create: true
+					}, function(fileEntry) {
+						//						var reader = null;
+						fileEntry.file(function(file) {
+							reader.readAsText(file);
+						}, function(e) {
+							alert(e.message);
+						});
+
+					})
+				}, function(e) {
+					alert("Request file system failed: " + e.message);
+				});
+
+				//				$.getJSON("../datas/teams.json", function(teamList) {
+				//					
+				//				});
+			}
 		</script>
 	</body>
 

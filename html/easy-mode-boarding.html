@@ -6,13 +6,192 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type = "text/css">
+
+			.mui-icon {
+				font-size:60px;
+			}
+
+			
+			#s1 {
+				margin-left: 120px;
+			}
+			#s2 {
+				margin-left: 40px;
+			}
+			#s3 {
+				margin-left: 95px;
+			}
+		</style>
 	</head>
 
 	<body>
-		<script src="../js/mui.min.js"></script>
-		<script type="text/javascript">
-			mui.init()
-		</script>
+		<a onclick="jumpBack()"><span class="mui-icon mui-icon-arrowthinleft"></span></a>
+<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s1">  
+      <span id = "leftScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center; font-size: 50px" > 00</span>  
+</span> 
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s2">  
+      <span id = "rightScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center; font-size: 50px" > 00</span>  
+ </span> 
+ 
+ <button type = "button" onclick="start()" style = "margin-left: 135px; margin-top: 5px;">开始</button>
+ <button type = "button" onclick="stop()" style = "margin-left: 578px; margin-top: -35px">暂停</button>
+
+
+
+ <div>
+    <br>
+<!--    <a><span id="team1" class="mui-icon mui-icon-contact"></span></a>-->
+ 	<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 222px; margin-top: -20px;" id = "s4">
+ 	<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" >time</span>
+<!-- 	</span>-->
+ 	<br>
+ 	<br>
+    <!--<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 50px" >00:00</span>  -->
+ <input type = "text" id = "timetext" value = "00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px"" readonly><br>
+ 	</span>
+<!--<!-- 	<a><span class="mui-icon mui-icon-contact"  id="team2"></a>-->
+  <!--<!--<span style="border-radius: 80%;  height: 40px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s3">  
+      <span style="display: block;    color: #007AFF;    height: 10px;    line-height: 40px;    text-align: center; font-size: 15px" > 开始</span>  
+ </span>-->
+ 
+  <!--<span style="border-radius: 80%;  height: 40px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s5">  
+      <span style="display: block;    color: #007AFF;    height: 10px;    line-height: 40px;    text-align: center; font-size: 15px" > 暂停</span>  -->
+
+ </span>
+ </div>
+
+
+ <div>
+ 	<br>
+  	    <span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p1">
+ 	<span id = "oneLeft" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "leftAddOne()" >+1</span>
+ 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p2">
+ 	<span id = "twoLeft" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "leftAddTwo()">+2</span>
+ 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p3">
+ 	<span id = "threeLeft" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "leftAddThree()">+3</span>
+ 	 	<span style="border-radius: 80%; height: 70px;    width: 70px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 80px;" id = "p7">
+ 	<span id = "countDown" style="display: block;    color: #007AFF;    height: 0px;    line-height:60px;    text-align: center; font-size: 30px" >24		
+ <span style="font-size: 25px">s</span>
+ </span>
+ <!--	    <input type = "text" id = "countDown" value = "24" style="margin-left: 65px; border-style:none; text-align: center; line-height: 0px; font-size: 30px"" readonly>-->
+
+
+ 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 90px;" id = "p4">
+ 	<span id = "oneRight" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick="rightAddOne()" >+1</span>
+ 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p5">
+ 	<span id = "twoRight" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick="rightAddTwo()">+2</span>
+ 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p6">
+ 	<span id = "threeRight" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "rightAddThree()" >+3</span>
+ </div>	
+ 
+ 
+  	<script src="../js/mui.min.js">
+
+	</script>
+  <script  type="text/javascript">
+  				mui.init();
+			mui.plusReady(function(){
+				plus.screen.lockOrientation("landscape-primary");
+			})
+    var minute,second;//时 分 秒
+    minute=second=0;//初始化
+    var millisecond=0;//毫秒
+    var int;
+    var clickTime = 0;
+    var isStopped = 0;
+    var twentyFour = 0;
+    var leftScore = 0;
+    var rightScore = 0;
+    
+    function jumpBack() {
+    	window.location.href='mode-choose.html'; 
+    }
+    function leftAddOne() {
+    	leftScore = leftScore + 1;
+    	document.getElementById("leftScore").innerHTML = leftScore;
+    	twentyFour = 0;
+    	stop();
+    }
+    
+    function leftAddTwo() {
+    	leftScore = leftScore + 2;
+    	document.getElementById("leftScore").innerHTML = leftScore;
+    	twentyFour = 0;
+    	stop();
+    }
+    
+    function leftAddThree() {
+    	leftScore = leftScore + 3;
+    	document.getElementById("leftScore").innerHTML = leftScore;
+    	twentyFour = 0;
+    	stop();
+    	
+    }
+    
+        function rightAddOne() {
+    	rightScore = rightScore + 1;
+    	document.getElementById("rightScore").innerHTML = rightScore;
+    	twentyFour = 0;
+    	stop();
+    }
+    
+    function rightAddTwo() {
+    	rightScore = rightScore + 2;
+    	document.getElementById("rightScore").innerHTML = rightScore;
+    	twentyFour = 0;
+    	stop();
+    }
+    
+    function rightAddThree() {
+    	rightScore = rightScore + 3;
+    	document.getElementById("rightScore").innerHTML = rightScore;
+    	twentyFour = 0;
+    	stop();
+    }
+
+
+    function start()//开始
+    {
+    	if(isStopped == 1) {
+	      int=setInterval(timer,1000);
+	      isStopped == 0;
+       } else if (clickTime == 0) {
+       	int=setInterval(timer,1000);
+       }     
+	}  
+  
+    function timer()//计时
+    {
+      millisecond=millisecond+1000;
+      if(millisecond>=1000)
+      {
+        millisecond=0;
+        second=second+1;
+        twentyFour = twentyFour + 1;
+      }
+      if(second>=60)
+      {
+        second=0;
+        minute=minute+1;
+      }
+      if(twentyFour>=24)
+      {
+      	twentyFour=0;
+      }
+  
+      document.getElementById('timetext').value=minute+':'+second;
+      document.getElementById('countDown').innerHTML=24 - twentyFour;
+  
+    }
+  
+    function stop()//暂停
+    {
+      isStopped = 1;	
+      window.clearInterval(int);
+    }
+  </script>
 	</body>
 
 </html>

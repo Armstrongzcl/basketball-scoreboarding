@@ -76,29 +76,10 @@
 },
 {
 	"teamname":"勇士",
-	"coach":"nn",
-	"class":"三年一班",
+	"coach":"泰伦卢",
+	"class":"三年二班",
 	"staff":[
 		{
-			"name":"欧文",
-			"position":"得分后卫",
-
-			"number":"23",
-			"lineup": true
-		},
-		{
-			"name":"詹姆斯",
-			"position":"小前锋",
-			"number":"23",
-			"lineup": true
-		},
-				{
-			"name":"詹姆斯",
-			"position":"小前锋",
-			"number":"23",
-			"lineup": true
-		},
-				{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
@@ -128,6 +109,18 @@
 			"number":"23",
 			"lineup": true
 		},
+				{
+			"name":"詹姆斯",
+			"position":"小前锋",
+			"number":"23",
+			"lineup": true
+		},
+				{
+			"name":"詹姆斯",
+			"position":"小前锋",
+			"number":"23",
+			"lineup": true
+		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
@@ -138,14 +131,19 @@
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": false
-
+			"lineup": true
 		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup":false
+			"lineup": true
+		},
+		{
+			"name":"詹姆斯",
+			"position":"小前锋",
+			"number":"23",
+			"lineup": true
 		}
 
 
