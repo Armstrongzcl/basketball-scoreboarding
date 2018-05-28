@@ -9,7 +9,7 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<script type="text/javascript" src="../js/mui.min.js"></script>
-		<script type="text/javascript" src="../js/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
 		<style>
 			html,
 			body {
@@ -39,7 +39,7 @@
 						function getGames() {
 							$.getJSON("../datas/games.json", function(result) {
 								$.each(result, function(gaid, item) {
-									$("#game").append("<li class='mui-table-view-cell'><a  class='mui-navigate-right' style='text-align:center' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" + item.firstName + "&nbsp&nbspVS&nbsp&nbsp" + item.secondName + "<br><br>" + item.firstScore + "&nbsp&nbsp:&nbsp&nbsp" + item.secondScore + "</a></li>");
+									$("#game").append("<li class='mui-table-view-cell'><a  class='mui-navigate-right' style='text-align:center' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" + item.firstTeam + "&nbsp&nbspVS&nbsp&nbsp" + item.secondTeam + "<br><br>" + item.firstScore + "&nbsp&nbsp:&nbsp&nbsp" + item.secondScore + "</a></li>");
 								});
 							});
 						}
@@ -58,17 +58,17 @@
 		<script>
 			mui.init({
 				swipeBack: false,
-				pullRefresh: {
-					container: '#pullrefresh',
-					down: {
-						style: 'circle',
-						callback: pulldownRefresh
-					},
-					up: {
-						contentrefresh: '正在加载...',
-						callback: pullupRefresh
-					}
-				}
+//				pullRefresh: {
+//					container: '#pullrefresh',
+//					down: {
+//						style: 'circle',
+//						callback: pulldownRefresh
+//					},
+//					up: {
+//						contentrefresh: '正在加载...',
+//						callback: pullupRefresh
+//					}
+//				}
 			});
 			/**
 			 * 下拉刷新具体业务实现
