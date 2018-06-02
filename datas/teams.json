@@ -37,37 +37,37 @@
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
+			"lineup": false
 		},
 				{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
+			"lineup": false
 		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
+			"lineup": false
 		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
+			"lineup": false
 		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
+			"lineup": false
 		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
+			"lineup": false
 		}
 
 
@@ -82,7 +82,6 @@
 		{
 			"name":"欧文",
 			"position":"得分后卫",
-
 			"number":"23",
 			"lineup": true
 		},
@@ -114,38 +113,37 @@
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
+			"lineup": false
 		},
 				{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup": true
-		},
-		{
-			"name":"詹姆斯",
-			"position":"小前锋",
-			"number":"23",
-			"lineup": true
-		},
-		{
-			"name":"詹姆斯",
-			"position":"小前锋",
-			"number":"23",
-			"lineup": true
+			"lineup": false
 		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
 			"lineup": false
-
 		},
 		{
 			"name":"詹姆斯",
 			"position":"小前锋",
 			"number":"23",
-			"lineup":false
+			"lineup": false
+		},
+		{
+			"name":"詹姆斯",
+			"position":"小前锋",
+			"number":"23",
+			"lineup": false
+		},
+		{
+			"name":"詹姆斯",
+			"position":"小前锋",
+			"number":"23",
+			"lineup": false
 		}
 
 

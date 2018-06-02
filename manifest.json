@@ -280,7 +280,7 @@
 					"xxhdpi": ""
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false},"adid":""
+		},"ads":{"rp":false,"splash":false,"push":false}
 	},
 	"dependencies": {
 		"pages": {
@@ -375,6 +375,21 @@
 				"resources": [],
 				"refer": [
 					"html/game-info.html"
+				],
+				"priority": 0
+			},
+			"html/mode-choose.html": {
+				"resources": [],
+				"refer": [
+					"html/easy-mode-boarding.html",
+					"html/standard-mode-boarding.html"
+				],
+				"priority": 0
+			},
+			"html/easy-mode-boarding.html": {
+				"resources": [],
+				"refer": [
+					"html/mode-choose.html"
 				],
 				"priority": 0
 			}

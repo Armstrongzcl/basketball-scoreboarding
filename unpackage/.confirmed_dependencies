@@ -20,6 +20,20 @@
   "html/recent-games-list.html": {
     "refer": [
       "html/game-info.html"
-    ]
+    ],
+    "resources": []
+  },
+  "html/mode-choose.html": {
+    "refer": [
+      "html/easy-mode-boarding.html",
+      "html/standard-mode-boarding.html"
+    ],
+    "resources": []
+  },
+  "html/easy-mode-boarding.html": {
+    "refer": [
+      "html/mode-choose.html"
+    ],
+    "resources": []
   }
 }

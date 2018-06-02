@@ -376,7 +376,13 @@ window.onload=function(){
     			 file.createWriter(function(writer){
                 		alert(datestr1);
     				    writer.write(datestr1);
-    				    writer.onwrite =old_back()
+//  				    writer.onwrite =old_back();
+						writer.onwrite=function(e){
+							plus.screen.lockOrientation("portrait-primary"); 
+                 var targetPage = plus.webview.getWebviewById("html/recent-games-list.html");
+				 targetPage.reload();
+							plus.webview.currentWebview().close("auto",400);
+						}
     				},function(e){
     			
     				})
@@ -388,7 +394,11 @@ window.onload=function(){
     			
     			
     		}else{
-    			old_back();
+//  			old_back();
+plus.screen.lockOrientation("portrait-primary"); 
+                 var targetPage = plus.webview.getWebviewById("html/recent-games-list.html");
+				 targetPage.reload();
+plus.webview.currentWebview().close("auto",400);
     		}
     	})
     }

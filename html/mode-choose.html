@@ -27,9 +27,14 @@
 		mui(".easy-mode").on("tap","a",function(){
 			mui.openWindow("easy-mode-boarding.html","easy-mode-boarding",{}, 'slide-in-right', 300);
 		});
-		mui(".standard-mode").on("tap","a",function(){
+		mui.plusReady(function(){
+			mui(".standard-mode").on("tap","a",function(){
+			    plus.screen.lockOrientation("landscape-primary")
+			 
 			mui.openWindow("standard-mode-boarding.html","easy-mode-boarding",{}, 'slide-in-right', 300);
 		})
+		})
+
 //			mui.plusReady(function(){
 //				plus.screen.lockOrientation("landscape");
 //			});
