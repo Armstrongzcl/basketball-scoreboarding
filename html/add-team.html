@@ -113,9 +113,13 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init();
-			mui("header").on("tap", "#addDone", function(e) {
+			mui("header").on("tap", "#addDone", function(e) {				
+				var teamname=document.getElementById("teamName").value;
 				var page = plus.webview.getWebviewById("html/team-list.html");
-				page.reload();
+//				page.reload();
+				mui.fire(page,"addLi",{
+					name:teamname
+				})
 				saveInfo();
 				mui.back();
 			});
@@ -158,10 +162,11 @@
 				ele.innerHTML = '<div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerName" disabled="true" value="' + name + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerNumber" value="' + number + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerPosition" disabled="true" value="' + post + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="IsLineup" disabled="true" value="' + lineup + '" /></div>';
 				return ele;
 			}
-
+			var old_back=mui.back;
 			mui.back = function() {
 				reset();
-				plus.webview.currentWebview().hide("auto", 400);
+				old_back();
+//				plus.webview.currentWebview().hide("auto", 400);
 
 			}
 

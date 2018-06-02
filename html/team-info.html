@@ -14,7 +14,7 @@
 				display: none;
 			}
 		</style>
-		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>-->
 
 		<style>
 			.title {
@@ -127,7 +127,7 @@
 			mui.init({
 				swipeBack: true
 			});
-			var id;
+			var id="";
 			var index;
 			document.addEventListener("InfoId", function(event) {
 				id = event.detail.id;
@@ -200,8 +200,10 @@
 						var staff = info["staff"];
 						var players = document.body.querySelector('.staff');
 						mui.each(staff, function(i, n) {
-							var tmp = addPlayer(i, n);
-							players.appendChild(tmp);
+							if(n["name"]!=0){
+								var tmp = addPlayer(i, n);
+								players.appendChild(tmp);	
+							}
 						})
 					}
 				};
@@ -302,22 +304,35 @@
 
 				})
 			}
+			var old_back=mui.back;
 			mui.back = function() {
+//				alert(id);
+				var teamname=document.getElementById("teamName").value;
 				var page = plus.webview.getWebviewById("html/team-list.html");
 				if(btn.innerText != "修改") {
 					var btnArray = ['否', '是'];
 					mui.confirm('是否保存', '', btnArray, function(e) {
+						alert(id);
 						if(e.index == 1) {
 							saveInfo();
 						}
-						page.reload();
+						
+						mui.fire(page,"refresh",{
+							liId:liid,
+							name:teamname
+						});
 						reset();
 						plus.webview.currentWebview().hide("auto", 400);
 					})
 				} else {
-					page.reload();
+					mui.fire(page,"refresh",{
+							liId:id,
+							name:teamname
+						});
+//					page.reload();
 					reset();
-					plus.webview.currentWebview().hide("auto", 400);
+					old_back();
+//					plus.webview.currentWebview().hide("auto", 400);
 				}
 
 			}
