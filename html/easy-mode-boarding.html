@@ -42,48 +42,28 @@
 
  <div>
     <br>
-<!--    <a><span id="team1" class="mui-icon mui-icon-contact"></span></a>-->
  	<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 222px; margin-top: -20px;" id = "s4">
  	<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" >time</span>
-<!-- 	</span>-->
  	<br>
  	<br>
-    <!--<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 50px" >00:00</span>  -->
+  
  <input type = "text" id = "timetext" value = "00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px"" readonly><br>
- 	</span>
-<!--<!-- 	<a><span class="mui-icon mui-icon-contact"  id="team2"></a>-->
-  <!--<!--<span style="border-radius: 80%;  height: 40px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s3">  
-      <span style="display: block;    color: #007AFF;    height: 10px;    line-height: 40px;    text-align: center; font-size: 15px" > 开始</span>  
- </span>-->
- 
-  <!--<span style="border-radius: 80%;  height: 40px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s5">  
-      <span style="display: block;    color: #007AFF;    height: 10px;    line-height: 40px;    text-align: center; font-size: 15px" > 暂停</span>  -->
-
- </span>
  </div>
 
 
  <div>
  	<br>
-  	    <span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p1">
- 	<span id = "oneLeft" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "leftAddOne()" >+1</span>
- 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p2">
- 	<span id = "twoLeft" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "leftAddTwo()">+2</span>
- 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p3">
- 	<span id = "threeLeft" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "leftAddThree()">+3</span>
- 	 	<span style="border-radius: 80%; height: 70px;    width: 70px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 80px;" id = "p7">
+ 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddOne()">+1</button> 
+ 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddTwo()">+2</button>
+ 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddThree()">+3</button>
+ 	 	<span style="border-radius: 80%; height: 70px;    width: 70px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 80px; margin-right:85px;" id = "p7">
  	<span id = "countDown" style="display: block;    color: #007AFF;    height: 0px;    line-height:60px;    text-align: center; font-size: 30px" >24		
  <span style="font-size: 25px">s</span>
  </span>
- <!--	    <input type = "text" id = "countDown" value = "24" style="margin-left: 65px; border-style:none; text-align: center; line-height: 0px; font-size: 30px"" readonly>-->
-
-
- 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 90px;" id = "p4">
- 	<span id = "oneRight" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick="rightAddOne()" >+1</span>
- 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p5">
- 	<span id = "twoRight" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick="rightAddTwo()">+2</span>
- 	 	<span style="border-radius: 80%; height: 60px;    width: 60px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 65px;" id = "p6">
- 	<span id = "threeRight" style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" onclick = "rightAddThree()" >+3</span>
+ </span>
+ 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddOne()">+1</button> 
+ 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddTwo()">+2</button>
+ 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddThree()">+3</button>
  </div>	
  
  
@@ -93,6 +73,7 @@
   <script  type="text/javascript">
   				mui.init();
 			mui.plusReady(function(){
+				plus.device.setWakelock(true);
 				plus.screen.lockOrientation("landscape-primary");
 			})
     var minute,second;//时 分 秒
@@ -156,10 +137,13 @@
     {
     	if(isStopped == 1) {
 	      int=setInterval(timer,1000);
-	      isStopped == 0;
+	      isStopped = 0;
+	      clickTime = 1;
        } else if (clickTime == 0) {
        	int=setInterval(timer,1000);
-       }     
+       	clickTime = 1;
+       }
+
 	}  
   
     function timer()//计时
@@ -182,7 +166,7 @@
       }
   
       document.getElementById('timetext').value=minute+':'+second;
-      document.getElementById('countDown').innerHTML=24 - twentyFour;
+      document.getElementById('countDown').innerHTML=24 - twentyFour + " s";
   
     }
   
