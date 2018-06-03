@@ -11,7 +11,7 @@
 			mui.plusReady(function() {
 				var count;
 				addLi();
-				
+
 				var detailPage = null;
 				//添加列表项的点击事件
 				mui('.mui-content').on('tap', '.mui-slider-handle', function(e) {
@@ -40,24 +40,34 @@
 						id: 'addTeam.html'
 					});
 				});
-				
-				var btnArray = ['确认','取消'];
-			mui('#teams_list').on('tap','.mui-btn',function(event){
-				var elem=this;
 				var li=elem.parentNode.parentNode;
-				var liid=li.getAttribute("id");
-				var index=parseInt(liid.split("_")[0]);
-				mui.confirm("确认删除该球队？",btnArray,function(e){
-					if(e.index==0){
-						li.parentNode.removeChild(li);
-						console.log(index);
-					}else{
-						setTimeout(function() {
+
+				var btnArray = ['确认', '取消'];
+				mui('#teams_list').on('tap', '.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					var liid = li.getAttribute("id");
+					var index = parseInt(liid.split("_")[0]);
+					mui.confirm("确认删除该球队？", btnArray, function(e) {
+						if(e.index == 0) {
+							if(li.parentNode.childElementCount == 1) {
+								var eleDiv = document.createElement("div");
+								eleDiv.className = "mui-table-view-divider";
+								eleDiv.id = "noteam";
+								eleDiv.innerText = " 没有球队，请添加";
+								li.parentNode.appendChild(eleDiv);
+							}
+
+							li.parentNode.removeChild(li);
+							saveToFile(index);
+							console.log(index);
+						} else {
+							setTimeout(function() {
 								mui.swipeoutClose(li);
 							}, 0);
-					}
+						}
+					});
 				});
-			});
 			});
 
 			document.addEventListener("refresh", function(event) {
@@ -68,12 +78,10 @@
 			});
 			document.addEventListener("addLi", function(event) {
 				var teamname = event.detail.name;
-				addALi(count,teamname);
+				addALi(count, teamname);
 				count++;
 				console.log(count);
 			});
-			
-			
 		</script>
 		<link href="../css/mui.min.css" rel="stylesheet" />
 	</head>
@@ -93,6 +101,7 @@
 			</div>
 		</div>
 
+		<script type="text/javascript" src="../js/teamUtil.js"></script>
 		<script>
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
@@ -104,43 +113,54 @@
 					url: 'add-team.html'
 				}]
 			});
-			
+
 			function addLi() {
 				var reader = new plus.io.FileReader();
 				reader.onloadend = function(e) {
 					oldTeams = e.target.result;
 					if(oldTeams != "") {
 						teamsList = JSON.parse(oldTeams);
-												var list = document.body.querySelector('.mui-table-view');
-						while(list.hasChildNodes()){
+						var list = document.body.querySelector('.mui-table-view');
+						while(list.hasChildNodes()) {
 							list.removeChild(list.firstChild);
 						}
 						mui.each(teamsList, function(i, n) {
-								addALi(i,n["teamname"]);
+							addALi(i, n["teamname"]);
 						});
-						count=teamsList.length;
-				}
-			};
-			plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
-				fs.root.getFile('datas/test.json', {
-					create: true
-				}, function(fileEntry) {
-					fileEntry.file(function(file) {
-						reader.readAsText(file);
-					}, function(e) {
-						alert(e.message);
-					});
+						count = teamsList.length;
+						if(list.childElementCount == 0) {
+							var eleDiv = document.createElement("div");
+							eleDiv.className = "mui-table-view-divider";
+							eleDiv.id = "noteam";
+							eleDiv.innerText = " 没有球队，请添加";
+							list.appendChild(eleDiv);
 
-				})
-			}, function(e) {
-				alert("Request file system failed: " + e.message);
-			});
+						}
+					}
+				};
+				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+					fs.root.getFile('datas/test.json', {
+						create: true
+					}, function(fileEntry) {
+						fileEntry.file(function(file) {
+							reader.readAsText(file);
+						}, function(e) {
+							alert(e.message);
+						});
+
+					})
+				}, function(e) {
+					alert("Request file system failed: " + e.message);
+				});
 
 			}
 
-			function addALi(i,name) {
+			function addALi(i, name) {
 				var list = document.body.querySelector('.mui-table-view');
-				if(name != "") {
+				if(name != "" && name != undefined) {
+					if(list.firstChild.id == "noteam") {
+						list.removeChild(list.firstChild);
+					}
 					var li = document.createElement('li');
 					li.id = i + "_" + name;
 					li.className = 'mui-table-view-cell';
@@ -148,8 +168,38 @@
 					list.appendChild(li);
 				}
 			}
-			
-			
+
+			function removeTeam(index) {
+				var reader = new plus.io.FileReader();
+				reader.onloadend = function(e) {
+					oldTeams = e.target.result;
+					if(oldTeams != "") {
+						teamsList = JSON.parse(oldTeams);
+						var list = document.body.querySelector('.mui-table-view');
+						while(list.hasChildNodes()) {
+							list.removeChild(list.firstChild);
+						}
+						mui.each(teamsList, function(i, n) {
+							addALi(i, n["teamname"]);
+						});
+						count = teamsList.length;
+					}
+				};
+				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+					fs.root.getFile('datas/test.json', {
+						create: true
+					}, function(fileEntry) {
+						fileEntry.file(function(file) {
+							reader.readAsText(file);
+						}, function(e) {
+							alert(e.message);
+						});
+
+					})
+				}, function(e) {
+					alert("Request file system failed: " + e.message);
+				});
+			}
 		</script>
 	</body>
 
