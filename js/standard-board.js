@@ -285,14 +285,14 @@ window.onload=function(){
         		})
         	}
         }
-        for(var i=1;i<6;i++){
-         teamName1.children[i].children[1].addEventListener('click',function(){
-         	changePlayer(this,0);
-         })
-           teamName2.children[i].children[1].addEventListener('click',function(){
-         	changePlayer(this,1);
-         })
-        }
+//      for(var i=1;i<6;i++){
+//       teamName1.children[i].children[1].addEventListener('click',function(){
+//       	changePlayer(this,0);
+//       })
+//         teamName2.children[i].children[1].addEventListener('click',function(){
+//       	changePlayer(this,1);
+//       })
+//      }
        var shortTimecount=document.getElementById("countDown");
        shortTimecount.addEventListener('click',function(){
        	status=1;
