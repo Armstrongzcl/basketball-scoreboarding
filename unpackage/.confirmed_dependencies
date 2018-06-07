@@ -3,7 +3,8 @@
     "refer": [
       "html/add-team.html",
       "html/team-info.html"
-    ]
+    ],
+    "resources": []
   },
   "index.html": {
     "resources": [
@@ -11,7 +12,8 @@
     ],
     "refer": [
       "html/team-list.html",
-      "html/recent-games-list.html"
+      "html/recent-games-list.html",
+      "html/mode-choose.html"
     ]
   }
 }
