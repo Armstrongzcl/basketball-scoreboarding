@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-	
 
 	<head>
 		<meta charset="UTF-8">
@@ -10,38 +9,112 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 	</head>
 
-	<body>	
+	<body>
 		<div>
-		<p>选择模式</p>
+			<p>选择模式</p>
+			<button onclick="jumpAdd()">添加球队</button>
 		</div>
 		<div>
-		<button class="buttonA easy-mode" ><a href="#" style="color: black">娱乐模式</a></button>
-		<button class="buttonA standard-mode"><a href="#" style="color: black">专业模式</a></button>
+			<img />
+			<h4>球队一</h4>
+			<select id="teamName" style="width: 100px;">
+				<option value="">-请选择-</option>
+				<!--<option></option>-->
+			</select>
 		</div>
-		<!--<div>
-			<button><a href="game-info.html">开始计分</a></button>
-		</div>-->
+		<div>
+			<img />
+			<h4>球队二</h4>
+			<select id="teamName2" style="width: 100px;">
+				<option value="">-请选择-</option>
+				<!--<option></option>-->
+			</select>
+		</div>
+		<div class="mui-input-row mui-radio mui-left">
+			<label>娱乐模式</label>
+			<input class="mode" value="1" name="radio1" type="radio">
+		</div>
+		<div class="mui-input-row mui-radio mui-left">
+			<label>专业模式</label>
+			<input class="mode" value="2" name="radio1" type="radio">
+		</div>
+		<div>
+			<button onclick="jumpGame()" class="mui-btn mui-btn-danger mui-btn-outlined">开始比赛</button>
+		</div>
 		
-	</body>
-	<script>
-		mui(".easy-mode").on("tap","a",function(){
-			mui.openWindow("easy-mode-boarding.html","easy-mode-boarding",{}, 'slide-in-right', 300);
-		});
-		mui(".standard-mode").on("tap","a",function(){
-			mui.openWindow("standard-mode-boarding.html","easy-mode-boarding",{}, 'slide-in-right', 300);
-		})
-//			mui.plusReady(function(){
-//				plus.screen.lockOrientation("landscape");
-//			});
-	</script>
-  	
-</html>
-<style>
-	.buttonA {
-  display: block;
-  margin: 10em 10em; 
-  padding: 1em 1.5em 1em ;
-  background:chocolate;
+		<script type="text/javascript">
 
+			mui.plusReady(function(){
+				plus.screen.lockOrientation("portrait");
+			})
+			  function jumpAdd() {
+    		window.location.href='add-team.html'; 
+            }
+			  function jumpGame() {
+			  	var teamone = document.getElementById("teamName");
+			  	var teamtwo = document.getElementById("teamName2");
+			  	alert(teamtwo.value);
+			  	if (getVals()==1) {
+			  		window.location.href='easy-mode-boarding.html'; 
+			  	}else if(getVals()==2){
+			  		window.location.href='standard-mode-boarding.html'; 
+			  	}
+    		
+           }
+			//mui('body').on('tap','a',function(){document.location.href=this.href;});
+			function getVals(){
+   			 var res = getRadioRes('mode');
+    			if(res == null){
+    				mui.toast('请选择'); return;
+    			}else{
+    				return res;
+    			}
+			}
+			function getRadioRes(className){
+    			var rdsObj = document.getElementsByClassName(className);
+   				 var checkVal = null;
+   			 for(i = 0; i < rdsObj.length; i++){
+       			 if(rdsObj[i].checked){checkVal = rdsObj[i].value;}
+    		}
+    		return checkVal;
+			}
+			
+			mui.plusReady(function(){
+			 plus.io.requestFileSystem(plus.io.PRIVATE_DOC,function(fs){
+    		fs.root.getFile("datas/recent_games.json",{create:true},function(file){
+                var fileReader = new plus.io.FileReader();
+                fileReader.readAsText(file,"utf-8");
+                var datastr1;
+                fileReader.onloadend = function(e){
+                	var datastr = e.target.result;
+                	var data;
+                	if(datastr ==""){
+                    data =[];
+                }else{
+                	data =JSON.parse(datastr);
+                	getopt(data);
+                } 
+                }
+                })
+    		}) 
+		})
+			
+			
+    	 var data2 = ([{'team_name':'骑士'},{'team_name':'火箭'},{'team_name':'勇士'},{'team_name':'凯尔特人'}]); 
+    	 
+    		function getopt(data2){
+    		 //document.getElementById("teamName").innerHTML = "<option value = '""'>"+-请选择-+"</option>";
+     			for (i=0;i<data2.length;i++){
+     				//alert(data2[i].team_name);
+//  		    document.getElementById("teamName").append("<node value='"+data2[i].team_name+"'>"+1+"</node>");
+				document.getElementById("teamName").innerHTML += "<option value = '"+i+"'>"+data2[i].team_name+"</option>";
+				document.getElementById("teamName2").innerHTML += "<option value = '"+i+"'>"+data2[i].team_name+"</option>";
 }
-</style>
+     	}
+      			getopt(data2);
+   
+    		
+		</script>
+		  
+	</body>
+</html>
