@@ -109,7 +109,7 @@ window.onload=function(){
 		clearInterval(tmp);
 		tmp=0;
 	})
-	function chooseScore(team,player){
+	function chooseScore(team){
 		var tmpTeam;
 		if(team%2==0){
 			tmpTeam=teamName1;
@@ -125,21 +125,16 @@ window.onload=function(){
 			scoreNumber.appendChild(tmpScore);
 		}
 			mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
-			
 		 for(var i=0;i<3;i++){
 		 	    scoreNumber.children[i].score=i+1;
 		 		scoreNumber.children[i].team=team;
-		 		scoreNumber.children[i].player=player;
 		 	  scoreNumber.children[i].onclick=function(){
 		 		mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
-		 		changeScore(this.team,this.player,this.score);
-		 		for(var i=1;i<6;i++){
-        	     tmpTeam.children[i].onclick=function(){}
-               }
+		 		changeScore(this.team,this.score);
 		 	}
 		 }
 	}
-	function changeScore(team,player,score){
+	function changeScore(team,score){
 		var tmpTeam;
 		var tmpTeamName;
 		if(team==0){
@@ -149,13 +144,26 @@ window.onload=function(){
 			tmpTeam=team2;
 			tmpTeamName=teamName2;
 		}
-			var name=tmpTeamName.children[player].children[0].innerText;
+		var scorePlayer=document.getElementById('actualsubWindow');
+		scorePlayer.innerHTML="";
+		for(var i=1;i<6;i++){
+			var tmpPlayer=document.createElement("li");
+			var x=i+1;
+			var name=tmpTeamName.children[i].children[0].innerText;
+			tmpPlayer.innerHTML='<li class="mui-table-view-cell"><a href="#">'+name+'</a></li>';
+			tmpPlayer.addEventListener('click',function(){
+				mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
 		    for(var i=0;i<tmpTeam.length;i++){
 		    	if(tmpTeam[i].name==name){
 		    		tmpTeam[i].score+=score;
+		    		mui.toast('得分添加成功',{duration:'long',type:'div'})
 		    		break;
 		    	}
 		    }
+			})
+			scorePlayer.appendChild(tmpPlayer);
+		}
+		mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
 		var sumScore=parseInt(document.getElementById("score-record"+team).innerText);
 		sumScore+=score;
 		document.getElementById("score-record"+team).innerText=sumScore;
@@ -175,13 +183,23 @@ window.onload=function(){
 			tmpTeam=team2;
 			tmpTeamName=teamName2;
 		}
-		var name=tmpTeamName.children[player].children[0].innerText;
+			var scorePlayer=document.getElementById('actualsubWindow');
+		scorePlayer.innerHTML="";
+		for(var i=1;i<6;i++){
+			var tmpPlayer=document.createElement("li");
+			var x=i+1;
+			var name=tmpTeamName.children[i].children[0].innerText;
+			tmpPlayer.innerHTML='<li class="mui-table-view-cell"><a href="#">'+name+'</a></li>';
+			tmpPlayer.addEventListener('click',function(){
+				mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
 		    for(var i=0;i<tmpTeam.length;i++){
 		    	if(tmpTeam[i].name==name){
 		    		if(team==2||team==3){
 		    		tmpTeam[i].Block++;
+		    		mui.toast('篮板添加成功',{duration:'long',type:'div'})
 		    		}else if(team==4||team==5){
 		    			tmpTeam[i].assistant++;
+		    			mui.toast('助攻添加成功',{duration:'long',type:'div'})
 		    		}else{
 		    			tmpTeam[i].foul++;
 		    			tmpTeam.foulNumber++;
@@ -191,13 +209,15 @@ window.onload=function(){
 		    			}else if(tmpTeam.foulNumber>=5){
 		    				alert(team%2+"队的犯规次数已达五次，请罚球")
 		    			}
+		    			mui.toast('犯规添加成功',{duration:'long',type:'div'})
 		    		}
 		    		break;
 		    	}
 		    }
-		    for(var i=1;i<6;i++){
-        	     tmpTeamName.children[i].onclick=function(){}
-               }
+			})
+			scorePlayer.appendChild(tmpPlayer);
+		}
+		mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
 	}
 	function addScore(team){
 		var tmpTeam;
@@ -206,19 +226,14 @@ window.onload=function(){
 		}else{
 			tmpTeam=teamName2;
 		}
-		for(var i=1;i<6;i++){
-			tmpTeam.children[i].id=i;
 			tmpTeam.children[i].team=team;
 			if(team<2){
-        	tmpTeam.children[i].onclick=function(team,i){
-        		chooseScore(this.team,this.id);
-        	}
-        }else{
-        	tmpTeam.children[i].onclick=function(team,i){
-        		changeOther(this.team,this.id);
-        	}
+        		chooseScore(team);
+       }else{
+        		changeOther(team);
+        	
           }
-        }
+        
 	}
 		var leftAddScore=document.getElementById("score1");
 	leftAddScore.addEventListener('click',function(){
@@ -253,7 +268,15 @@ window.onload=function(){
         	addScore(7);
         })
         function changePlayer(self,team){
-        	var tmpTeam=team%2==0?team1:team2;
+        	var tmpTeam;
+		var tmpTeamName;
+        if(team==0){
+			tmpTeam=team1;
+			tmpTeamName=teamName1;
+		}else{
+			tmpTeam=team2;
+			tmpTeamName=teamName2;
+		}
         	var alternates=document.getElementById("actualsubWindow");
         		alternates.innerHTML="";
         	for(var i=0;i<tmpTeam.length;i++){
@@ -267,32 +290,64 @@ window.onload=function(){
         	for(var i=0;i<alternates.children.length;i++){
         		alternates.children[i].addEventListener('click',function(){
         			mui('.mui-popover').popover('hide',document.getElementById('subWindow'));
-        			var originalName=self.parentNode.children[0].innerText;
+        			var originalName=tmpTeamName.children[self].children[0].innerText;
         			 for(var j=0;j<tmpTeam.length;j++){
 		    	  if(tmpTeam[j].name==originalName){
+		    	  
 		    		tmpTeam[j].status=0;
 		    		break;
 		    	 }
+		    	  
 		        }
         			var name=this.innerText.substring(0,this.innerText.length-1);
         			 for(var j=0;j<tmpTeam.length;j++){
 		    	  if(tmpTeam[j].name.toString()==name.toString()){
+		    	
 		    		tmpTeam[j].status=1;
 		    		break;
 		    	      }
 		            }
-        			self.parentNode.children[0].innerText=name;
+        			 	console.log(name);
+        			tmpTeamName.children[self].children[0].innerText=name;
+        			mui.toast('换人成功',{duration:'long',type:'div'})
         		})
-        	}
+        	} 
         }
-        for(var i=1;i<6;i++){
-         teamName1.children[i].children[1].addEventListener('click',function(){
-         	changePlayer(this,0);
-         })
-           teamName2.children[i].children[1].addEventListener('click',function(){
-         	changePlayer(this,1);
-         })
+        function choosePlayer(team){
+        	var tmpTeam;
+		var tmpTeamName;
+		if(team==0){
+			tmpTeam=team1;
+			tmpTeamName=teamName1;
+		}else{
+			tmpTeam=team2;
+			tmpTeamName=teamName2;
+		}
+		var scorePlayer=document.getElementById('actualsubWindow');
+		scorePlayer.innerHTML="";
+		for(var i=1;i<6;i++){
+			var tmpPlayer=document.createElement("li");
+			var x=i+1;
+			var name=tmpTeamName.children[i].children[0].innerText;
+			tmpPlayer.innerHTML='<li class="mui-table-view-cell"><a href="#">'+name+'</a></li>';
+		 		tmpPlayer.team=team;
+		 		tmpPlayer.number=i;
+			tmpPlayer.addEventListener('click',function(){
+				mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
+		        changePlayer(this.number,team);
+			})
+			scorePlayer.appendChild(tmpPlayer);
+		}
+		mui('.mui-popover').popover('toggle',document.getElementById('subWindow'));
         }
+var changePeople_Team1=document.getElementById("change1");
+var changePeople_Team2=document.getElementById("change2");
+changePeople_Team1.addEventListener('click',function(){
+	choosePlayer(0);
+})
+changePeople_Team2.addEventListener('click',function(){
+	choosePlayer(1);
+})
        var shortTimecount=document.getElementById("countDown");
        shortTimecount.addEventListener('click',function(){
        	status=1;
