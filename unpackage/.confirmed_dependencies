@@ -15,5 +15,30 @@
       "html/recent-games-list.html",
       "html/mode-choose.html"
     ]
+  },
+  "html/mode-choose.html": {
+    "refer": [
+      "html/easy-mode-boarding.html",
+      "html/standard-mode-boarding.html",
+      "html/add-team.html"
+    ],
+    "resources": []
+  },
+  "html/easy-mode-boarding.html": {
+    "refer": [
+      "html/mode-choose.html"
+    ],
+    "resources": []
+  },
+  "html/standard-mode-boarding.html": {
+    "refer": [
+      "html/mode-choose.html"
+    ],
+    "resources": []
+  },
+  "html/add-team.html": {
+    "refer": [
+      "html/mode-choose.html"
+    ]
   }
 }
