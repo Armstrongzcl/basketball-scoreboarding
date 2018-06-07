@@ -6,16 +6,15 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>new webview</title>
 		<script src="../js/mui.min.js"></script>
-		<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script type="text/javascript">
-			mui.plusReady(function(){
-				
-			
+			mui.plusReady(function() {
+				var count;
 				addLi();
 
 				var detailPage = null;
 				//添加列表项的点击事件
-				mui('.mui-content').on('tap', 'a', function(e) {
+				mui('.mui-content').on('tap', '.mui-slider-handle', function(e) {
 					var infoid = this.parentElement.getAttribute('id');
 					//获得详情页面
 					if(!detailPage) {
@@ -40,7 +39,47 @@
 						id: 'addTeam.html'
 					});
 				});
-			})
+
+				var btnArray = ['确认', '取消'];
+				mui('#teams_list').on('tap', '.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					var liid = li.getAttribute("id");
+					var index = parseInt(liid.split("_")[0]);
+					mui.confirm("确认删除该球队？", btnArray, function(e) {
+						if(e.index == 0) {
+							if(li.parentNode.childElementCount == 1) {
+								var eleDiv = document.createElement("div");
+								eleDiv.className = "mui-table-view-divider";
+								eleDiv.id = "noteam";
+								eleDiv.innerText = " 没有球队，请添加";
+								li.parentNode.appendChild(eleDiv);
+							}
+
+							li.parentNode.removeChild(li);
+							saveToFile(index);
+							console.log(index);
+						} else {
+							setTimeout(function() {
+								mui.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+			});
+
+			document.addEventListener("refresh", function(event) {
+				var liId = event.detail.liId;
+				var teamname = event.detail.name;
+				var elem = document.getElementById(liId);
+				elem.lastChild.firstChild.innerText = teamname;
+			});
+			document.addEventListener("addLi", function(event) {
+				var teamname = event.detail.name;
+				addALi(count, teamname);
+				count++;
+				console.log(count);
+			});
 		</script>
 		<link href="../css/mui.min.css" rel="stylesheet" />
 	</head>
@@ -53,12 +92,13 @@
 			</div>
 			<div class="mui-card" style="margin-bottom: 0px;">
 
-				<ul class="mui-table-view">
+				<ul class="mui-table-view" id="teams_list">
 
 				</ul>
 			</div>
 		</div>
 
+		<script type="text/javascript" src="../js/teamUtil.js"></script>
 		<script>
 			mui.init({
 
@@ -79,20 +119,27 @@
 					if(oldTeams != "") {
 						teamsList = JSON.parse(oldTeams);
 						var list = document.body.querySelector('.mui-table-view');
-						$.each(teamsList, function(i, n) {
-							var li = document.createElement('li');
-							li.id = i + "_" + n["teamname"];
-							li.className = 'mui-table-view-cell';
-							li.innerHTML = '<a class="mui-navigate-right">' + n["teamname"] + '</a>';
-							list.appendChild(li);
+						while(list.hasChildNodes()) {
+							list.removeChild(list.firstChild);
+						}
+						mui.each(teamsList, function(i, n) {
+							addALi(i, n["teamname"]);
 						});
+						count = teamsList.length;
+						if(list.childElementCount == 0) {
+							var eleDiv = document.createElement("div");
+							eleDiv.className = "mui-table-view-divider";
+							eleDiv.id = "noteam";
+							eleDiv.innerText = " 没有球队，请添加";
+							list.appendChild(eleDiv);
+
+						}
 					}
 				};
 				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
-					fs.root.getFile('datas/test.json', {
+					fs.root.getFile('datas/teams.json', {
 						create: true
 					}, function(fileEntry) {
-						//						var reader = null;
 						fileEntry.file(function(file) {
 							reader.readAsText(file);
 						}, function(e) {
@@ -104,9 +151,52 @@
 					alert("Request file system failed: " + e.message);
 				});
 
-				//				$.getJSON("../datas/teams.json", function(teamList) {
-				//					
-				//				});
+			}
+
+			function addALi(i, name) {
+				var list = document.body.querySelector('.mui-table-view');
+				if(name != "" && name != undefined) {
+					if(list.firstChild.id == "noteam") {
+						list.removeChild(list.firstChild);
+					}
+					var li = document.createElement('li');
+					li.id = i + "_" + name;
+					li.className = 'mui-table-view-cell';
+					li.innerHTML = '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">删除</a></div>' + '<div class="mui-slider-handle mui-table"><div class="mui-table-cell" >' + name + '</div></div>';
+					list.appendChild(li);
+				}
+			}
+
+			function removeTeam(index) {
+				var reader = new plus.io.FileReader();
+				reader.onloadend = function(e) {
+					oldTeams = e.target.result;
+					if(oldTeams != "") {
+						teamsList = JSON.parse(oldTeams);
+						var list = document.body.querySelector('.mui-table-view');
+						while(list.hasChildNodes()) {
+							list.removeChild(list.firstChild);
+						}
+						mui.each(teamsList, function(i, n) {
+							addALi(i, n["teamname"]);
+						});
+						count = teamsList.length;
+					}
+				};
+				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+					fs.root.getFile('datas/teams.json', {
+						create: true
+					}, function(fileEntry) {
+						fileEntry.file(function(file) {
+							reader.readAsText(file);
+						}, function(e) {
+							alert(e.message);
+						});
+
+					})
+				}, function(e) {
+					alert("Request file system failed: " + e.message);
+				});
 			}
 		</script>
 	</body>
