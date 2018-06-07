@@ -32,14 +32,20 @@
 		<div id="content">
 		
 		<div class="mui-row" id="top">
-		<div class="mui-col-xs-4" id = "overviewOfTeam1">
+		<div class="mui-col-xs-1" id="buttonGroupOfTeam1">
+			<button class="mui-btn mui-btn-grey" id="close">关闭</button>
+			<button class="mui-btn mui-btn-blue control-btn" id="change1">换人</button>
+			<button class="mui-btn mui-btn-green control-btn" id="foul1">犯规</button>
+			
+		</div>
+		<div class="mui-col-xs-3" id = "overviewOfTeam1">
 			<ul class="mui-table-view" id = "team1">
 				<li class="mui-table-view-cell" id = "teamName1">队伍1</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
+				<li class = "mui-table-view-cell"><a>队员</a></li>
+				<li class = "mui-table-view-cell"><a>队员</a></li>
+				<li class = "mui-table-view-cell"><a>队员</a></li>
+				<li class = "mui-table-view-cell"><a>队员</a></li>
+				<li class = "mui-table-view-cell"><a>队员</a></li>
 			</ul>
 			
 		</div>
@@ -59,7 +65,7 @@
 			    
 			</div>
 			<div class="mui-col-xs-6" id = "timeControl">
-				<p id= "timeSymbol">Time</p>
+				
 				<p id ="restTime">12:00</p>
 			</div>
 			<div class = "mui-col-xs-6" id = "countDown">
@@ -67,37 +73,41 @@
 			</div>
 			
 		</div>
-		<div class="mui-col-xs-4" id = "overviewOfTeam2">
+		<div class="mui-col-xs-3" id = "overviewOfTeam2">
 			<ul class="mui-table-view" id= "team2">
-				<li class="mui-table-view-cell" id = "teamName1">队伍2</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
-				<li class = "mui-table-view-cell">队员</li>
+				<li class="mui-table-view-cell" id = "teamName2">队伍2</li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
 			</ul>
+		</div>
+		<div class="mui-col-xs-1" id="buttonGroupOfTeam2">
+			<button class="mui-btn mui-btn-grey " id="startMatch">开始比赛</button>
+			<button class="mui-btn mui-btn-blue control-btn" id="change2">换人</button>
+			<button class="mui-btn mui-btn-green control-btn" id="foul2">犯规</button>
+			
 		</div>
 		</div>
 		<div class="mui-row" id="bottom">
-		<div class="mui-col-sm-5" id= "buttonGroupOfTeam1" >
-			<button class="mui-btn mui-btn-green control-btn" id="foul1">犯规</button>
+		<div class="mui-col-xs-5" >
+			<button class="mui-btn mui-btn-red control-btn" id ="score1">得分</button>
 			<button class="mui-btn mui-btn-green control-btn" id="backboard1">篮板</button>
-			<button class="mui-btn mui-btn-green control-btn" id="assist1">助攻</button>
-			<button class="mui-btn mui-btn-green control-btn" id ="score1">得分</button>
-			
+            <button class="mui-btn mui-btn-green control-btn" id="assist1">助攻</button>	
 		</div>
-		<div class="mui-col-sm-2" id = "gameControlButton">
-			<div class="mui-row">
-				<button class="mui-btn mui-btn-yellow" id="start">开始</button>
-			    <button class="mui-btn mui-btn-yellow" id ="pause">暂停</button>
+		
+			
+			<div class="mui-row mui-col-xs-2" id="ba">
+				<button class="mui-btn mui-btn-yellow mui-col-xs-6" id="start">开始</button>
+			    <button class="mui-btn mui-btn-yellow mui-col-xs-6" id ="pause">暂停</button>
 			</div>
 			
-		</div>
-		<div class="mui-col-sm-5" id= "buttonGroupOfTeam2" >
-			<button class="mui-btn mui-btn-green control-btn" id="score2">得分</button>
-			<button class="mui-btn mui-btn-green control-btn" id = "assist2">助攻</button>
+		
+		<div class="mui-col-xs-5" >
+			<button class="mui-btn mui-btn-green control-btn" id="assist2">助攻</button>
 			<button class="mui-btn mui-btn-green control-btn" id ="backboard2">篮板</button>
-			<button class="mui-btn mui-btn-green control-btn" id="foul2">犯规</button>
+			<button class="mui-btn mui-btn-red control-btn" id="score2">得分</button>
 		</div>
 		</div>
 		</div>
