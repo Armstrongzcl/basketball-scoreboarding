@@ -25,127 +25,89 @@
 						return null;
 					}
 					var gaid = GetQueryString('id');
-					$.getJSON("../datas/games.json", function(result) {
-						game = result[gaid];
-						document.getElementById("first").innerHTML = game.firstClass + ":" + game.firstName + " 教练：" + game.firstCoach;
-						document.getElementById("second").innerHTML = game.secondClass + ":" + game.secondName + " 教练：" + game.secondCoach;
-						document.getElementById("score").innerHTML = game.firstScore + " vs " + game.secondScore;
-						$("#rule").append("<div class='mui-row'>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6 '>篮球比赛赛制  4节制</div>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6 '>正式比赛时间" + game.official_match_time + "分钟</div>" +
-							"</div>" +
-							"<div class='mui-row'>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6'>单节比赛时间  " + game.single_game_time + "分钟</div>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6'>半场暂停次数" + game.half_pauses + "次</div>" +
-							"</div>" +
-							"</div>" +
-							"<div class='mui-row'>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6'>半场休息时间  " + game.half_time + "分钟</div>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6'>节间休息时间" + game.break_time + "次</div>" +
-							"</div>" +
-							"<div class='mui-row'>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6'>每节犯满罚球 5球 </div>" +
-							"<div class='mui-col-sm-6 mui-col-xs-6'>个人犯满离场 5次</div>" +
-							"</div>"
-						);
-						$.each(game.firstTeam, function(key, value) {
-							$("#firstTeam").append("<div class='mui-row'>" +
-								"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.number + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.name + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.position + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.lineup + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.score + "分</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.foul + "犯</div>" +
-								"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.asts + "助</div>" +
-								"</div>"
-							);
-						})
-						$.each(game.secondTeam, function(key, value) {
-							$("#secondTeam").append("<div class='mui-row'>" +
-								"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.number + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.name + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.position + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.lineup + "</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.score + "分</div>" +
-								"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.foul + "犯</div>" +
-								"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.asts + "助</div>" +
-								"</div>"
-							);
+					//$.getJSON("../datas/games.json", function(result) {
+					mui.plusReady(function() {
+						plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+							fs.root.getFile("datas/recent_games.json", {
+								create: true
+							}, function(file) {
+								var fileReader = new plus.io.FileReader();
+								fileReader.readAsText(file, "utf-8");
+								fileReader.onloadend = function(e) {
+									var datestr = e.target.result;
+									var result;
+									if(datestr == "") {
+										result = [];
+									} else {
+										result = JSON.parse(datestr);
+									}
+
+								    game = result[gaid];
+									$("#first").append("<div class='mui-col-sm-3 mui-col-xs-3'>" + game.firstClass + ":</div>" +
+										"<div class='mui-col-sm-3 mui-col-xs-3'>" + game.firstName + "</div>" +
+										"<div class='mui-col-sm-3 mui-col-xs-3'>教练：</div>" +
+										"<div class='mui-col-sm-3 mui-col-xs-3'>" + game.firstCoach + "</div>"
+									);
+									$("#second").append("<div class='mui-col-sm-3 mui-col-xs-3'>" + game.secondClass + ":</div>" +
+										"<div class='mui-col-sm-3 mui-col-xs-3'>" + game.secondName + "</div>" +
+										"<div class='mui-col-sm-3 mui-col-xs-3'>教练：</div>" +
+										"<div class='mui-col-sm-3 mui-col-xs-3'>" + game.secondCoach + "</div>"
+									);
+									$("#score").append("<div class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + game.firstScore + "</div>" +
+										"<div class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>:</div>" +
+										"<div class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + game.secondScore + "</div>"
+									);
+
+									$.each(game.firstTeam, function(key, value) {
+										$("#firstTeam").append("<div class='mui-row'>" +
+											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.number + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.name + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.position + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.lineup + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.score + "分</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.foul + "犯</div>" +
+											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.asts + "助</div>" +
+											"</div>"
+										);
+									})
+									$.each(game.secondTeam, function(key, value) {
+										$("#secondTeam").append("<div class='mui-row'>" +
+											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.number + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.name + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.position + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.lineup + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.score + "分</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.foul + "犯</div>" +
+											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.asts + "助</div>" +
+											"</div>"
+										);
+									});
+
+								}
+							});
 						});
 					});
+
+					//});
 				</script>
-				<div style="text-align: center;" id="first"></div>
-				<div style="text-align: center;" id="second"></div>
-				<div style="text-align: center;" id="score"></div>
+				<div style="text-align: center;" id="first" class="mui-row">
+
+				</div>
+				<div style="text-align: center;" id="second" class="mui-row">
+
+				</div>
+				<div style="text-align: center;" id="score" class="mui-row">
+
+				</div>
 			</div>
 			<!--页脚，放置补充信息或支持的操作-->
 		</div>
-		<div class="mui-card">
-			<!--页眉，放置标题-->
-			<div class="mui-card-header">比赛规则</div>
-			<!--内容区-->
-			<div class="mui-card-content" style="text-align: center;" id="rule">
-				<!--<div class="mui-row">
-					<div class="mui-col-sm-6">篮球比赛赛制 4节制 </div>
-					<div class="mui-col-sm-6">正式比赛时间 48分钟</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-6">单节比赛时间 12分钟 </div>
-					<div class="mui-col-sm-6">半场暂停次数 3次 </div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-6">半场休息时间 15分钟 </div>
-					<div class="mui-col-sm-6">节间休息时间 2分钟</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-6">每节犯满罚球 5球 </div>
-					<div class="mui-col-sm-6">个人犯满离场 5次</div>
-				</div>-->
-			</div>
-			<!--页脚，放置补充信息或支持的操作-->
-		</div>
+
 		<div class="mui-card">
 			<!--页眉，放置标题-->
 			<div class="mui-card-header">新疆广汇</div>
 			<!--内容区-->
 			<div class="mui-card-content" id="firstTeam">
-				<!--<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>-->
-
 			</div>
 			<!--页脚，放置补充信息或支持的操作-->
 		</div>
@@ -154,42 +116,6 @@
 			<div class="mui-card-header">北京金隅</div>
 			<!--内容区-->
 			<div class="mui-card-content" id="secondTeam">
-				<!--<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>
-				<div class="mui-row">
-					<div class="mui-col-sm-1">14号</div>
-					<div class="mui-col-sm-2">王锴 </div>
-					<div class="mui-col-sm-2">组织后卫</div>
-					<div class="mui-col-sm-2">首发</div>
-					<div class="mui-col-sm-2">100分</div>
-					<div class="mui-col-sm-2">4助</div>
-					<div class="mui-col-sm-1">2犯</div>
-				</div>-->
 			</div>
 			<!--页脚，放置补充信息或支持的操作-->
 		</div>
