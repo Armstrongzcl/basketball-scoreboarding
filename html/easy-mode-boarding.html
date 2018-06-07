@@ -31,37 +31,40 @@
       <span id = "leftScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center; font-size: 50px" > 00</span>  
 </span> 
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s2">  
-      <span id = "rightScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center; font-size: 50px" > 00</span>  
+<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;margin-left:52px" id = "s2">  
+      <span id = "rightScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center;font-size: 50px" > 00</span>  
  </span> 
  
- <button type = "button" onclick="start()" style = "margin-left: 135px; margin-top: 5px;">开始</button>
- <button type = "button" onclick="stop()" style = "margin-left: 578px; margin-top: -35px">暂停</button>
-
+<!-- <button type = "button" onclick="start()" style = "margin-left: 100px; margin-top: 5px; width:80px; height:40px">开始</button>-->
+<!-- <button type = "button" onclick="stop()" style = "margin-left: 543px; margin-top: -30px; width:80px; height: 40px;">暂停</button>-->
+    <br>    
+    <br>
 
 
  <div>
     <br>
- 	<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 222px; margin-top: -20px;" id = "s4">
- 	<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px" >time</span>
+     <button type = "button" onclick="start()" style = "margin-left: 0px; margin-top: -10px; width:80px; height:50px; margin-left: 5px;">开始</button>
+ 	<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 140px; margin-top: -20px;" id = "s4">
+ 	<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px; margin-bottom: -50px;" >time</span>
+ 	 <button type = "button" onclick="stop()" style = "margin-left: 327px; margin-top: 58px; width:80px; height: 50px;">暂停</button>
  	<br>
  	<br>
   
- <input type = "text" id = "timetext" value = "00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px"" readonly><br>
+ <input type = "text" id = "timetext" value = "00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px; margin-top: -200px;"" readonly><br>
  </div>
 
 
  <div>
  	<br>
- 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddOne()">+1</button> 
+ 	<button type = "button" style="margin-left:5px; color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddOne()">+1</button> 
  	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddTwo()">+2</button>
  	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddThree()">+3</button>
- 	 	<span style="border-radius: 80%; height: 70px;    width: 70px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 80px; margin-right:85px;" id = "p7">
- 	<span id = "countDown" style="display: block;    color: #007AFF;    height: 0px;    line-height:60px;    text-align: center; font-size: 30px" >24		
+ 	 	<span style="margin-left:10px; border-radius: 80%; height: 70px;    width: 70px;    display: inline-block;    background: #FFFFFF;  vertical-align: center;  margin-left: 80px; margin-right:85px;" id = "p7">
+ 	<span id = "countDown" style="display: block;    color: #007AFF;    height: 0px;    line-height:60px;    text-align: center; font-size: 30px; margin-left: 5px" >24		
  <span style="font-size: 25px">s</span>
  </span>
  </span>
- 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddOne()">+1</button> 
+ 	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px; margin-left: 12px;" onclick = "rightAddOne()">+1</button> 
  	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddTwo()">+2</button>
  	<button type = "button" style="color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddThree()">+3</button>
  </div>	
