@@ -211,7 +211,7 @@
 				"keystore": "",/*Android应用打包使用的密钥库文件*/
 				"password": "",/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": ["<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-feature android:name=\"android.hardware.camera\"/>"]
+				"permissions": ["<uses-permission android:name=\"android.permission.WRITE_HISTORY_BOOKMARKS\"/>","<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SYNC_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_APN_SETTINGS\"/>","<uses-permission android:name=\"android.permission.VIBRATE\"/>","<uses-permission android:name=\"android.permission.READ_HISTORY_BOOKMARKS\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>","<uses-permission android:name=\"android.permission.CALL_PHONE\"/>","<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>","<uses-permission android:name=\"android.permission.WRITE_USER_DICTIONARY\"/>","<uses-feature android:name=\"android.hardware.camera.autofocus\"/>","<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>","<uses-feature android:name=\"android.hardware.camera\"/>","<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>","<uses-permission android:name=\"android.permission.ACCESS_CHECKIN_PROPERTIES\"/>","<uses-permission android:name=\"android.permission.WRITE_PROFILE\"/>","<uses-permission android:name=\"android.permission.WRITE_GSERVICES\"/>","<uses-permission android:name=\"android.permission.WRITE_SECURE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>","<uses-permission android:name=\"android.permission.WRITE_CALENDAR\"/>","<uses-permission android:name=\"android.permission.WRITE_SOCIAL_STREAM\"/>","<uses-permission android:name=\"android.permission.WRITE_SMS\"/>","<uses-permission android:name=\"android.permission.CAMERA\"/>","<uses-permission android:name=\"android.permission.WRITE_CALL_LOG\"/>"]
 			},
 			"orientation": ["portrait-primary","landscape-primary","landscape-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
@@ -280,7 +280,7 @@
 					"xxhdpi": ""
 				}
 			}
-		},"ads":{"rp":false,"splash":false,"push":false}
+		},"ads":{"rp":false,"splash":false,"push":false},"adid":""
 	},
 	"dependencies": {
 		"pages": {
@@ -300,8 +300,7 @@
 					"html/new-webview.html",
 					"html/team-info.html",
 					"html/team-list.html",
-					"html/mode-choose.html",
-					"html/standard-mode-boarding.html"
+					"html/mode-choose.html"
 				],
 				"priority": 0
 			},
@@ -371,37 +370,22 @@
 				],
 				"priority": 0
 			},
-			"html/recent-games-list.html": {
+			"html/add-team.html": {
 				"resources": [],
 				"refer": [
-					"html/game-info.html"
+					"html/mode-choose.html"
 				],
 				"priority": 0
 			},
 			"html/mode-choose.html": {
 				"resources": [],
 				"refer": [
-					"html/easy-mode-boarding.html",
-					"html/standard-mode-boarding.html",
-					"html/add-team.html"
-				],
-				"priority": 0
-			},
-			"html/easy-mode-boarding.html": {
-				"resources": [],
-				"refer": [
-					"html/mode-choose.html"
+					"html/add-team.html",
+					"html/standard-mode-boarding.html"
 				],
 				"priority": 0
 			},
 			"html/standard-mode-boarding.html": {
-				"resources": [],
-				"refer": [
-					"html/mode-choose.html"
-				],
-				"priority": 0
-			},
-			"html/add-team.html": {
 				"resources": [],
 				"refer": [
 					"html/mode-choose.html"
