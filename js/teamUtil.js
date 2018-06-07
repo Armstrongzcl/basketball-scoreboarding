@@ -2,7 +2,7 @@ function saveToFile(index) {
 
 	var oldTeams = "";
 	plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
-		fs.root.getFile('datas/test.json', {
+		fs.root.getFile('datas/teams.json', {
 			create: true
 		}, function(fileEntry) {
 			var reader = null;
