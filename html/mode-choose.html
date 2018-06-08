@@ -94,14 +94,18 @@
 //								teamname1: teamName1,
 //								teamname2: teamName2
 //							});
-							mui.openWindow({
+							var standPage=mui.openWindow({
 								url:"standard-mode-boarding.html",
 								id: 'standard-mode',
-								extras:{
-									teamname1:teamName1,
-									teamname2:teamName2
-								},
+//								extras:{
+//									teamname1:teamName1,
+//									teamname2:teamName2
+//								},
 							});
+							mui.fire(standPage,"teamname",{
+								teamname1:teamName1,
+								teamname2:teamName2
+							})
 						} else {
 							mui.openWindow({
 								url:"easy-mode-boarding.html",

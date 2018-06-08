@@ -162,7 +162,7 @@
 					saveInfo();
 					this.innerText = "修改";
 					this.className = "mui-btn mui-btn-blue mui-pull-right";
-					$.each(inputEles, function(i, n) {
+					mui.each(inputEles, function(i, n) {
 						n.disabled = "true";
 					});
 					return;
@@ -170,7 +170,7 @@
 
 				this.innerText = "完成";
 				this.className = "mui-btn mui-btn-success mui-pull-right";
-				$.each(inputEles, function(i, n) {
+				mui.each(inputEles, function(i, n) {
 					n.disabled = "";
 				});
 

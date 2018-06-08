@@ -38,6 +38,7 @@ document.addEventListener("teamname", function(event){
 				});
 			}
 			if(info["teamname"]==teamContent2){
+				alert(info["teamname"]);
 				document.getElementById("teamName2").innerText = info["teamname"];
 				$.each(info["staff"], function(index,info) {
 					var team2_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
