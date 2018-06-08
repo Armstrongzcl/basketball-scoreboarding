@@ -442,11 +442,19 @@
 			"html/mode-choose.html": {
 				"resources": [],
 				"refer": [
-					"html/easy-mode-boarding.html"
+					"html/easy-mode-boarding.html",
+					"html/add-team.html"
 				],
 				"priority": 0
 			},
 			"html/easy-mode-boarding.html": {
+				"resources": [],
+				"refer": [
+					"html/mode-choose.html"
+				],
+				"priority": 0
+			},
+			"html/add-team.html": {
 				"resources": [],
 				"refer": [
 					"html/mode-choose.html"
