@@ -366,7 +366,9 @@
 				"resources": [],
 				"refer": [
 					"html/team-info.html",
-					"html/add-team.html"
+					"html/add-team.html",
+					"html/easy-mode-boarding.html",
+					"html/standard-mode-boarding.html"
 				],
 				"priority": 0
 			},
@@ -378,14 +380,24 @@
 				"priority": 0
 			},
 			"html/mode-choose.html": {
-				"resources": [],
+				"resources": [
+					"css/mui.min.css"
+				],
 				"refer": [
 					"html/add-team.html",
-					"html/standard-mode-boarding.html"
+					"html/standard-mode-boarding.html",
+					"html/easy-mode-boarding.html"
 				],
 				"priority": 0
 			},
 			"html/standard-mode-boarding.html": {
+				"resources": [],
+				"refer": [
+					"html/mode-choose.html"
+				],
+				"priority": 0
+			},
+			"html/easy-mode-boarding.html": {
 				"resources": [],
 				"refer": [
 					"html/mode-choose.html"

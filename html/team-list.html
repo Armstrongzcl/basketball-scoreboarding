@@ -6,7 +6,6 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>new webview</title>
 		<script src="../js/mui.min.js"></script>
-		<!--<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script type="text/javascript">
 			
 			mui.plusReady(function() {
@@ -15,7 +14,7 @@
 
 				var detailPage = null;
 				//添加列表项的点击事件
-				mui('.mui-content').on('tap', '.mui-slider-handle', function(e) {
+				mui('.mui-content').on('tap', '.mui-slider-handle', function(ent) {
 					var infoid = this.parentElement.getAttribute('id');
 					//获得详情页面
 					if(!detailPage) {
@@ -110,6 +109,13 @@
 				}, {
 					id: 'addTeam.html',
 					url: 'add-team.html'
+				},{
+					id: 'easy-mode',
+					url: "easy-mode-boarding.html"
+				}
+				, {
+					id: 'standard-mode',
+					url: "standard-mode-boarding.html"
 				}]
 			});
 

@@ -2,7 +2,9 @@
   "html/team-list.html": {
     "refer": [
       "html/add-team.html",
-      "html/team-info.html"
+      "html/team-info.html",
+      "html/easy-mode-boarding.html",
+      "html/standard-mode-boarding.html"
     ],
     "resources": []
   },
@@ -22,7 +24,9 @@
       "html/standard-mode-boarding.html",
       "html/add-team.html"
     ],
-    "resources": []
+    "resources": [
+      "css/mui.min.css"
+    ]
   },
   "html/easy-mode-boarding.html": {
     "refer": [
@@ -39,6 +43,7 @@
   "html/add-team.html": {
     "refer": [
       "html/mode-choose.html"
-    ]
+    ],
+    "resources": []
   }
 }
