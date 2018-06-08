@@ -23,17 +23,28 @@
 	</head>
 
 	<body>
-		<!--<div class="mui-content">
-			<div class="title">
-				
-			</div>
-		</div>-->
-
+		<nav class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-about.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="tab-webview-subpage-chat.html">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+		</nav>
 		<script src="js/util.js"></script>
 		<script type="text/javascript">
 			(function() {
 				mui.init({
-					swipeBack: true //启用右滑关闭功能
+					swipeBack: true, //启用右滑关闭功能
+//					preloadPages: [{
+//						id: 'teamInfo.html',
+//						url: 'html/team-info.html'
+//					}, {
+//						id: 'addTeam.html',
+//						url: 'html/add-team.html'
+//					}]
 				});
 				mui.plusReady(function() {
 					var self = plus.webview.currentWebview(),
@@ -178,6 +189,21 @@
 						}
 
 					});
+					
+//					mui.oldBack = mui.back;
+//					var backButtonPress = 0;
+//					mui.back = function(event) {
+//						backButtonPress++;
+//						if (backButtonPress > 1) {
+//							plus.runtime.quit();
+//						} else {
+//							plus.nativeUI.toast('再按一次退出应用');
+//						}
+//						setTimeout(function() {
+//							backButtonPress = 0;
+//						}, 1000);
+//						return false;
+//					};
 				});
 			})();
 		</script>

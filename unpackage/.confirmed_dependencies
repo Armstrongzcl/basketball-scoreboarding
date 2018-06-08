@@ -1,49 +1,58 @@
 {
-  "html/team-list.html": {
-    "refer": [
-      "html/add-team.html",
-      "html/team-info.html",
-      "html/easy-mode-boarding.html",
-      "html/standard-mode-boarding.html"
-    ],
-    "resources": []
-  },
-  "index.html": {
-    "resources": [
-      "html/recent-games-list.html"
-    ],
-    "refer": [
-      "html/team-list.html",
-      "html/recent-games-list.html",
-      "html/mode-choose.html"
-    ]
-  },
-  "html/mode-choose.html": {
-    "refer": [
-      "html/easy-mode-boarding.html",
-      "html/standard-mode-boarding.html",
-      "html/add-team.html"
-    ],
-    "resources": [
-      "css/mui.min.css"
-    ]
-  },
-  "html/easy-mode-boarding.html": {
-    "refer": [
-      "html/mode-choose.html"
-    ],
-    "resources": []
-  },
-  "html/standard-mode-boarding.html": {
-    "refer": [
-      "html/mode-choose.html"
-    ],
-    "resources": []
-  },
-  "html/add-team.html": {
-    "refer": [
-      "html/mode-choose.html"
-    ],
-    "resources": []
-  }
+	"html/team-list.html": {
+		"refer": [
+			"html/add-team.html",
+			"html/team-info.html",
+			"html/easy-mode-boarding.html",
+			"html/standard-mode-boarding.html"
+		],
+		"resources": []
+	},
+	"index.html": {
+		"resources": [
+			"html/recent-games-list.html"
+		],
+		"refer": [
+			"html/team-list.html",
+			"html/recent-games-list.html",
+			"html/mode-choose.html"
+		]
+	},
+	"html/mode-choose.html": {
+		"refer": [
+			"html/easy-mode-boarding.html",
+			"html/standard-mode-boarding.html",
+			"html/add-team.html"
+		],
+		"resources": [
+			"css/mui.min.css"
+		]
+	},
+	"html/easy-mode-boarding.html": {
+		"refer": [
+			"html/mode-choose.html"
+		],
+		"resources": []
+	},
+	"html/standard-mode-boarding.html": {
+		"refer": [
+			"html/mode-choose.html"
+		],
+		"resources": []
+	},
+	"html/add-team.html": {
+		"refer": [
+			"html/mode-choose.html"
+		],
+		"resources": []
+	},
+	"login.html": {
+		"refer": [
+			"index.html",
+			"html/team-info.html",
+			"html/add-team.html",
+			"reg.html"
+		],
+		"resources": []
+	}
 }
