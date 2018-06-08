@@ -1,5 +1,6 @@
 
-window.onload=function(){
+document.addEventListener("teamname", function(event){
+	
 	function player(name,number,team,position,lineUp){
 	this.name=name;
 	this.number=number;
@@ -22,8 +23,8 @@ window.onload=function(){
 		var team2=new Array();
 		team1.foulNumber=0;
 	    team2.foulNumber=0;
-		var teamContent1="骑士";
-		var teamContent2="勇士";
+		var teamContent1=event.detail.teamname1;
+		var teamContent2= event.detail.teamname2;
 	
     $.ajaxSetup({async:false});
 	var x=function(){
@@ -531,4 +532,4 @@ plus.webview.currentWebview().close("auto",400);
 //  	readJson();
     	})				
 	})
-}
+})
