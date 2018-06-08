@@ -34,77 +34,73 @@
 				</div>
 				<ul id="game" class="mui-table-view mui-table-view-chevron">
 					<script>
-						getGames();
-
-						function getGames() {
-							$.getJSON("../datas/games.json", function(result) {
-								$.each(result, function(gaid, item) {
-									$("#game").append("<li class='mui-table-view-cell'><a  class='mui-navigate-right' style='text-align:center' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" + item.firstName + "&nbsp&nbspVS&nbsp&nbsp" + item.secondName + "<br><br>" + item.firstScore + "&nbsp&nbsp:&nbsp&nbsp" + item.secondScore + "</a></li>");
-								});
-							});
-						}
-
 						function openDetail(gaid) {
 							mui.openWindow({
-								url: "game-info.html?id="+gaid,
+								url: "game-info.html?id=" + gaid,
 							});
 						}
-					</script>
+						mui.plusReady(function() {
+							plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+								fs.root.getFile("datas/recent_games.json", {
+									create: true
+								}, function(file) {
+									var fileReader = new plus.io.FileReader();
+									fileReader.readAsText(file, "utf-8");
+									fileReader.onloadend = function(e) {
+										var datestr = e.target.result;
+										var result;
+										if(datestr == "") {
+											result = [];
+										} else {
+											result = JSON.parse(datestr);
+										}
+										$.each(result, function(gaid, item) {
+											$("#game").append("<li class='mui-table-view-cell'>" +
+												"<div class='mui-navigate-right' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" +
+												"<div class='mui-row' style='text-align: center'>" +
+												"<a class='' style='text-align:center'>" + item.time + "</a>" +
+												"</div>" +
+												"<div class='mui-row'>" +
+												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + item.firstName + "</a>" +
+												"<a class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>vs</a>" +
+												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + item.secondName + "</a>" +
+												"</div>" +
+												"<div class='mui-row'>" +
+												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + item.firstScore + "</a>" +
+												"<a class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>:</a>" +
+												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + item.secondScore + "</a>" +
+												"</div>" +
+												"</div>" +
+												"</li>");
+										});
+									}
+								});
+							});
+						});
 
+						mui.init({
+							swipeBack: false,
+							pullRefresh: {
+								container: '#pullrefresh',
+								up: {
+									callback: pullupRefresh
+								}
+							}
+						});
+						
+						/**
+						 * 上拉加载具体业务实现
+						 */
+						function pullupRefresh() {
+							this.endPullupToRefresh(true|false);
+						}
+					</script>
 				</ul>
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
 		<script>
-			mui.init({
-				swipeBack: false,
-//				pullRefresh: {
-//					container: '#pullrefresh',
-//					down: {
-//						style: 'circle',
-//						callback: pulldownRefresh
-//					},
-//					up: {
-//						contentrefresh: '正在加载...',
-//						callback: pullupRefresh
-//					}
-//				}
-			});
-			/**
-			 * 下拉刷新具体业务实现
-			 */
-			function pulldownRefresh() {
-				setTimeout(function() {
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for(var i = cells.length, len = i + 3; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-						//下拉刷新，新纪录插到最前面；
-						table.insertBefore(li, table.firstChild);
-					}
-					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-					mui.toast('下拉刷新成功');
-				}, 1000);
-			}
-			var count = 0;
-			/**
-			 * 上拉加载具体业务实现
-			 */
-			function pullupRefresh() {
-				setTimeout(function() {
-					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for(var i = cells.length, len = i + 20; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
-						table.appendChild(li);
-					}
-				}, 1000);
-			}
+
 		</script>
 	</body>
 
