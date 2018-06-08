@@ -445,7 +445,8 @@
 			"html/mode-choose.html": {
 				"resources": [],
 				"refer": [
-					"html/easy-mode-boarding.html"
+					"html/easy-mode-boarding.html",
+					"html/standard-mode-boarding.html"
 				],
 				"priority": 0
 			},

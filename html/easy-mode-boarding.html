@@ -6,7 +6,9 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<!--<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script src="../js/mui.min.js "></script>
+		
 		<style type="text/css">
 			.mui-icon {
 				font-size: 60px;
@@ -27,6 +29,22 @@
 	</head>
 
 	<body>
+		<script type="text/javascript ">
+		mui.init({
+                 beforeback: function() { //退出前当前面恢复横屏 
+                 mui.plusReady(function() {
+                 plus.screen.lockOrientation("portrait-primary"); 
+                 });
+                 //返回true，继续页面关闭逻辑
+                 return true;
+                 }
+             })
+			mui.plusReady(function(){
+				plus.screen.lockOrientation("landscape-primary");
+				plus.navigator.setFullscreen(true);
+//				$("#content").css({"height":plus.screen.resolutionHeight,"width":plus.screen.resolutionWidth});
+			})
+	</script>
 		<a onclick="jumpBack()"><span class="mui-icon mui-icon-arrowthinleft"></span></a>
 		<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id="s1">  
       <span id = "leftScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center; font-size: 50px" > 00</span>
@@ -44,7 +62,7 @@
 		<div>
 			<br>
 			<button type="button" onclick="start()" style="margin-left: 0px; margin-top: -10px; width:80px; height:50px; margin-left: 5px;">开始</button>
-			<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 140px; margin-top: -20px;" id="s4"></span>
+			<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 140px; margin-top: -20px;" id="s4">
  	<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px; margin-bottom: -50px;" >time</span>
 			<button type="button" onclick="stop()" style="margin-left: 327px; margin-top: 58px; width:80px; height: 50px;">暂停</button>
 			<br>
@@ -71,20 +89,7 @@
  
  
   	
-	<!--<script type="text/javascript ">
-		mui.init({
-            beforeback: function() {
-                 mui.plusReady(function() {
-                 plus.screen.lockOrientation("portrait-primary "); 
-                 });
-                 return true;
-            }
-           });
-		mui.plusReady(function(){
-				plus.screen.lockOrientation("landscape-primary ");
-				plus.navigator.setFullscreen(true);
-		});
-	</script>-->
+	
   	<script  type="text/javascript ">
     	var minute,second;
     	minute=second=0;
