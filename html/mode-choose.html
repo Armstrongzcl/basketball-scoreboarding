@@ -7,42 +7,70 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<script src="../js/mui.min.js"></script>
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style type="text/css">
+			.mui-content-padded {
+				margin-top: 25px;
+			}
+			
+			.mui-btn {
+				padding: 10px;
+			}
+		</style>
 	</head>
 
 	<body>
-		<div>
-			<p>选择模式</p>
-			<button onclick="jumpAdd()">添加球队</button>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">模式选择</h1>
+			<button class="mui-btn mui-btn-success mui-pull-right" id="addDone">添加球队</button>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card">
+				<form class="mui-input-group">
+					<div class="mui-input-row">
+						<label>球队一</label>
+						<select id="teamName" style="width: 100px;">
+							<option value="">-请选择-</option>
+						</select>
+					</div>
+					<div class="mui-input-row">
+						<label>球队二</label>
+						<select id="teamName2" style="width: 100px;">
+							<option value="">-请选择-</option>
+						</select>
+					</div>
+
+					<div class="mui-row">
+						<div class="mui-input-row mui-radio">
+							<label>娱乐模式</label>
+							<input class="mode" value="1" name="radio1" type="radio">
+						</div>
+						<div class="mui-input-row mui-radio">
+							<label>专业模式</label>
+							<input class="mode" id="stardard-radio" value="2" name="radio2" checked="checked" type="radio">
+						</div>
+					</div>
+
+				</form>
+
+			</div>
+
+			<div class="mui-content-padded">
+				<button id='start' class="mui-btn mui-btn-block mui-btn-danger">开始比赛</button>
+			</div>
 		</div>
-		<div>
-			<img />
-			<h4>球队一</h4>
-			<select id="teamName" style="width: 100px;">
-				<option value="">-请选择-</option>
-				<!--<option></option>-->
-			</select>
-		</div>
-		<div>
-			<img />
-			<h4>球队二</h4>
-			<select id="teamName2" style="width: 100px;">
-				<option value="">-请选择-</option>
-				<!--<option></option>-->
-			</select>
-		</div>
-		<div class="mui-input-row mui-radio mui-left">
-			<label>娱乐模式</label>
-			<input class="mode" value="1" name="radio1" type="radio">
-		</div>
-		<div class="mui-input-row mui-radio mui-left">
-			<label>专业模式</label>
-			<input class="mode" value="2" name="radio1" type="radio">
-		</div>
-		<div>
-			<button onclick="jumpGame()" class="mui-btn mui-btn-danger mui-btn-outlined">开始比赛</button>
 		</div>
 
 		<script type="text/javascript">
+			mui.init({
+				preloadPages: [{
+					id: 'easy-mode-boarding.html',
+					url: 'easy-mode-boarding.html'
+				}, {
+					id: 'standard-mode-boarding.html',
+					url: 'standard-mode-boarding.html'
+				}]
+			})
 			mui.plusReady(function() {
 				plus.screen.lockOrientation("portrait");
 			})
@@ -60,8 +88,38 @@
 				} else if(getVals() == 2) {
 					window.location.href = 'standard-mode-boarding.html';
 				}
-
 			}
+
+			mui(".mui-content-padded").on("tap", "#start", function() {
+				var mode = document.getElementsById("stardard-radio");
+				var teamone = document.getElementById("teamName");
+				var teamtwo = document.getElementById("teamName2");
+				//				var modechose=getRadioRes('mode');
+				if(teamone.value == "" || teamtwo.value == "" && mode.CHECKSTATE_CHECKED) {
+					mui.alert("请选择球队");
+				} else {
+					if(mode.CHECKSTATE_CHECKED) {
+						var teamName1=teamone.options[teamone.selectedIndex].value;
+						var teamName2=teamtwo.options[teamtwo.selectedIndex].value;
+						var standardPage = null;
+						if(!standardPage) {
+							standardPage = plus.webview.getWebviewById('standard-mode-boarding.html');
+						}
+						mui.fire(standardPage, 'teamname', {
+							teamname1: teamName1,
+							teamname2: teamName2
+						});
+						mui.openWindow({
+							id: 'standard-mode-boarding.html'
+						});
+					} else {
+					mui.openWindow({
+						id: 'easy-mode-boarding.html'
+					});
+					}
+				}
+			});
+			
 			//mui('body').on('tap','a',function(){document.location.href=this.href;});
 			function getVals() {
 				var res = getRadioRes('mode');
@@ -113,8 +171,8 @@
 				for(i = 0; i < data2.length; i++) {
 					//alert(data2[i].team_name);
 					//  		    document.getElementById("teamName").append("<node value='"+data2[i].team_name+"'>"+1+"</node>");
-					document.getElementById("teamName").innerHTML += "<option value = '" + i + "'>" + data2[i].team_name + "</option>";
-					document.getElementById("teamName2").innerHTML += "<option value = '" + i + "'>" + data2[i].team_name + "</option>";
+					document.getElementById("teamName").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
+					document.getElementById("teamName2").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
 				}
 			}
 			//    			getopt(data2);
