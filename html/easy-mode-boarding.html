@@ -71,32 +71,29 @@
  
   	<script src="../js/mui.min.js "></script>
 	<script type="text/javascript ">
-			mui.init({
-				 //退出前当前面恢复横屏 
-                 beforeback: function() {
+		mui.init({
+            beforeback: function() {
                  mui.plusReady(function() {
                  plus.screen.lockOrientation("portrait-primary "); 
                  });
-                 //返回true，继续页面关闭逻辑
                  return true;
-                 }
-             })
-			mui.plusReady(function(){
+            }
+           });
+		mui.plusReady(function(){
 				plus.screen.lockOrientation("landscape-primary ");
 				plus.navigator.setFullscreen(true);
-				<!--mui("#content ").css({"height ":plus.screen.resolutionWidth,"width ":plus.screen.resolutionHeight});-->
-			})
-		</script>
-  <script  type="text/javascript ">
-    var minute,second;
-    minute=second=0;
-    var millisecond=0;
-    var int;
-    var clickTime = 0;
-    var isStopped = 0;
-    var twentyFour = 0;
-    var leftScore = 0;
-    var rightScore = 0;
+		});
+	</script>
+  	<script  type="text/javascript ">
+    	var minute,second;
+    	minute=second=0;
+    	var millisecond=0;
+    	var int;
+    	var clickTime = 0;
+    	var isStopped = 0;
+    	var twentyFour = 0;
+    	var leftScore = 0;
+    	var rightScore = 0;
     
     function jumpBack() {
     	mui.back(); 
@@ -187,7 +184,7 @@
       isStopped = 1;	
       window.clearInterval(int);
     }
-  </script>
+  	</script>
 	</body>
 
 </html>
