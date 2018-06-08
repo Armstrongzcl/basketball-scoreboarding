@@ -58,7 +58,7 @@
  	<button type = "button " style="margin-left:5px; color: #007AFF; text-align: center; font-size: 30px " onclick = "leftAddOne() ">+1</button> 
  	<button type = "button " style="color: #007AFF; text-align: center; font-size: 30px " onclick = "leftAddTwo() ">+2</button>
  	<button type = "button " style="color: #007AFF; text-align: center; font-size: 30px " onclick = "leftAddThree() ">+3</button>
- 	 	<span style="margin-left:10px; border-radius: 80%; height: 70px; width: 70px; display: inline-block; background: #FFFFFF; vertical-align: center; margin-left: 80px; margin-right:85px; " id = "p7 ">
+ 	<span style="margin-left:10px; border-radius: 80%; height: 70px; width: 70px; display: inline-block; background: #FFFFFF; vertical-align: center; margin-left: 80px; margin-right:85px; " id = "p7 ">
  	<span id = "countDown " style="display: block; color: #007AFF; height: 0px; line-height:60px; text-align: center; font-size: 30px; margin-left: 5px " >24		
  <span style="font-size: 25px ">s</span>
  </span>
@@ -69,17 +69,28 @@
  </div>	
  
  
-  	<script src="../js/mui.min.js ">
-
-	</script>
-  <script  type="text/javascript ">
+  	<script src="../js/mui.min.js "></script>
+	<script type="text/javascript ">
+			mui.init({
+				 //退出前当前面恢复横屏 
+                 beforeback: function() {
+                 mui.plusReady(function() {
+                 plus.screen.lockOrientation("portrait-primary "); 
+                 });
+                 //返回true，继续页面关闭逻辑
+                 return true;
+                 }
+             })
 			mui.plusReady(function(){
-				plus.device.setWakelock(true);
 				plus.screen.lockOrientation("landscape-primary ");
+				plus.navigator.setFullscreen(true);
+				<!--mui("#content ").css({"height ":plus.screen.resolutionWidth,"width ":plus.screen.resolutionHeight});-->
 			})
-    var minute,second;//时 分 秒
-    minute=second=0;//初始化
-    var millisecond=0;//毫秒
+		</script>
+  <script  type="text/javascript ">
+    var minute,second;
+    minute=second=0;
+    var millisecond=0;
     var int;
     var clickTime = 0;
     var isStopped = 0;
@@ -133,8 +144,8 @@
     	stop();
     }
 
-
-    function start()//开始
+//开始
+    function start()
     {
     	if(isStopped == 1) {
 	      int=setInterval(timer,1000);
@@ -146,8 +157,8 @@
        }
 
 	}  
-  
-    function timer()//计时
+  //计时
+    function timer()
     {
       millisecond=millisecond+1000;
       if(millisecond>=1000)
@@ -167,11 +178,11 @@
       }
   
       document.getElementById('timetext').value=minute+':'+second;
-      document.getElementById('countDown').innerHTML=24 - twentyFour + " s ";
+      document.getElementById("countDown ").innerText=(24 - twentyFour) + " s ";
   
     }
-  
-    function stop()//暂停
+  //暂停
+    function stop()
     {
       isStopped = 1;	
       window.clearInterval(int);

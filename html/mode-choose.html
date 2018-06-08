@@ -17,9 +17,9 @@
 			}
 		</style>
 		<script type="text/javascript">
-			mui.init({
-				swipeBack: true
-			});
+//			mui.init({
+//				swipeBack: true
+//			});
 		</script>
 	</head>
 
@@ -69,7 +69,6 @@
 		<script type="text/javascript">
 			
 			mui.plusReady(function() {
-				plus.screen.lockOrientation("portrait");
 				mui("header").on("tap","#addTeam",function(){
 					var	addTeamPage = plus.webview.getWebviewById('addTeam.html');
 					mui.openWindow({
@@ -87,25 +86,26 @@
 						if(mode.checked) {
 							var teamName1 = teamone.options[teamone.selectedIndex].value;
 							var teamName2 = teamtwo.options[teamtwo.selectedIndex].value;
-							var standardPage = null;
-							if(!standardPage) {
-								standardPage = plus.webview.getWebviewById('standard-mode');
-							}
-							mui.fire(standardPage, 'teamname', {
-								teamname1: teamName1,
-								teamname2: teamName2
-							});
+//							var standardPage = null;
+//							if(!standardPage) {
+//								standardPage = plus.webview.getWebviewById('standard-mode');
+//							}
+//							mui.fire(standardPage, 'teamname', {
+//								teamname1: teamName1,
+//								teamname2: teamName2
+//							});
 							mui.openWindow({
-								id: 'standard-mode'
+								url:"standard-mode-boarding.html",
+								id: 'standard-mode',
+								extras:{
+									teamname1:teamName1,
+									teamname2:teamName2
+								},
 							});
 						} else {
-							var easyPage=null;
-							if(!easyPage) {
-								easyPage = plus.webview.getWebviewById('easy-mode');
-//								plus.webview.open("easy-mode-boarding.html","starndard-mode",{});
-							}
 							mui.openWindow({
-								id: 'easy-mode'
+								url:"easy-mode-boarding.html",
+								id: 'easy-mode',
 							});
 						}
 					}
@@ -133,47 +133,7 @@
 
 			});
 
-			//			function jumpAdd() {
-			//				window.location.href = 'add-team.html';
-			//			}
-
-			//			function jumpGame() {
-			//				var teamone = document.getElementById("teamName");
-			//				var teamtwo = document.getElementById("teamName2");
-			//				alert(teamtwo.value);
-			//				if(getVals() == 1) {
-			//					window.location.href = 'easy-mode-boarding.html';
-			//				} else if(getVals() == 2) {
-			//					window.location.href = 'standard-mode-boarding.html';
-			//				}
-			//			}
-
-			//mui('body').on('tap','a',function(){document.location.href=this.href;});
-			//			function getVals() {
-			//				var res = getRadioRes('mode');
-			//				if(res == null) {
-			//					mui.toast('请选择');
-			//					return;
-			//				} else {
-			//					return res;
-			//				}
-			//			}
-
-			//			function getRadioRes(className) {
-			//				var rdsObj = document.getElementsByClassName(className);
-			//				var checkVal = null;
-			//				for(i = 0; i < rdsObj.length; i++) {
-			//					if(rdsObj[i].checked) {
-			//						checkVal = rdsObj[i].value;
-			//					}
-			//				}
-			//				return checkVal;
-			//			}
-
-			//  	 var data2 = ([{'team_name':'骑士'},{'team_name':'火箭'},{'team_name':'勇士'},{'team_name':'凯尔特人'}]); 
-
 			function getopt(data2) {
-				//document.getElementById("teamName").innerHTML = "<option value = '""'>"+-请选择-+"</option>";
 				for(i = 0; i < data2.length; i++) {
 					document.getElementById("teamName").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
 					document.getElementById("teamName2").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
