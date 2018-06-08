@@ -19,7 +19,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "html/easy-mode-boarding.html",
+	"launch_path": "index.html",
 	/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",
@@ -463,7 +463,6 @@
 				"css/mui.css"
 			]
 		}
-
 	},
 	"fullscreen": false,
 	"unpackage": [

@@ -6,6 +6,7 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/mui.min.js "></script>
 		<style type="text/css">
 			.mui-icon {
 				font-size: 60px;
@@ -43,13 +44,13 @@
 		<div>
 			<br>
 			<button type="button" onclick="start()" style="margin-left: 0px; margin-top: -10px; width:80px; height:50px; margin-left: 5px;">开始</button>
-			<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 140px; margin-top: -20px;" id="s4">
+			<span style="height: 100px;    width: 180px;    display: inline-block;    background: #FFFFFF;      vertical-align: center;  margin-left: 140px; margin-top: -20px;" id="s4"></span>
  	<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px; margin-bottom: -50px;" >time</span>
 			<button type="button" onclick="stop()" style="margin-left: 327px; margin-top: 58px; width:80px; height: 50px;">暂停</button>
 			<br>
 			<br>
 
-			<input type="text" id="timetext" value="00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px; margin-top: -200px;" " readonly><br>
+			<input type="text" id="timetext" value="00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px; margin-top: -200px;"><br>
  </div>
 
 
@@ -69,8 +70,8 @@
  </div>	
  
  
-  	<script src="../js/mui.min.js "></script>
-	<script type="text/javascript ">
+  	
+	<!--<script type="text/javascript ">
 		mui.init({
             beforeback: function() {
                  mui.plusReady(function() {
@@ -83,7 +84,7 @@
 				plus.screen.lockOrientation("landscape-primary ");
 				plus.navigator.setFullscreen(true);
 		});
-	</script>
+	</script>-->
   	<script  type="text/javascript ">
     	var minute,second;
     	minute=second=0;
