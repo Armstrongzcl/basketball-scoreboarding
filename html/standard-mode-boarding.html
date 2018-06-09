@@ -11,21 +11,21 @@
 	</head>
 
 	<body>
-
+		
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/standard-board.js" type="text/javascript" charset="utf-8"></script>
 
-		<script type="text/javascript">
+        <script type="text/javascript">
 			mui.init({
-				beforeback: function() { //退出前当前面恢复横屏 
-					mui.plusReady(function() {
-						plus.screen.lockOrientation("portrait-primary");
-					});
-					//返回true，继续页面关闭逻辑
-					return true;
-				}
-			})
-			mui.plusReady(function() {
+                 beforeback: function() { //退出前当前面恢复横屏 
+                 mui.plusReady(function() {
+                 plus.screen.lockOrientation("portrait-primary"); 
+                 });
+                 //返回true，继续页面关闭逻辑
+                 return true;
+                 }
+             })
+			mui.plusReady(function(){
 				plus.screen.lockOrientation("landscape-primary");
 				plus.navigator.setFullscreen(true);
 				$("#content").css({
@@ -115,34 +115,55 @@
 					<button class="mui-btn mui-btn-grey " id="startMatch">开始比赛</button>
 					<button class="mui-btn mui-btn-blue control-btn" id="change2">换人</button>
 					<button class="mui-btn mui-btn-green control-btn" id="foul2">犯规</button>
-
 				</div>
+			    
 			</div>
-			<div class="mui-row" id="bottom">
-				<div class="mui-col-xs-5">
-					<button class="mui-btn mui-btn-red control-btn" id="score1">得分</button>
-					<button class="mui-btn mui-btn-green control-btn" id="backboard1">篮板</button>
-					<button class="mui-btn mui-btn-green control-btn" id="assist1">助攻</button>
-				</div>
-
-				<div class="mui-row mui-col-xs-2" id="ba">
-					<button class="mui-btn mui-btn-yellow mui-col-xs-6" id="start">开始</button>
-					<button class="mui-btn mui-btn-yellow mui-col-xs-6" id="pause">暂停</button>
-				</div>
-
-				<div class="mui-col-xs-5">
-					<button class="mui-btn mui-btn-green control-btn" id="assist2">助攻</button>
-					<button class="mui-btn mui-btn-green control-btn" id="backboard2">篮板</button>
-					<button class="mui-btn mui-btn-red control-btn" id="score2">得分</button>
-				</div>
+			<div class="mui-col-xs-6" id = "timeControl">
+				
+				<p id ="restTime">12:00</p>
 			</div>
+			<div class = "mui-col-xs-6" id = "countDown">
+				24
+			</div>
+			
 		</div>
-		<div id="subWindow" class="mui-popover">
-			<ul class="mui-table-view" id="actualsubWindow">
-				<!--<li class="mui-table-view-cell"><a href="#">1</a></li>
-    <li class="mui-table-view-cell"><a href="#">2</a></li>
-    <li class="mui-table-view-cell"><a href="#">3</a></li>-->
+		<div class="mui-col-xs-3" id = "overviewOfTeam2">
+			<ul class="mui-table-view" id= "team2">
+				<li class="mui-table-view-cell" id = "teamName2">队伍2</li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
+				<li class = "mui-table-view-cell"><a>队员</a> </li>
 			</ul>
+		</div>
+		<div class="mui-col-xs-1" id="buttonGroupOfTeam2">
+			<button class="mui-btn mui-btn-grey " id="startMatch">开始比赛</button>
+			<button class="mui-btn mui-btn-blue control-btn" id="change2">换人</button>
+			<button class="mui-btn mui-btn-green control-btn" id="foul2">犯规</button>
+			
+		</div>
+		</div>
+		<div class="mui-row" id="bottom">
+		<div class="mui-col-xs-5" >
+			<button class="mui-btn mui-btn-red control-btn" id ="score1">得分</button>
+			<button class="mui-btn mui-btn-green control-btn" id="backboard1">篮板</button>
+            <button class="mui-btn mui-btn-green control-btn" id="assist1">助攻</button>	
+		</div>
+		
+			
+			<div class="mui-row mui-col-xs-2" id="ba">
+				<button class="mui-btn mui-btn-yellow mui-col-xs-6" id="start">开始</button>
+			    <button class="mui-btn mui-btn-yellow mui-col-xs-6" id ="pause">暂停</button>
+			</div>
+			
+		
+		<div class="mui-col-xs-5" >
+			<button class="mui-btn mui-btn-green control-btn" id="assist2">助攻</button>
+			<button class="mui-btn mui-btn-green control-btn" id ="backboard2">篮板</button>
+			<button class="mui-btn mui-btn-red control-btn" id="score2">得分</button>
+		</div>
+		</div>
 		</div>
 	</body>
 
