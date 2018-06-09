@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="../css/mui.min.css">
 		<script type="text/javascript" src="../js/mui.min.js"></script>
 		<script type="text/javascript" src="../js/jquery-2.1.0.min.js"></script>
-		<style>
+		<!--<style>
 			html,
 			body {
 				background-color: #efeff4;
@@ -22,85 +22,460 @@
 				font-size: 15px;
 				background-color: #fff;
 			}
+		</style>-->
+
+		<style>
+			html,
+			body {
+				min-height: 100%;
+				background-color: #efeff4;
+			}
+			.animated {
+				-webkit-animation-duration: 0.5s;
+				animation-duration: 0.5s;
+				-webkit-animation-fill-mode: both;
+				animation-fill-mode: both;
+			}
+			@-webkit-keyframes bounceInDown {
+				0%, 60%, 75%, 90%, 100% {
+					-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+					transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+				}
+				0% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+				60% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 25px, 0);
+					transform: translate3d(0, 25px, 0);
+				}
+				75% {
+					-webkit-transform: translate3d(0, -10px, 0);
+					transform: translate3d(0, -10px, 0);
+				}
+				90% {
+					-webkit-transform: translate3d(0, 5px, 0);
+					transform: translate3d(0, 5px, 0);
+				}
+				100% {
+					-webkit-transform: none;
+					transform: none;
+				}
+			}
+			@keyframes bounceInDown {
+				0%, 60%, 75%, 90%, 100% {
+					-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+					transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+				}
+				0% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+				60% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 25px, 0);
+					transform: translate3d(0, 25px, 0);
+				}
+				75% {
+					-webkit-transform: translate3d(0, -10px, 0);
+					transform: translate3d(0, -10px, 0);
+				}
+				90% {
+					-webkit-transform: translate3d(0, 5px, 0);
+					transform: translate3d(0, 5px, 0);
+				}
+				100% {
+					-webkit-transform: none;
+					transform: none;
+				}
+			}
+			.bounce-in-down {
+				-webkit-animation-name: bounceInDown;
+				animation-name: bounceInDown;
+			}
+			@-webkit-keyframes fadeInDown {
+				0%, 60%, 75%, 90%, 100% {
+					-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+					transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+				}
+				0% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+				60% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				75% {
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				90% {
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				100% {
+					-webkit-transform: none;
+					transform: none;
+				}
+			}
+			@keyframes fadeInDown {
+				0%, 60%, 75%, 90%, 100% {
+					-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+					transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+				}
+				0% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+				60% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				75% {
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				90% {
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				100% {
+					-webkit-transform: none;
+					transform: none;
+				}
+			}
+			.fade-in-down {
+				-webkit-animation-name: fadeInDown;
+				animation-name: fadeInDown;
+			}
+			@-webkit-keyframes bounceOutUp {
+				20% {
+					-webkit-transform: translate3d(0, -10px, 0);
+					transform: translate3d(0, -10px, 0);
+				}
+				40%,
+				45% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 20px, 0);
+					transform: translate3d(0, 20px, 0);
+				}
+				100% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+			}
+			@keyframes bounceOutUp {
+				20% {
+					-webkit-transform: translate3d(0, -10px, 0);
+					transform: translate3d(0, -10px, 0);
+				}
+				40%,
+				45% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 20px, 0);
+					transform: translate3d(0, 20px, 0);
+				}
+				100% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+			}
+			.bounce-out-up {
+				-webkit-animation-name: bounceOutUp;
+				animation-name: bounceOutUp;
+			}
+			@-webkit-keyframes fadeOutUp {
+				20% {
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				40%,
+				45% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				100% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+			}
+			@keyframes fadeOutUp {
+				20% {
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				40%,
+				45% {
+					opacity: 1;
+					-webkit-transform: translate3d(0, 0px, 0);
+					transform: translate3d(0, 0px, 0);
+				}
+				100% {
+					opacity: 0;
+					-webkit-transform: translate3d(0, -100%, 0);
+					transform: translate3d(0, -100%, 0);
+				}
+			}
+			.fade-out-up {
+				-webkit-animation-name: fadeOutUp;
+				animation-name: fadeOutUp;
+			}
+			.menu-open {
+				height: 100%;
+				width: 100%;
+			}
+			.menu-open .mui-scroll-wrapper {
+				position: absolute;
+				top: 48;
+				bottom: 0;
+				left: 0;
+				z-index: 1;
+				width: 100%;
+				overflow: hidden;
+				-webkit-backface-visibility: hidden;
+			}
+			.menu-backdrop {
+				display: none;
+			}
+			.menu-open .menu-backdrop {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				height: 100%;
+				width: 100%;
+				display: block;
+				z-index: 998;
+			}
+			.menu-wrapper {
+				position: absolute;
+				top: 48px;
+				left: 0;
+				right: 0;
+				z-index: 999;
+				text-align: center;
+				background-color: #333;
+				width: 100%;
+			}
+			.menu-wrapper.hidden {
+				-webkit-transform: translate3d(0, -100%, 0);
+				transform: translate3d(0, -100%, 0);
+				z-index: -1;
+			}
+			.menu {
+				width: 100%;
+			}
+			.menu .mui-table-view-inverted {
+				color: gray;
+				font-size: 19px;
+			}
+			.menu .mui-table-view-inverted .mui-table-view-cell:after {
+				height: 2px;
+				left: 0;
+				right: 0;
+			}
+			.menu-wrapper.mui-active,
+			.menu-wrapper.mui-active .menu {
+				-webkit-transform: translate3d(0, 0, 0);
+				transform: translate3d(0, 0, 0);
+			}
+			#info{
+			  	padding: 20px 10px ;
+			 }
 		</style>
 	</head>
 
 	<body>
+		<header class="mui-bar mui-bar-nav">
+			<div class="mui-title mui-pull-left">
+				最近比赛
+			</div>
+			<a id="icon-menu" class="mui-action-menu mui-icon mui-icon-bars mui-pull-right"></a>
+		</header>
 
-		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
-			<div class="mui-scroll">
-				<div class="title">
-					最近比赛
-				</div>
-				<ul id="game" class="mui-table-view mui-table-view-chevron">
-					<script>
-						function openDetail(gaid) {
-							mui.openWindow({
-								url: "game-info.html?id=" + gaid,
-							});
-						}
-						mui.plusReady(function() {
-							plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
-								fs.root.getFile("datas/recent_games.json", {
-									create: true
-								}, function(file) {
-									var fileReader = new plus.io.FileReader();
-									fileReader.readAsText(file, "utf-8");
-									fileReader.onloadend = function(e) {
-										var datestr = e.target.result;
-										var result;
-										if(datestr == "") {
-											result = [];
-										} else {
-											result = JSON.parse(datestr);
+		<div class="mui-content">
+
+			<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul id="game" class="mui-table-view mui-table-view-chevron">
+						<script>
+							function openDetail(gaid) {
+								mui.openWindow({
+									url: "game-info.html?id=" + gaid,
+								});
+							}
+							mui.plusReady(function() {
+								plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
+									fs.root.getFile("datas/recent_games.json", {
+										create: true
+									}, function(file) {
+										var fileReader = new plus.io.FileReader();
+										fileReader.readAsText(file, "utf-8");
+										fileReader.onloadend = function(e) {
+											var datestr = e.target.result;
+											var result;
+											if(datestr == "") {
+												result = [];
+											} else {
+												result = JSON.parse(datestr);
+											}
+											$.each(result, function(gaid, item) {
+												$("#game").append("<li class='mui-table-view-cell'>" +
+													"<div class='mui-navigate-right' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" +
+													"<div class='mui-row' style='text-align: center'>" +
+													"<a class='' style='text-align:center'>" + item.time + "</a>" +
+													"</div>" +
+													"<div class='mui-row'>" +
+													"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + item.firstName + "</a>" +
+													"<a class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>vs</a>" +
+													"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + item.secondName + "</a>" +
+													"</div>" +
+													"<div class='mui-row'>" +
+													"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + item.firstScore + "</a>" +
+													"<a class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>:</a>" +
+													"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + item.secondScore + "</a>" +
+													"</div>" +
+													"</div>" +
+													"</li>");
+											});
 										}
-										$.each(result, function(gaid, item) {
-											$("#game").append("<li class='mui-table-view-cell'>" +
-												"<div class='mui-navigate-right' id = '" + gaid + "' onclick = 'openDetail(this.id)'>" +
-												"<div class='mui-row' style='text-align: center'>" +
-												"<a class='' style='text-align:center'>" + item.time + "</a>" +
-												"</div>" +
-												"<div class='mui-row'>" +
-												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + item.firstName + "</a>" +
-												"<a class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>vs</a>" +
-												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + item.secondName + "</a>" +
-												"</div>" +
-												"<div class='mui-row'>" +
-												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + item.firstScore + "</a>" +
-												"<a class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>:</a>" +
-												"<a class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + item.secondScore + "</a>" +
-												"</div>" +
-												"</div>" +
-												"</li>");
-										});
-									}
+									});
 								});
 							});
-						});
 
-						mui.init({
-							swipeBack: false,
-							pullRefresh: {
-								container: '#pullrefresh',
-								up: {
-									callback: pullupRefresh
-								}
-							}
-						});
-						
-						/**
-						 * 上拉加载具体业务实现
-						 */
-						function pullupRefresh() {
-							this.endPullupToRefresh(true|false);
-						}
-					</script>
+							//							mui.init({
+							//								pullRefresh: {
+							//									container: '#pullrefresh',
+							//									up: {
+							//										callback: pullupRefresh
+							//									}
+							//								}
+							//							});
+
+							/**
+							 * 上拉加载具体业务实现
+							 */
+							//							function pullupRefresh() {
+							//								this.endPullupToRefresh(true | false);
+							//							}
+						</script>
+					</ul>
+				</div>
+			</div>
+			
+			
+		</div>
+		
+<div id="menu-wrapper" class="menu-wrapper hidden">
+			<div id="menu" class="menu">
+				<ul class="mui-table-view mui-table-view-inverted">
+					<li class="mui-table-view-cell">
+						<a id="upload">上传数据</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="download">下载数据</a>
+					</li>
+					<li class="mui-table-view-cell">
+						<a id="exit">退出登陆</a>
+					</li>
 				</ul>
 			</div>
 		</div>
-		<script src="../js/mui.min.js"></script>
+		<div id="menu-backdrop" class="menu-backdrop"></div>
+		<script src="../js/mui.view.js "></script>
+		<script src="../js/app.js"></script>
 		<script>
+			var menuWrapper = document.getElementById("menu-wrapper");
+			var menu = document.getElementById("menu");
+			var menuWrapperClassList = menuWrapper.classList;
+			var backdrop = document.getElementById("menu-backdrop");
 
+			backdrop.addEventListener('tap', toggleMenu);
+			document.getElementById("icon-menu").addEventListener('tap', toggleMenu);
+			//下沉菜单中的点击事件
+
+			mui('#menu').on('tap','#upload',function(){
+				alert("上传功能未完成。。。");
+			})
+			
+			mui('#menu').on('tap','#download',function(){
+				alert("下载功能未完成。。。");
+			})
+			mui('#menu').on('tap', '#exit', function() {
+				toggleMenu();
+				
+				if(mui.os.ios) {
+						app.setState({});
+						mui.openWindow({
+							url: 'login.html',
+							id: 'login',
+							show: {
+								aniShow: 'pop-in'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
+						return;
+					}
+					console.log("1");
+					var btnArray = [{
+						title: "注销当前账号"
+					}, {
+						title: "直接关闭应用"
+					}];
+					plus.nativeUI.actionSheet({
+						cancel: "取消",
+						buttons: btnArray
+					}, function(event) {
+						var index = event.index;
+						switch(index) {
+							case 1:
+								app.setState({});
+								plus.webview.getLaunchWebview().show("pop-in");
+								break;
+							case 2:
+								plus.runtime.quit();
+								break;
+						}
+					});
+			});
+			var busying = false;
+
+			function toggleMenu() {
+				if(busying) {
+					return;
+				}
+				busying = true;
+				if(menuWrapperClassList.contains('mui-active')) {
+					document.body.classList.remove('menu-open');
+					menuWrapper.className = 'menu-wrapper fade-out-up animated';
+					menu.className = 'menu bounce-out-up animated';
+					setTimeout(function() {
+						backdrop.style.opacity = 0;
+						menuWrapper.classList.add('hidden');
+					}, 200);
+				} else {
+					document.body.classList.add('menu-open');
+					menuWrapper.className = 'menu-wrapper fade-in-down animated mui-active';
+					menu.className = 'menu bounce-in-down animated';
+					backdrop.style.opacity = 1;
+				}
+				setTimeout(function() {
+					busying = false;
+				}, 200);
+			}
 		</script>
 	</body>
 

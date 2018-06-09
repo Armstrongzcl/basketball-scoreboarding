@@ -2,7 +2,13 @@
 	"html/team-list.html": {
 		"refer": [
 			"html/add-team.html",
+<<<<<<< HEAD
 			"html/team-info.html"
+=======
+			"html/team-info.html",
+			"html/easy-mode-boarding.html",
+			"html/standard-mode-boarding.html"
+>>>>>>> df012425192c45e5449557bfb25f6d4438ad618e
 		],
 		"resources": []
 	},
@@ -22,7 +28,13 @@
 			"html/standard-mode-boarding.html",
 			"html/add-team.html"
 		],
+<<<<<<< HEAD
 		"resources": []
+=======
+		"resources": [
+			"css/mui.min.css"
+		]
+>>>>>>> df012425192c45e5449557bfb25f6d4438ad618e
 	},
 	"html/easy-mode-boarding.html": {
 		"refer": [
@@ -39,11 +51,25 @@
 	"html/add-team.html": {
 		"refer": [
 			"html/mode-choose.html"
+<<<<<<< HEAD
 		]
 	},
 	"html/recent-games-list.html": {
 		"refer": [
 			"html/game-info.html"
 		]
+=======
+		],
+		"resources": []
+	},
+	"login.html": {
+		"refer": [
+			"index.html",
+			"html/team-info.html",
+			"html/add-team.html",
+			"reg.html"
+		],
+		"resources": []
+>>>>>>> df012425192c45e5449557bfb25f6d4438ad618e
 	}
 }
