@@ -118,9 +118,9 @@
 				var reader = new plus.io.FileReader();
 				reader.onloadend = function(e) {
 					oldTeams = e.target.result;
+					var list = document.body.querySelector('.mui-table-view');
 					if(oldTeams != "") {
 						teamsList = JSON.parse(oldTeams);
-						var list = document.body.querySelector('.mui-table-view');
 						while(list.hasChildNodes()) {
 							list.removeChild(list.firstChild);
 						}
@@ -135,6 +135,15 @@
 							eleDiv.innerText = " 没有球队，请添加";
 							list.appendChild(eleDiv);
 
+						}
+					}else{
+						count = 0;
+						if(list.childElementCount == 0) {
+							var eleDiv = document.createElement("div");
+							eleDiv.className = "mui-table-view-divider";
+							eleDiv.id = "noteam";
+							eleDiv.innerText = " 没有球队，请添加";
+							list.appendChild(eleDiv);
 						}
 					}
 				};
