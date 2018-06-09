@@ -28,7 +28,7 @@ document.addEventListener("teamname", function(event) {
 	var coach2 = "";
 	var class1 = "";
 	var class2 = "";
-
+	var time = "";
 	$.ajaxSetup({
 		async: false
 	});
@@ -42,6 +42,8 @@ document.addEventListener("teamname", function(event) {
 				fileReader.readAsText(file, "utf-8");
 				var datestr1;
 				fileReader.onloadend = function(e) {
+					var myDate = new Date();
+					time = myDate.toLocaleString();
 					var datestr = e.target.result;
 					var data;
 					if(datestr == "") {
@@ -455,6 +457,7 @@ document.addEventListener("teamname", function(event) {
 							}
 
 							var id = {};
+							id["time"] = time;
 							id["firstName"] = teamContent1;
 							id["firstCoach"] = coach1;
 							id["firstClass"] = class1;
