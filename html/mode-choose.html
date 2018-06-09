@@ -86,22 +86,10 @@
 						if(mode.checked) {
 							var teamName1 = teamone.options[teamone.selectedIndex].value;
 							var teamName2 = teamtwo.options[teamtwo.selectedIndex].value;
-							alert(teamName1 + "  " +teamName2);
-//							var standardPage = null;
-//							if(!standardPage) {
-//								standardPage = plus.webview.getWebviewById('standard-mode');
-//							}
-//							mui.fire(standardPage, 'teamname', {
-//								teamname1: teamName1,
-//								teamname2: teamName2
-//							});
+//							alert(teamName1 + "  " +teamName2);
 							var standPage=mui.openWindow({
 								url:"standard-mode-boarding.html",
 								id: 'standard-mode',
-//								extras:{
-//									teamname1:teamName1,
-//									teamname2:teamName2
-//								},
 							});
 							mui.fire(standPage,"teamname",{
 								teamname1:teamName1,
@@ -140,6 +128,9 @@
 
 			function getopt(data2) {
 				for(i = 0; i < data2.length; i++) {
+					if(data2[i].staff.length<5){
+						continue;
+					}
 					document.getElementById("teamName").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
 					document.getElementById("teamName2").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
 				}

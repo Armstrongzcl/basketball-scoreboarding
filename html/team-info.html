@@ -128,7 +128,7 @@
 			mui.init({
 				swipeBack: true
 			});
-			var id="";
+			var id = "";
 			var index;
 			document.addEventListener("InfoId", function(event) {
 				id = event.detail.id;
@@ -148,7 +148,7 @@
 			btn.addEventListener("tap", function(event) {
 				var inputEles = document.getElementsByTagName("input");
 				if(this.innerText != "修改") {
-					document.getElementById("openPopover").style.display="none";
+					document.getElementById("openPopover").style.display = "none";
 					saveInfo();
 					this.innerText = "修改";
 					this.className = "mui-btn mui-btn-blue mui-pull-right";
@@ -161,10 +161,9 @@
 				this.innerText = "完成";
 				this.className = "mui-btn mui-btn-success mui-pull-right";
 				var players = document.body.querySelector('.staff');
-				alert(players.childElementCount);
-						if(players.childElementCount<11){
-							document.getElementById("openPopover").style.display="inline";
-						}
+				if(players.childElementCount < 11) {
+					document.getElementById("openPopover").style.display = "inline";
+				}
 				mui.each(inputEles, function(i, n) {
 					n.disabled = "";
 				});
@@ -195,13 +194,13 @@
 						var staff = info["staff"];
 						var players = document.body.querySelector('.staff');
 						mui.each(staff, function(i, n) {
-							if(n["name"]!=0){
+							if(n["name"] != 0) {
 								var lineup = n["lineup"] ? "首发" : "替补";
-								var tmp = addPlayer(n["name"],n["number"],n["position"],lineup);
-								players.appendChild(tmp);	
+								var tmp = addPlayer(n["name"], n["number"], n["position"], lineup);
+								players.appendChild(tmp);
 							}
 						})
-						
+
 					}
 				};
 				plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
@@ -221,7 +220,7 @@
 				});
 
 			};
-			
+
 			mui(".mui-button-row").on("tap", "#done", function(evt) {
 				var check = true;
 				mui("#popover input").each(function() {
@@ -238,7 +237,6 @@
 					var pnr = document.getElementById("playernumber").value;
 					var ppn = document.getElementById("playerposition").value;
 					var plu = document.getElementById("playerLineup").value;
-					alert(pne);
 					var tmp = addPlayer(pne, pnr, ppn, plu);
 					players.appendChild(tmp);
 					mui("#popover input").each(function() {
@@ -253,6 +251,7 @@
 				});
 				mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
 			});
+
 			function addPlayer(name, number, post, isLineup) {
 				var ele = document.createElement('div');
 				ele.className = "mui-row player-row";
@@ -260,15 +259,14 @@
 				ele.innerHTML = '<div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerName" disabled="true" value="' + name + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerNumber" value="' + number + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerPosition" disabled="true" value="' + post + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="IsLineup" disabled="true" value="' + lineup + '" /></div>';
 				return ele;
 			}
-			
-			
-//			function addPlayer(i, n) {
-//				var ele = document.createElement('div');
-//				ele.className = "mui-row player-row";
-//				var lineup = n["lineup"] ? "首发" : "替补";
-//				ele.innerHTML = '<div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerName" disabled="true" value="' + n["name"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" disabled="true" name="playerNumber" value="' + n["number"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerPosition" disabled="true" value="' + n["position"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="IsLineup" disabled="true" value="' + lineup + '" /></div>';
-//				return ele;
-//			}
+
+			//			function addPlayer(i, n) {
+			//				var ele = document.createElement('div');
+			//				ele.className = "mui-row player-row";
+			//				var lineup = n["lineup"] ? "首发" : "替补";
+			//				ele.innerHTML = '<div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerName" disabled="true" value="' + n["name"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" disabled="true" name="playerNumber" value="' + n["number"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerPosition" disabled="true" value="' + n["position"] + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="IsLineup" disabled="true" value="' + lineup + '" /></div>';
+			//				return ele;
+			//			}
 
 			function saveInfo() {
 				var team = {};
@@ -280,11 +278,9 @@
 				mui.each(players, function(i, n) {
 					var player = {};
 					var childs = n.childNodes;
-					//					alert(childs.length);
 					player["name"] = childs[0].firstChild.value;
 					player["number"] = childs[1].firstChild.value;
 					player["position"] = childs[2].firstChild.value;
-					//					alert(player["name"]);
 					player["lineup"] = childs[3].firstChild.value == "首发" ? true : false;
 					staff.push(player);
 				});
@@ -333,40 +329,39 @@
 						alert("失败" + JSON.stringify(e));
 					};
 					writer.onwrite = function(e) {
-//						alert("写入");
+						//						alert("写入");
 					}
 
 				})
 			}
-			var old_back=mui.back;
+			var old_back = mui.back;
 			mui.back = function() {
-//				alert(id);
-				var teamname=document.getElementById("teamName").value;
+				//				alert(id);
+				var teamname = document.getElementById("teamName").value;
 				var page = plus.webview.getWebviewById("html/team-list.html");
 				if(btn.innerText != "修改") {
 					var btnArray = ['否', '是'];
 					mui.confirm('是否保存', '', btnArray, function(e) {
-						alert(id);
 						if(e.index == 1) {
 							saveInfo();
 						}
-						
-						mui.fire(page,"refresh",{
-							liId:id,
-							name:teamname
+
+						mui.fire(page, "refresh", {
+							liId: id,
+							name: teamname
 						});
 						reset();
 						plus.webview.currentWebview().hide("auto", 400);
 					})
 				} else {
-					mui.fire(page,"refresh",{
-							liId:id,
-							name:teamname
-						});
-//					page.reload();
+					mui.fire(page, "refresh", {
+						liId: id,
+						name: teamname
+					});
+					//					page.reload();
 					reset();
 					old_back();
-//					plus.webview.currentWebview().hide("auto", 400);
+					//					plus.webview.currentWebview().hide("auto", 400);
 				}
 
 			}
@@ -378,7 +373,7 @@
 				while(players.hasChildNodes()) {
 					players.removeChild(players.firstChild);
 				}
-				document.getElementById("openPopover").style.display="none";
+				document.getElementById("openPopover").style.display = "none";
 			}
 		</script>
 

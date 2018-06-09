@@ -34,7 +34,6 @@ document.addEventListener("teamname", function(event) {
 	});
 	var x = function() {
 		plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
-			alert(111);
 			fs.root.getFile("datas/teams.json", {
 				create: true
 			}, function(file) {
@@ -44,7 +43,6 @@ document.addEventListener("teamname", function(event) {
 				var datestr1;
 				fileReader.onloadend = function(e) {
 					var datestr = e.target.result;
-					alert(datestr);
 					var data;
 					if(datestr == "") {
 						data = [];
@@ -505,7 +503,7 @@ document.addEventListener("teamname", function(event) {
 
 						}
 						file.createWriter(function(writer) {
-							alert(datestr1);
+//							alert(datestr1);
 							writer.write(datestr1);
 							//  				    writer.onwrite =old_back();
 							writer.onwrite = function(e) {
