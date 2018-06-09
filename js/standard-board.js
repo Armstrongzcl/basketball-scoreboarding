@@ -1,6 +1,5 @@
 document.addEventListener("teamname", function(event) {
 
-<<<<<<< HEAD
 	function player(name, number, team, position, lineUp) {
 		this.name = name;
 		this.number = number;
@@ -15,61 +14,6 @@ document.addEventListener("teamname", function(event) {
 			this.status = 1;
 		} else {
 			this.status = 0;
-=======
-document.addEventListener("teamname", function(event){
-	
-	function player(name,number,team,position,lineUp){
-	this.name=name;
-	this.number=number;
-	this.team=team;
-	this.position=position;
-	this.score=0;
-	this.Block=0;
-	this.assistant=0;
-	this.foul=0;
-	this.status=0;
-	if(lineUp){
-	this.status=1;
-	}else{
-		this.status=0;
-	}
-   }
-	var teamName1=document.getElementById("team1");
-	var teamName2=document.getElementById("team2");
-		var team1=new Array();
-		var team2=new Array();
-		team1.foulNumber=0;
-	    team2.foulNumber=0;
-		var teamContent1=event.detail.teamname1;
-		var teamContent2= event.detail.teamname2;
-    $.ajaxSetup({async:false});
-	var x=function(){
-		$.getJSON('../datas/teams.json',function(data){
-		$.each(data, function(index,info) {
-			if(info["teamname"]==teamContent1){
-				alert(info["teamname"]);
-				document.getElementById("teamName1").innerText = info["teamname"];
-				$.each(info["staff"], function(index,info) {
-					var team1_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
-					team1.push(team1_player);
-				});
-			}
-			if(info["teamname"]==teamContent2){
-				
-				document.getElementById("teamName2").innerText = info["teamname"];
-				$.each(info["staff"], function(index,info) {
-					var team2_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
-					team2.push(team2_player);
-				});
-			}
-		});
-	})
-		}
-	x();
-	for(var i=0;i<team1.length;i++){
-		if(team1[i].status==1){
-		teamName1.children[i+1].children[0].innerText=team1[i].name;
->>>>>>> df012425192c45e5449557bfb25f6d4438ad618e
 		}
 	}
 	var teamName1 = document.getElementById("team1");
@@ -108,7 +52,7 @@ document.addEventListener("teamname", function(event){
 						if(info["teamname"] == teamContent1) {
 							document.getElementById("teamName1").innerText = info["teamname"];
 							$.each(info["staff"], function(index, info) {
-								alert(info["name"]);
+							//	alert(info["name"]);
 								var team1_player = new player(info["name"], info["number"], teamContent1, info["position"], info["lineup"]);
 								team1.push(team1_player);
 							});
@@ -117,21 +61,24 @@ document.addEventListener("teamname", function(event){
 							alert(info["teamname"]);
 							document.getElementById("teamName2").innerText = info["teamname"];
 							$.each(info["staff"], function(index, info) {
-								alert(info["name"]);
+							//	alert(info["name"]);
 								var team2_player = new player(info["name"], info["number"], teamContent1, info["position"], info["lineup"]);
 								team2.push(team2_player);
 							});
 						}
 					});
-
-					for(var i = 0; i < 5; i++) {
+                    var number=0;
+					for(var i = 0; i < team1.length; i++) {
 						if(team1[i].status == 1) {
-							teamName1.children[i + 1].children[0].innerText = team1[i].name;
+							teamName1.children[number+ 1].children[0].innerText = team1[i].name;
+							number++;
 						}
 					}
-					for(var i = 0; i < 5; i++) {
+					number=0;
+					for(var i = 0; i < team2.length; i++) {
 						if(team2[i].status == 1) {
-							teamName2.children[i + 1].children[0].innerText = team2[i].name;
+							teamName2.children[number + 1].children[0].innerText = team2[i].name;
+							number++;
 						}
 					}
 				}
@@ -271,9 +218,9 @@ document.addEventListener("teamname", function(event){
 			scorePlayer.appendChild(tmpPlayer);
 		}
 		mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
-		var sumScore = parseInt(document.getElementById("score-record" + team).innerText);
+		var sumScore = parseInt(document.getElementById("score-record" + (team+1)).innerText);
 		sumScore += score;
-		document.getElementById("score-record" + team).innerText = sumScore;
+		document.getElementById("score-record" + (team+1)).innerText = sumScore;
 		if(tmp != 0) {
 			clearInterval(tmp);
 			tmp = 0;
@@ -344,7 +291,7 @@ document.addEventListener("teamname", function(event){
 		} else {
 			tmpTeam = teamName2;
 		}
-	//	tmpTeam.children[i].team = team;
+
 		if(team < 2) {
 			chooseScore(team);
 		} else {
@@ -396,7 +343,7 @@ document.addEventListener("teamname", function(event){
 			tmpTeam = team2;
 			tmpTeamName = teamName2;
 		}
-		var alternates = document.getElementById("subWindow");
+		var alternates = document.getElementById("actualsubWindow");
 		alternates.innerHTML = "";
 		for(var i = 0; i < tmpTeam.length; i++) {
 			if(tmpTeam[i].status == 0) {
