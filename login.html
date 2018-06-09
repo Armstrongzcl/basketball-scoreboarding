@@ -385,9 +385,10 @@
 						});
 					}, false);
 					//
-					window.addEventListener('resize', function() {
-						oauthArea.style.display = document.body.clientHeight > 400 ? 'block' : 'none';
-					}, false);
+					oauthArea.style.top = (plus.display.resolutionHeight - 50) + "px";
+//					window.addEventListener('resize', function() {
+//						oauthArea.style.display = document.body.clientHeight > 400 ? 'block' : 'none';
+//					}, false);
 					//
 					var backButtonPress = 0;
 					$.back = function(event) {
