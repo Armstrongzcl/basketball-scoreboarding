@@ -24,6 +24,10 @@ document.addEventListener("teamname", function(event) {
 	team2.foulNumber = 0;
 	var teamContent1 = event.detail.teamname1;
 	var teamContent2 = event.detail.teamname2;
+	var coach1= "";
+	var coach2 = "";
+	var class1 = "";
+	var class2 = "";
 
 	$.ajaxSetup({
 		async: false
@@ -50,6 +54,8 @@ document.addEventListener("teamname", function(event) {
 
 					$.each(data, function(index, info) {
 						if(info["teamname"] == teamContent1) {
+							coach1 = info["coach"];
+							class1 = info["class"];
 							document.getElementById("teamName1").innerText = info["teamname"];
 							$.each(info["staff"], function(index, info) {
 							//	alert(info["name"]);
@@ -58,7 +64,8 @@ document.addEventListener("teamname", function(event) {
 							});
 						}
 						if(info["teamname"] == teamContent2) {
-							alert(info["teamname"]);
+							coach2 = info["coach"];
+							class2 = info["class"];
 							document.getElementById("teamName2").innerText = info["teamname"];
 							$.each(info["staff"], function(index, info) {
 							//	alert(info["name"]);
@@ -450,20 +457,22 @@ document.addEventListener("teamname", function(event) {
 							}
 
 							var id = {};
-							id["firstName"] = " aaa ";
-							id["firstCoach"] = " bbb";
-							id["firstClass"] = "aaad";
-							id["secondName"] = "fdgdf";
-							id["secondCoach"] = "sdfsdf";
-							id["secondClass"] = "fdsfsdf";
-							id["firstScore"] = "23";
-							id["secondScore"] = "54";
-							id["official_match_time"] = totelTime;
-							id["single_game_time"] = totelTime / 2;
-							id["half_time"] = 3;
-							id["break_time"] = 5;
-							id["each_full"] = 5;
-							id["personal_full"] = 5;
+							id["firstName"] = teamContent1;
+							id["firstCoach"] = coach1;
+							id["firstClass"] = class1;
+							id["secondName"] = teamContent2;
+							id["secondCoach"] = coach2;
+							id["secondClass"] = class2;
+							var scoreRecord1 = document.getElementById("score-record1");
+							var scoreRecord2 = document.getElementById("score-record2");
+							id["firstScore"] = scoreRecord1.innerText;
+							id["secondScore"] = scoreRecord2.innerText;
+//							id["official_match_time"] = totelTime;
+//							id["single_game_time"] = totelTime / 2;
+//							id["half_time"] = 3;
+//							id["break_time"] = 5;
+//							id["each_full"] = 5;
+//							id["personal_full"] = 5;
 							var firstTeam = [];
 							var secondTeam = [];
 							for(var i = 0; i < team1.length; i++) {
