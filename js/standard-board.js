@@ -28,13 +28,13 @@ document.addEventListener("teamname", function(event) {
 	var coach2 = "";
 	var class1 = "";
 	var class2 = "";
-
+	var time = "";
 	$.ajaxSetup({
 		async: false
 	});
 	var x = function() {
 		plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
-			alert(111);
+			//alert(111);
 			fs.root.getFile("datas/teams.json", {
 				create: true
 			}, function(file) {
@@ -43,8 +43,10 @@ document.addEventListener("teamname", function(event) {
 				fileReader.readAsText(file, "utf-8");
 				var datestr1;
 				fileReader.onloadend = function(e) {
+					var myDate = new Date();
+					time = myDate.toLocaleString();
 					var datestr = e.target.result;
-					alert(datestr);
+					//alert(datestr);
 					var data;
 					if(datestr == "") {
 						data = [];
@@ -457,6 +459,7 @@ document.addEventListener("teamname", function(event) {
 							}
 
 							var id = {};
+							id["time"] = time;
 							id["firstName"] = teamContent1;
 							id["firstCoach"] = coach1;
 							id["firstClass"] = class1;
