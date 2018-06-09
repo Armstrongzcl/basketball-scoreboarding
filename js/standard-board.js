@@ -1,5 +1,6 @@
 document.addEventListener("teamname", function(event) {
 
+<<<<<<< HEAD
 	function player(name, number, team, position, lineUp) {
 		this.name = name;
 		this.number = number;
@@ -14,6 +15,61 @@ document.addEventListener("teamname", function(event) {
 			this.status = 1;
 		} else {
 			this.status = 0;
+=======
+document.addEventListener("teamname", function(event){
+	
+	function player(name,number,team,position,lineUp){
+	this.name=name;
+	this.number=number;
+	this.team=team;
+	this.position=position;
+	this.score=0;
+	this.Block=0;
+	this.assistant=0;
+	this.foul=0;
+	this.status=0;
+	if(lineUp){
+	this.status=1;
+	}else{
+		this.status=0;
+	}
+   }
+	var teamName1=document.getElementById("team1");
+	var teamName2=document.getElementById("team2");
+		var team1=new Array();
+		var team2=new Array();
+		team1.foulNumber=0;
+	    team2.foulNumber=0;
+		var teamContent1=event.detail.teamname1;
+		var teamContent2= event.detail.teamname2;
+    $.ajaxSetup({async:false});
+	var x=function(){
+		$.getJSON('../datas/teams.json',function(data){
+		$.each(data, function(index,info) {
+			if(info["teamname"]==teamContent1){
+				alert(info["teamname"]);
+				document.getElementById("teamName1").innerText = info["teamname"];
+				$.each(info["staff"], function(index,info) {
+					var team1_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
+					team1.push(team1_player);
+				});
+			}
+			if(info["teamname"]==teamContent2){
+				
+				document.getElementById("teamName2").innerText = info["teamname"];
+				$.each(info["staff"], function(index,info) {
+					var team2_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
+					team2.push(team2_player);
+				});
+			}
+		});
+	})
+		}
+	x();
+	for(var i=0;i<team1.length;i++){
+		if(team1[i].status==1){
+		teamName1.children[i+1].children[0].innerText=team1[i].name;
+>>>>>>> df012425192c45e5449557bfb25f6d4438ad618e
 		}
 	}
 	var teamName1 = document.getElementById("team1");
