@@ -102,8 +102,7 @@
 		"NativeObj": {
 			"description": "原生对象"
 		},
-		"OAuth": {},
-		"Fingerprint": {}
+		"OAuth": {}
 	},
 	"plus": {
 		"splashscreen": {
@@ -141,11 +140,7 @@
 				/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",
 				/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": [
-					"<uses-permission android:name=\"android.permission.SET_ORIENTATION\"/>",
-					"<uses-permission android:name=\"android.permission.USE_FINGERPRINT\"/>",
-					"<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>"
-				]
+				"permissions": ["<uses-permission android:name=\"android.permission.SET_ORIENTATION\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>"]
 			},
 			"orientation": [
 				"portrait-primary",
