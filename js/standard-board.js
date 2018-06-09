@@ -137,6 +137,25 @@ document.addEventListener("teamname", function(event){
 				}
 			})
 		})
+		//		$.getJSON('../datas/teams.json',function(data){
+		//		$.each(data, function(index,info) {
+		//			if(info["teamname"]==teamContent1){
+		//				document.getElementById("teamName1").innerText = info["teamname"];
+		//				$.each(info["staff"], function(index,info) {
+		//					var team1_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
+		//					team1.push(team1_player);
+		//				});
+		//			}
+		//			if(info["teamname"]==teamContent2){
+		//				alert(info["teamname"]);
+		//				document.getElementById("teamName2").innerText = info["teamname"];
+		//				$.each(info["staff"], function(index,info) {
+		//					var team2_player=new player(info["name"],info["number"],teamContent1,info["position"],info["lineup"]);
+		//					team2.push(team2_player);
+		//				});
+		//			}
+		//		});
+		//	})
 	}
 	x();
 
