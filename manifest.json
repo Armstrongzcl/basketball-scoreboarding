@@ -13,7 +13,6 @@
 		/*应用版本名称*/
 		"code": ""
 	},
-
 	"description": "",
 	/*应用描述信息*/
 	"icons": {
@@ -131,7 +130,6 @@
 				"frameworks": []
 			},
 			"google": {
-
 				"packagename": "",
 				/*Android应用包名，如io.dcloud.HelloH5*/
 				"keystore": "",
@@ -140,13 +138,10 @@
 				/*Android应用打包使用密钥库中证书的密码*/
 				"aliasname": "",
 				/*Android应用打包使用密钥库中证书的别名*/
-				"permissions": ["<uses-permission android:name=\"android.permission.SET_ORIENTATION\"/>","<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>"]
+				"permissions": ["<uses-permission android:name=\"android.permission.VIBRATE\"/>", "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>", "<uses-permission android:name=\"android.permission.CAMERA\"/>", "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>", "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>", "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>", "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>", "<uses-feature android:name=\"android.hardware.camera\"/>"]
+
 			},
-			"orientation": [
-				"portrait-primary",
-				"landscape-primary",
-				"landscape-secondary"
-			],
+			"orientation": ["portrait-primary", "landscape-primary", "landscape-secondary"],
 			/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
@@ -160,71 +155,54 @@
 						/*iPhone3/3GS程序图标，分辨率：57x57*/
 						"retina": "",
 						/*iPhone4程序图标，分辨率：114x114*/
-
+						"retina7": "",
 						/*iPhone4S/5/6程序图标，分辨率：120x120*/
-
+						"retina8": "",
 						/*iPhone6 Plus程序图标，分辨率：180x180*/
 						"spotlight-normal": "",
 						/*iPhone3/3GS Spotlight搜索程序图标，分辨率：29x29*/
 						"spotlight-retina": "",
 						/*iPhone4 Spotlight搜索程序图标，分辨率：58x58*/
-
+						"spotlight-retina7": "",
 						/*iPhone4S/5/6 Spotlight搜索程序图标，分辨率：80x80*/
 						"settings-normal": "",
 						/*iPhone4设置页面程序图标，分辨率：29x29*/
-
+						"settings-retina": "",
 						/*iPhone4S/5/6设置页面程序图标，分辨率：58x58*/
-						"app@2x": "unpackage/res/icons/120x120.png",
-						"app@3x": "unpackage/res/icons/180x180.png",
-						"settings@3x": "unpackage/res/icons/87x87.png",
-						"settings@2x": "unpackage/res/icons/58x58.png",
-						"spotlight@2x": "unpackage/res/icons/80x80.png",
-						"spotlight@3x": "unpackage/res/icons/120x120.png",
-						"notification@3x": "unpackage/res/icons/60x60.png",
-						"notification@2x": "unpackage/res/icons/40x40.png"
+						"settings-retina8": ""
 					},
 					"ipad": {
 						"normal": "",
 						/*iPad普通屏幕程序图标，分辨率：72x72*/
 						"retina": "",
 						/*iPad高分屏程序图标，分辨率：144x144*/
-
+						"normal7": "",
 						/*iPad iOS7程序图标，分辨率：76x76*/
-
+						"retina7": "",
 						/*iPad iOS7高分屏程序图标，分辨率：152x152*/
 						"spotlight-normal": "",
 						/*iPad Spotlight搜索程序图标，分辨率：50x50*/
 						"spotlight-retina": "",
 						/*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-
+						"spotlight-normal7": "",
 						/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-
+						"spotlight-retina7": "",
 						/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-
+						"settings-normal": "",
 						/*iPad设置页面程序图标，分辨率：29x29*/
-						"app": "unpackage/res/icons/76x76.png",
-						"app@2x": "unpackage/res/icons/152x152.png",
-						"settings": "unpackage/res/icons/29x29.png",
-						"proapp@2x": "unpackage/res/icons/167x167.png",
-						"spotlight": "unpackage/res/icons/40x40.png",
-						"settings@2x": "unpackage/res/icons/58x58.png",
-						"spotlight@2x": "unpackage/res/icons/80x80.png",
-						"notification": "unpackage/res/icons/20x20.png",
-						"notification@2x": "unpackage/res/icons/40x40.png"
-					},
-					"appstore": "unpackage/res/icons/1024x1024.png"
+						"settings-retina": ""
+					}
 				},
 				"android": {
-					"mdpi": "unpackage/res/icons/48x48.png",
+					"mdpi": "",
 					/*普通屏程序图标，分辨率：48x48*/
-					"ldpi": "unpackage/res/icons/48x48.png",
+					"ldpi": "",
 					/*大屏程序图标，分辨率：48x48*/
-					"hdpi": "unpackage/res/icons/72x72.png",
+					"hdpi": "",
 					/*高分屏程序图标，分辨率：72x72*/
-					"xhdpi": "unpackage/res/icons/96x96.png",
+					"xhdpi": "",
 					/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": "unpackage/res/icons/144x144.png",
-					"xxxhdpi": "unpackage/res/icons/192x192.png"
+					"xxhdpi": ""
 				}
 			},
 			"splashscreen": {
@@ -265,11 +243,11 @@
 					/*普通屏启动图片，分辨率：240x282*/
 					"ldpi": "",
 					/*大屏启动图片，分辨率：320x442*/
-					"hdpi": "C:/Users/93501/Desktop/篮球记分板/669pic_928831d40a6ddd76.png",
+					"hdpi": "",
 					/*高分屏启动图片，分辨率：480x762*/
-					"xhdpi": "C:/Users/93501/Desktop/篮球记分板/50625d77f60fe1c73e8202b29fb058ca.png",
+					"xhdpi": "",
 					/*720P高分屏启动图片，分辨率：720x1242*/
-					"xxhdpi": "C:/Users/93501/Desktop/篮球记分板/50625d77f60fe1c73e8202b29fb058ca.png"
+					"xxhdpi": ""
 				}
 			}
 		},
@@ -277,7 +255,8 @@
 			"rp": false,
 			"splash": false,
 			"push": false
-		}
+		},
+		"adid": ""
 	},
 	"dependencies": {
 		"pages": {
@@ -378,7 +357,7 @@
 				"resources": [],
 				"refer": [
 					"html/easy-mode-boarding.html",
-					"html/standard-mode-boarding.html"
+					"html/add-team.html"
 				],
 				"priority": 0
 			},
@@ -389,13 +368,19 @@
 				],
 				"priority": 0
 			},
+			"html/add-team.html": {
+				"resources": [],
+				"refer": [
+					"html/mode-choose.html"
+				],
+				"priority": 0
+			},
 			"login.html": {
 				"resources": [],
 				"refer": [
-					"index.html",
-					"html/team-info.html",
 					"html/add-team.html",
-					"reg.html"
+					"index.html",
+					"html/team-info.html"
 				],
 				"priority": 0
 			}
@@ -407,7 +392,7 @@
 			]
 		}
 	},
-	"fullscreen": true,
+	"fullscreen": false,
 	"unpackage": [
 		"css/mui.css",
 		"js/mui.js"
