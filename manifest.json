@@ -255,8 +255,7 @@
 			"rp": false,
 			"splash": false,
 			"push": false
-		},
-		"adid": ""
+		}
 	},
 	"dependencies": {
 		"pages": {

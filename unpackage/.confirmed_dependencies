@@ -37,5 +37,10 @@
       "html/mode-choose.html"
     ],
     "resources": []
+  },
+  "html/recent-games-list.html": {
+    "refer": [
+      "html/game-info.html"
+    ]
   }
 }

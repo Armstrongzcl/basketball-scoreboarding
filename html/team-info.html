@@ -254,7 +254,7 @@
 				mui(".player-row").off("tap", 'div');
 			}
 			var modifyAPlay = function() {
-				alert(nowEle);
+//				alert(nowEle);
 				var check = true;
 				mui("#popover input").each(function() {
 					if(!this.value || this.value.trim() == "") {
@@ -472,6 +472,8 @@
 			}
 
 			function reset() {
+				lineupcount = 0;
+				numArr=[];
 				btn.innerText = "修改";
 				btn.className = "mui-btn mui-btn-blue mui-pull-right";
 				var players = document.body.querySelector('.staff');
