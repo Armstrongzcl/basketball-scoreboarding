@@ -131,6 +131,15 @@
 					if(!data2[i].staff ||data2[i].staff.length<5){
 						continue;
 					}
+					var lineupNum=0;
+					mui.each(data2[i].staff,function(i,n){
+						if(n.lineup==true){
+							lineupNum++;
+						}
+					})
+					if(lineupNum<5){
+						continue;
+					}
 					document.getElementById("teamName").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
 					document.getElementById("teamName2").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
 				}

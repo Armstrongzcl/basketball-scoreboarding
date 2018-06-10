@@ -20,13 +20,22 @@
   },
   "html/team-list.html": {
     "refer": [
-      "html/add-team.html"
+      "html/add-team.html",
+      "html/team-info.html"
     ],
     "resources": []
   },
   "html/mode-choose.html": {
     "refer": [
-      "html/easy-mode-boarding.html"
-    ]
+      "html/easy-mode-boarding.html",
+      "html/standard-mode-boarding.html"
+    ],
+    "resources": []
+  },
+  "html/easy-mode-boarding.html": {
+    "refer": [
+      "html/mode-choose.html"
+    ],
+    "resources": []
   }
 }

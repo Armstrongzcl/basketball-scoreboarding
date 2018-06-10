@@ -357,7 +357,8 @@
 				"resources": [],
 				"refer": [
 					"html/easy-mode-boarding.html",
-					"html/add-team.html"
+					"html/add-team.html",
+					"html/standard-mode-boarding.html"
 				],
 				"priority": 0
 			},
