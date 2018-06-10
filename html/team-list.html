@@ -9,7 +9,7 @@
 		<script type="text/javascript">
 			
 			mui.plusReady(function() {
-				var count;
+				var count=0;
 				addLi();
 
 				var detailPage = null;
@@ -166,7 +166,8 @@
 			function addALi(i, name) {
 				var list = document.body.querySelector('.mui-table-view');
 				if(name != "" && name != undefined) {
-					if(list.hasChildNodes()&&list.firstChild.id == "noteam") {
+					if(list.childElementCount!=0&&list.firstChild.id == "noteam") {
+						alert(list.firstChild.id);
 						list.removeChild(list.firstChild);
 					}
 					var li = document.createElement('li');
