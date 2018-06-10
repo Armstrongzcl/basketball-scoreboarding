@@ -311,10 +311,14 @@ document.addEventListener("teamname", function(event) {
 	}
 	var leftAddScore = document.getElementById("score1");
 	leftAddScore.addEventListener('click', function() {
+				clearInterval(tmp);
+		tmp = 0;
 		addScore(0);
 	}, false);
 	var rightAddScore = document.getElementById("score2");
 	rightAddScore.addEventListener('click', function() {
+				clearInterval(tmp);
+		tmp = 0;
 		addScore(1);
 	})
 	var leftAddBlock = document.getElementById("backboard1");
@@ -336,9 +340,13 @@ document.addEventListener("teamname", function(event) {
 	var LeftFoul = document.getElementById("foul1");
 	var RightFoul = document.getElementById("foul2");
 	LeftFoul.addEventListener('click', function() {
+				clearInterval(tmp);
+		tmp = 0;
 		addScore(6);
 	})
 	RightFoul.addEventListener('click', function() {
+				clearInterval(tmp);
+		tmp = 0;
 		addScore(7);
 	})
 
@@ -361,14 +369,14 @@ document.addEventListener("teamname", function(event) {
 				alternates.appendChild(newli);
 			}
 		}
-		mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
+		if(alternates.children.length>0){
+				mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
 		for(var i = 0; i < alternates.children.length; i++) {
 			alternates.children[i].addEventListener('click', function() {
 				mui('.mui-popover').popover('hide', document.getElementById('subWindow'));
 				var originalName = tmpTeamName.children[self].children[0].innerText;
 				for(var j = 0; j < tmpTeam.length; j++) {
 					if(tmpTeam[j].name == originalName) {
-
 						tmpTeam[j].status = 0;
 						break;
 					}
@@ -389,6 +397,12 @@ document.addEventListener("teamname", function(event) {
 					type: 'div'
 				})
 			})
+		}
+		}else{
+				mui.toast('当前无替补', {
+					duration: 'long',
+					type: 'div'
+				})
 		}
 	}
 
@@ -422,9 +436,13 @@ document.addEventListener("teamname", function(event) {
 	var changePeople_Team1 = document.getElementById("change1");
 	var changePeople_Team2 = document.getElementById("change2");
 	changePeople_Team1.addEventListener('click', function() {
+				clearInterval(tmp);
+		tmp = 0;
 		choosePlayer(0);
 	})
 	changePeople_Team2.addEventListener('click', function() {
+				clearInterval(tmp);
+		tmp = 0;
 		choosePlayer(1);
 	})
 	var shortTimecount = document.getElementById("countDown");
@@ -536,12 +554,13 @@ document.addEventListener("teamname", function(event) {
 		})
 	}
 	mui.plusReady(function() {
-		var end = document.getElementById("end");
+		var end = document.getElementById("close");
 		var path = plus.io.convertLocalFileSystemURL("../datas/recent_games.json");
+		
+		end.addEventListener("tap", function() {
 
-		//	end.addEventListener("tap", function() {
-
-		//		mui.back();
+				mui.back();
+		})
 		//  	var readJson = function(){
 		//  		$.getJSON(path,function(date){
 		//  			var id= {};
