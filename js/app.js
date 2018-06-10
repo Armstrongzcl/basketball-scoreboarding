@@ -55,6 +55,11 @@
 			return callback('邮箱地址不合法');
 		}
 		var users = JSON.parse(localStorage.getItem('$users') || '[]');
+		for(int i=0;i<users.length;i++){
+			if(users[i].email==regInfo.email){
+				return callback('该邮箱已注册');
+			}
+		}
 		users.push(regInfo);
 		localStorage.setItem('$users', JSON.stringify(users));
 		return callback();

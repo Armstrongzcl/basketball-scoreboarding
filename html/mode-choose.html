@@ -127,8 +127,10 @@
 			});
 
 			function getopt(data2) {
+				alert(data2.length)
 				for(i = 0; i < data2.length; i++) {
-					if(data2[i].staff.length<5){
+					alert(data2[i]["staff"]);
+					if(!data2[i].staff ||data2[i].staff.length<5){
 						continue;
 					}
 					document.getElementById("teamName").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";

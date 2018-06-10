@@ -115,17 +115,16 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init();
-			mui("header").on("tap", "#addDone", function(e) {				
-				var teamname=document.getElementById("teamName").value;
+			mui("header").on("tap", "#addDone", function(e) {
+				var teamname = document.getElementById("teamName").value;
 				var page = plus.webview.getWebviewById("html/team-list.html");
-//				page.reload();
-				mui.fire(page,"addLi",{
-					name:teamname
+				mui.fire(page, "addLi", {
+					name: teamname
 				})
 				saveInfo();
 				mui.back();
 			});
-			var lineupcount=0;
+			var lineupcount = 0;
 			mui(".mui-button-row").on("tap", "#done", function(evt) {
 				var check = true;
 				mui("#popover input").each(function() {
@@ -136,15 +135,18 @@
 						return false;
 					}
 				}); //校验通过，继续执行业务逻辑 
-				var plu = document.getElementById("playerLineup").value;
-				if(plu=="首发"){
-					lineupcount++;
+				if(check) {
+					var plu = document.getElementById("playerLineup").value;
+					if(plu == "首发") {
+						lineupcount++;
+					}
+					if(lineupcount > 5) {
+						mui.alert("首发球员不能超过五个");
+						lineupcount--;
+						check = false;
+					}
 				}
-				if(lineupcount>5){
-					mui.alert("首发球员不能超过五个");
-					lineupcount--;
-					check=false;
-				}
+
 				if(check) {
 					var players = document.body.querySelector('.staff');
 					var pne = document.getElementById("playername").value;
@@ -172,15 +174,15 @@
 				ele.innerHTML = '<div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerName" disabled="true" value="' + name + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerNumber" value="' + number + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="playerPosition" disabled="true" value="' + post + '" /></div><div class="mui-col-sm-3 mui-col-xs-3"><input type="text" name="IsLineup" disabled="true" value="' + lineup + '" /></div>';
 				return ele;
 			}
-			var old_back=mui.back;
+			var old_back = mui.back;
 			mui.back = function() {
 				reset();
 				old_back();
-//				plus.webview.currentWebview().hide("auto", 400);
+				//				plus.webview.currentWebview().hide("auto", 400);
 			}
 
 			function reset() {
-				lineupcount=0
+				lineupcount = 0
 				var team = document.getElementById("teamName");
 				team.value = "";
 				var coach = document.getElementById("coachName");
@@ -209,9 +211,9 @@
 								if(oldTeams != "") {
 									teamsList = JSON.parse(oldTeams);
 								}
-//								alert(teamsList.length);
+								//								alert(teamsList.length);
 								teamsList.push(teams);
-//								alert(teamsList.length);
+								//								alert(teamsList.length);
 								writeTo(fileEntry, teamsList);
 							}
 							reader.readAsText(file);
@@ -233,12 +235,12 @@
 						alert("失败" + JSON.stringify(e));
 					};
 					writer.onwrite = function(e) {
-//						alert("写入");
+						//						alert("写入");
 					}
 
 				})
 			}
-			
+
 			function saveInfo() {
 				var team = {};
 				var teamname = document.getElementById("teamName").value;
@@ -261,7 +263,6 @@
 				team["staff"] = staff;
 				saveToFile(team);
 			}
-
 		</script>
 	</body>
 

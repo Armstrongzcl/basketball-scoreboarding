@@ -5,7 +5,8 @@
     ],
     "refer": [
       "html/team-list.html",
-      "html/recent-games-list.html"
+      "html/recent-games-list.html",
+      "html/mode-choose.html"
     ]
   },
   "login.html": {
@@ -20,6 +21,7 @@
   "html/team-list.html": {
     "refer": [
       "html/add-team.html"
-    ]
+    ],
+    "resources": []
   }
 }
