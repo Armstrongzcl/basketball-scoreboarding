@@ -8,7 +8,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<!--<script src="../js/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<script src="../js/mui.min.js "></script>
-		
+
 		<style type="text/css">
 			.mui-icon {
 				font-size: 60px;
@@ -30,171 +30,160 @@
 
 	<body>
 		<script type="text/javascript ">
-		mui.init({
-                 beforeback: function() { //退出前当前面恢复横屏 
-                 mui.plusReady(function() {
-                 plus.screen.lockOrientation("portrait-primary"); 
-                 });
-                 //返回true，继续页面关闭逻辑
-                 return true;
-                 }
-             })
-			mui.plusReady(function(){
+			mui.init({
+				beforeback: function() { //退出前当前面恢复横屏 
+					mui.plusReady(function() {
+						plus.screen.lockOrientation("portrait-primary");
+					});
+					//返回true，继续页面关闭逻辑
+					return true;
+				}
+			})
+			mui.plusReady(function() {
 				plus.screen.lockOrientation("landscape-primary");
 				plus.navigator.setFullscreen(true);
-//				$("#content").css({"height":plus.screen.resolutionHeight,"width":plus.screen.resolutionWidth});
+				//				$("#content").css({"height":plus.screen.resolutionHeight,"width":plus.screen.resolutionWidth});
 			})
-	</script>
+		</script>
 		<a onclick="jumpBack()"><span class="mui-icon mui-icon-arrowthinleft"></span></a>
-<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id = "s1">  
-      <span id = "leftScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center; font-size: 50px" > 00</span>  
-</span> 
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;margin-left:52px" id = "s2">  
-      <span id = "rightScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center;font-size: 50px" > 00</span>  
- </span> 
- 
-<!-- <button type = "button" onclick="start()" style = "margin-left: 100px; margin-top: 5px; width:80px; height:40px">开始</button>-->
-<!-- <button type = "button" onclick="stop()" style = "margin-left: 543px; margin-top: -30px; width:80px; height: 40px;">暂停</button>-->
-<br>
+		<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;" id="s1">  
+      <span id = "leftScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center; font-size: 50px" > 00</span>
+		</span>
+		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+		<span style="height: 80px;    width: 80px;    display: inline-block;    background: #FFFFFF;      vertical-align: top;margin-left:52px" id="s2">  
+      <span id = "rightScore" style="display: block;    color: #007AFF;    height: 0px;    line-height: 80px;    text-align: center;font-size: 50px" > 00</span>
+		</span>
 
+		<!-- <button type = "button" onclick="start()" style = "margin-left: 100px; margin-top: 5px; width:80px; height:40px">开始</button>-->
+		<!-- <button type = "button" onclick="stop()" style = "margin-left: 543px; margin-top: -30px; width:80px; height: 40px;">暂停</button>-->
+		<br>
 
 		<!-- <button type = "button" onclick="start()" style = "margin-left: 100px; margin-top: 5px; width:80px; height:40px">开始</button>-->
 		<!-- <button type = "button" onclick="stop()" style = "margin-left: 543px; margin-top: -30px; width:80px; height: 40px;">暂停</button>-->
 		<br>
 		<br>
 
- <div>
-    <br>
-     <button type = "button" onclick="start()" style = "margin-left: 0px; margin-top: 0px; width:80px; height:50px; margin-left: 5px;">开始</button>
- 	<span style="height: 70px;    width: 180px;    display: inline-block;    background: #FFFFFF;   margin-top:-2ss00px;     margin-left: 140px;" id = "s4">
+		<div>
+			<br/>
+			<button type="button" onclick="start()" style="margin-left: 0px; margin-top: 0px; width:80px; height:50px; margin-left: 5px;">开始</button>
+			<span style="height: 70px;    width: 180px;    display: inline-block;    background: #FFFFFF;   margin-top:-2ss00px;     margin-left: 140px;" id="s4">
  	<span style="display: block;    color: #007AFF;    height: 0px;    line-height: 60px;    text-align: center; font-size: 30px;" >time</span>
- 	 <button type = "button" onclick="stop()" style = "margin-left: 327px; margin-top: 0px; width:80px; height: 50px;">暂停</button>
- 	</span>
+			<button type="button" onclick="stop()" style="margin-left: 327px; margin-top: 0px; width:80px; height: 50px;">暂停</button>
+			</span>
 
-  <br>
- <input type = "text" id = "timetext" value = "00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px; margin-top: -200px;margin-left:229px; width:180px;"" readonly><br>
- </div>
+			<br/>
+			<input type="text" id="timetext" value="00:00" style="border-style:none; text-align: center; line-height: 35px; font-size: 30px; margin-top: -200px;margin-left:229px; width:180px;" readonly/><br/>
+		</div>
 
+		<div>
+			<button type="button " style="margin-top: 10px; margin-left:5px; color: #007AFF; text-align: center; font-size: 30px " onclick="leftAddOne() ">+1</button>
+			<button type="button " style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px " onclick="leftAddTwo() ">+2</button>
+			<button type="button " style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px " onclick="leftAddThree() ">+3</button>
+			<span style="margin-top: 5px; border-radius: 80%; height: 70px; width: 70px; display: inline-block; background: #FFFFFF; vertical-align: center; margin-left: 84px; margin-right:85px; " id="p7 ">
+ 	<span id = "countDown " style="display: block; color: #007AFF; height: 0px; line-height:65px; text-align: center; font-size: 30px; margin-left: 5px " >24	s </span>
+			</span>
+			<button type="button " style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px; margin-left: 10px; " onclick="rightAddOne() ">+1</button>
+			<button type="button " style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px " onclick="rightAddTwo() ">+2</button>
+			<button type="button " style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px " onclick="rightAddThree() ">+3</button>
+		</div>
 
- <div>
- 	<button type = "button" style="margin-top: 10px; margin-left:5px; color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddOne()">+1</button> 
- 	<button type = "button" style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddTwo()">+2</button>
- 	<button type = "button" style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px" onclick = "leftAddThree()">+3</button>
- 	 	<span style="margin-top: 5px; border-radius: 80%; height: 70px;    width: 70px;    display: inline-block;    background: #FFFFFF;  vertical-align: center;  margin-left: 84px; margin-right:85px;" id = "p7">
- 	<span id = "countDown" style="display: block;    color: #007AFF;    height: 0px;    line-height:65px;    text-align: center; font-size: 30px; margin-left: 5px" >24		
- <span style="font-size: 25px">s</span>
-</span>
- </span>
- 	<button type = "button" style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px; margin-left: 10px;" onclick = "rightAddOne()">+1</button> 
- 	<button type = "button" style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddTwo()">+2</button>
- 	<button type = "button" style="margin-top: 10px; color: #007AFF; text-align: center; font-size: 30px" onclick = "rightAddThree()">+3</button>
- </div>	
- 
- 
-  	
-	
-  	<script  type="text/javascript ">
-    	var minute,second;
-    	minute=second=0;
-    	var millisecond=0;
-    	var int;
-    	var clickTime = 0;
-    	var isStopped = 0;
-    	var twentyFour = 0;
-    	var leftScore = 0;
-    	var rightScore = 0;
-    
-    function jumpBack() {
-    	mui.back(); 
-    }
-    function leftAddOne() {
-    	leftScore = leftScore + 1;
-    	document.getElementById("leftScore ").innerHTML = leftScore;
-    	twentyFour = 0;
-    	stop();
-    }
-    
-    function leftAddTwo() {
-    	leftScore = leftScore + 2;
-    	document.getElementById("leftScore ").innerHTML = leftScore;
-    	twentyFour = 0;
-    	stop();
-    }
-    
-    function leftAddThree() {
-    	leftScore = leftScore + 3;
-    	document.getElementById("leftScore ").innerHTML = leftScore;
-    	twentyFour = 0;
-    	stop();
-    	
-    }
-    
-        function rightAddOne() {
-    	rightScore = rightScore + 1;
-    	document.getElementById("rightScore ").innerHTML = rightScore;
-    	twentyFour = 0;
-    	stop();
-    }
-    
-    function rightAddTwo() {
-    	rightScore = rightScore + 2;
-    	document.getElementById("rightScore ").innerHTML = rightScore;
-    	twentyFour = 0;
-    	stop();
-    }
-    
-    function rightAddThree() {
-    	rightScore = rightScore + 3;
-    	document.getElementById("rightScore ").innerHTML = rightScore;
-    	twentyFour = 0;
-    	stop();
-    }
+		<script type="text/javascript ">
+			var minute, second;
+			minute = second = 0;
+			var millisecond = 0;
+			var int;
+			var clickTime = 0;
+			var isStopped = 0;
+			var twentyFour = 0;
+			var leftScore = 0;
+			var rightScore = 0;
 
-//开始
-    function start()
-    {
-    	if(isStopped == 1) {
-	      int=setInterval(timer,1000);
-	      isStopped = 0;
-	      clickTime = 1;
-       } else if (clickTime == 0) {
-       	int=setInterval(timer,1000);
-       	clickTime = 1;
-       }
+			function jumpBack() {
+				mui.back();
+			}
 
-	}  
-  //计时
-    function timer()
-    {
-      millisecond=millisecond+1000;
-      if(millisecond>=1000)
-      {
-        millisecond=0;
-        second=second+1;
-        twentyFour = twentyFour + 1;
-      }
-      if(second>=60)
-      {
-        second=0;
-        minute=minute+1;
-      }
-      if(twentyFour>=24)
-      {
-      	twentyFour=0;
-      }
-  
-      document.getElementById('timetext').value=minute+':'+second;
-      document.getElementById("countDown ").innerText=(24 - twentyFour) + " s ";
-  
-    }
-  //暂停
-    function stop()
-    {
-      isStopped = 1;	
-      window.clearInterval(int);
-    }
-  	</script>
+			function leftAddOne() {
+				leftScore = leftScore + 1;
+				document.getElementById("leftScore ").innerHTML = leftScore;
+				twentyFour = 0;
+				stop();
+			}
+
+			function leftAddTwo() {
+				leftScore = leftScore + 2;
+				document.getElementById("leftScore ").innerHTML = leftScore;
+				twentyFour = 0;
+				stop();
+			}
+
+			function leftAddThree() {
+				leftScore = leftScore + 3;
+				document.getElementById("leftScore ").innerHTML = leftScore;
+				twentyFour = 0;
+				stop();
+
+			}
+
+			function rightAddOne() {
+				rightScore = rightScore + 1;
+				document.getElementById("rightScore ").innerHTML = rightScore;
+				twentyFour = 0;
+				stop();
+			}
+
+			function rightAddTwo() {
+				rightScore = rightScore + 2;
+				document.getElementById("rightScore ").innerHTML = rightScore;
+				twentyFour = 0;
+				stop();
+			}
+
+			function rightAddThree() {
+				rightScore = rightScore + 3;
+				document.getElementById("rightScore ").innerHTML = rightScore;
+				twentyFour = 0;
+				stop();
+			}
+
+			//开始
+			function start() {
+				if(isStopped == 1) {
+					int = setInterval(timer, 1000);
+					isStopped = 0;
+					clickTime = 1;
+				} else if(clickTime == 0) {
+					int = setInterval(timer, 1000);
+					clickTime = 1;
+				}
+
+			}
+			//计时
+			function timer() {
+				millisecond = millisecond + 1000;
+				if(millisecond >= 1000) {
+					millisecond = 0;
+					second = second + 1;
+					twentyFour = twentyFour + 1;
+				}
+				if(second >= 60) {
+					second = 0;
+					minute = minute + 1;
+				}
+				if(twentyFour >= 24) {
+					twentyFour = 0;
+				}
+
+				document.getElementById('timetext').value = minute + ':' + second;
+				var seconds=document.getElementById("countDown")
+				.innerText = (24 - twentyFour) + " s ";
+
+			}
+			//暂停
+			function stop() {
+				isStopped = 1;
+				window.clearInterval(int);
+			}
+		</script>
 	</body>
 
 </html>

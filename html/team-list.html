@@ -52,7 +52,7 @@
 								var eleDiv = document.createElement("div");
 								eleDiv.className = "mui-table-view-divider";
 								eleDiv.id = "noteam";
-								eleDiv.innerText = " 没有球队，请添加";
+								eleDiv.innerText = "没有球队，请添加";
 								li.parentNode.appendChild(eleDiv);
 							}
 
@@ -72,7 +72,7 @@
 				var liId = event.detail.liId;
 				var teamname = event.detail.name;
 				var elem = document.getElementById(liId);
-				elem.lastChild.firstChild.innerText = teamname;
+				elem.lastChild.firstChild.innerHTML = teamname;
 			});
 			document.addEventListener("addLi", function(event) {
 				var teamname = event.detail.name;
@@ -132,7 +132,7 @@
 							var eleDiv = document.createElement("div");
 							eleDiv.className = "mui-table-view-divider";
 							eleDiv.id = "noteam";
-							eleDiv.innerText = " 没有球队，请添加";
+							eleDiv.innerHTML = "没有球队，请添加";
 							list.appendChild(eleDiv);
 						}
 					}else{
@@ -141,7 +141,7 @@
 							var eleDiv = document.createElement("div");
 							eleDiv.className = "mui-table-view-divider";
 							eleDiv.id = "noteam";
-							eleDiv.innerText = " 没有球队，请添加";
+							eleDiv.innerHTML = "没有球队，请添加";
 							list.appendChild(eleDiv);
 						}
 					}
@@ -164,17 +164,18 @@
 			}
 
 			function addALi(i, name) {
-				var list = document.body.querySelector('.mui-table-view');
+				var lists = document.body.querySelector('.mui-table-view');
 				if(name != "" && name != undefined) {
-					if(list.childElementCount!=0&&list.firstChild.id == "noteam") {
-						alert(list.firstChild.id);
-						list.removeChild(list.firstChild);
+					if(lists.childElementCount!=0) {
+						if(!lists.firstChild.id || lists.firstChild.id=="noteam"){
+							lists.innerHTML="";
+						}
 					}
 					var li = document.createElement('li');
 					li.id = i + "_" + name;
 					li.className = 'mui-table-view-cell';
 					li.innerHTML = '<div class="mui-slider-right mui-disabled"><a class="mui-btn mui-btn-red">删除</a></div>' + '<div class="mui-slider-handle mui-table"><div class="mui-table-cell" >' + name + '</div></div>';
-					list.appendChild(li);
+					lists.appendChild(li);
 				}
 			}
 
