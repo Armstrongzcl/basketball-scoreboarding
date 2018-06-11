@@ -22,9 +22,11 @@ document.addEventListener("teamname", function(event) {
 	var team2 = new Array();
 	team1.foulNumber = 0;
 	team2.foulNumber = 0;
-	var teamContent1 = event.detail.teamname1;
-	var teamContent2 = event.detail.teamname2;
-	var coach1= "";
+	var teamContent1 = "";
+	var teamContent2 = "";
+	var teamIndex1 = event.detail.teamname1;
+	var teamIndex2 = event.detail.teamname2;
+	var coach1 = "";
 	var coach2 = "";
 	var class1 = "";
 	var class2 = "";
@@ -52,36 +54,40 @@ document.addEventListener("teamname", function(event) {
 						data = JSON.parse(datestr);
 					}
 
-					$.each(data, function(index, info) {
-						if(info["teamname"] == teamContent1) {
-							coach1 = info["coach"];
-							class1 = info["class"];
-							document.getElementById("teamName1").innerText = info["teamname"];
-							$.each(info["staff"], function(index, info) {
-							//	alert(info["name"]);
-								var team1_player = new player(info["name"], info["number"], teamContent1, info["position"], info["lineup"]);
-								team1.push(team1_player);
-							});
-						}
-						if(info["teamname"] == teamContent2) {
-							coach2 = info["coach"];
-							class2 = info["class"];
-							document.getElementById("teamName2").innerText = info["teamname"];
-							$.each(info["staff"], function(index, info) {
-							//	alert(info["name"]);
-								var team2_player = new player(info["name"], info["number"], teamContent1, info["position"], info["lineup"]);
-								team2.push(team2_player);
-							});
-						}
+					//	$.each(data, function(index, info) {
+					var info = data[teamIndex1];
+					teamContent1 = info["teamname"];
+					//						if(info["teamname"] == teamContent1) {
+					coach1 = info["coach"];
+					class1 = info["class"];
+					document.getElementById("teamName1").innerText = info["teamname"];
+					$.each(info["staff"], function(index, info) {
+						//	alert(info["name"]);
+						var team1_player = new player(info["name"], info["number"], teamContent1, info["position"], info["lineup"]);
+						team1.push(team1_player);
 					});
-                    var number=0;
+					//						}
+					info = data[teamIndex2];
+					teamContent2 = info["teamname"];
+					//						if(info["teamname"] == teamContent2) {
+					coach2 = info["coach"];
+					class2 = info["class"];
+					document.getElementById("teamName2").innerText = info["teamname"];
+					$.each(info["staff"], function(index, info) {
+						//	alert(info["name"]);
+						var team2_player = new player(info["name"], info["number"], teamContent1, info["position"], info["lineup"]);
+						team2.push(team2_player);
+					});
+					//						}
+					//	});
+					var number = 0;
 					for(var i = 0; i < team1.length; i++) {
 						if(team1[i].status == 1) {
-							teamName1.children[number+ 1].children[0].innerText = team1[i].name;
+							teamName1.children[number + 1].children[0].innerText = team1[i].name;
 							number++;
 						}
 					}
-					number=0;
+					number = 0;
 					for(var i = 0; i < team2.length; i++) {
 						if(team2[i].status == 1) {
 							teamName2.children[number + 1].children[0].innerText = team2[i].name;
@@ -204,26 +210,26 @@ document.addEventListener("teamname", function(event) {
 		}
 		var scorePlayer = document.getElementById('actualsubWindow');
 		scorePlayer.innerHTML = "";
-		var players=new Array();
-		for (var j=0;j<tmpTeam.length;j++){
-			if(tmpTeam[j].status==1){
+		var players = new Array();
+		for(var j = 0; j < tmpTeam.length; j++) {
+			if(tmpTeam[j].status == 1) {
 				players.push(tmpTeam[j]);
 			}
 		}
 		for(var i = 1; i < 6; i++) {
 			var tmpPlayer = document.createElement("li");
 			var x = i + 1;
-			var name = players[i-1].name;
-			var number=players[i-1].number;
+			var name = players[i - 1].name;
+			var number = players[i - 1].number;
 			tmpPlayer.innerHTML = '<li class="mui-table-view-cell"><a href="#">' + name + '</a></li>';
-			tmpPlayer.name=name;
-			tmpPlayer.number=number;
+			tmpPlayer.name = name;
+			tmpPlayer.number = number;
 			tmpPlayer.addEventListener('click', function() {
 				mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
 				for(var i = 0; i < tmpTeam.length; i++) {
 					console.log(this.number);
 					console.log(tmpTeam[i].number);
-					if(tmpTeam[i].number ==this.number) {
+					if(tmpTeam[i].number == this.number) {
 						tmpTeam[i].score += score;
 						mui.toast('得分添加成功', {
 							duration: 'long',
@@ -236,9 +242,9 @@ document.addEventListener("teamname", function(event) {
 			scorePlayer.appendChild(tmpPlayer);
 		}
 		mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
-		var sumScore = parseInt(document.getElementById("score-record" + (team+1)).innerText);
+		var sumScore = parseInt(document.getElementById("score-record" + (team + 1)).innerText);
 		sumScore += score;
-		document.getElementById("score-record" + (team+1)).innerText = sumScore;
+		document.getElementById("score-record" + (team + 1)).innerText = sumScore;
 		if(tmp != 0) {
 			clearInterval(tmp);
 			tmp = 0;
@@ -258,26 +264,26 @@ document.addEventListener("teamname", function(event) {
 		}
 		var scorePlayer = document.getElementById('actualsubWindow');
 		scorePlayer.innerHTML = "";
-		var players=new Array();
-		for (var j=0;j<tmpTeam.length;j++){
-			if(tmpTeam[j].status==1){
+		var players = new Array();
+		for(var j = 0; j < tmpTeam.length; j++) {
+			if(tmpTeam[j].status == 1) {
 				players.push(tmpTeam[j]);
 			}
 		}
 		for(var i = 1; i < 6; i++) {
 			var tmpPlayer = document.createElement("li");
 			var x = i + 1;
-//			var name = tmpTeamName.children[i].children[0].innerText;
-			var name = players[i-1].name;
-			var number=players[i-1].number;
+			//			var name = tmpTeamName.children[i].children[0].innerText;
+			var name = players[i - 1].name;
+			var number = players[i - 1].number;
 			tmpPlayer.innerHTML = '<li class="mui-table-view-cell"><a href="#">' + name + '</a></li>';
-			
-			tmpPlayer.name=name;
-			tmpPlayer.number=number;
+
+			tmpPlayer.name = name;
+			tmpPlayer.number = number;
 			tmpPlayer.addEventListener('click', function() {
 				mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
 				for(var i = 0; i < tmpTeam.length; i++) {
-					if(tmpTeam[i].number ==this.number) {
+					if(tmpTeam[i].number == this.number) {
 						if(team == 2 || team == 3) {
 							tmpTeam[i].Block++;
 							mui.toast('篮板添加成功', {
@@ -331,13 +337,13 @@ document.addEventListener("teamname", function(event) {
 	}
 	var leftAddScore = document.getElementById("score1");
 	leftAddScore.addEventListener('click', function() {
-				clearInterval(tmp);
+		clearInterval(tmp);
 		tmp = 0;
 		addScore(0);
 	}, false);
 	var rightAddScore = document.getElementById("score2");
 	rightAddScore.addEventListener('click', function() {
-				clearInterval(tmp);
+		clearInterval(tmp);
 		tmp = 0;
 		addScore(1);
 	})
@@ -360,12 +366,12 @@ document.addEventListener("teamname", function(event) {
 	var LeftFoul = document.getElementById("foul1");
 	var RightFoul = document.getElementById("foul2");
 	LeftFoul.addEventListener('click', function() {
-				clearInterval(tmp);
+		clearInterval(tmp);
 		tmp = 0;
 		addScore(6);
 	})
 	RightFoul.addEventListener('click', function() {
-				clearInterval(tmp);
+		clearInterval(tmp);
 		tmp = 0;
 		addScore(7);
 	})
@@ -389,39 +395,39 @@ document.addEventListener("teamname", function(event) {
 				alternates.appendChild(newli);
 			}
 		}
-		if(alternates.children.length>0){
-				mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
-		for(var i = 0; i < alternates.children.length; i++) {
-			alternates.children[i].addEventListener('click', function() {
-				mui('.mui-popover').popover('hide', document.getElementById('subWindow'));
-				var originalName = tmpTeamName.children[self].children[0].innerText;
-				for(var j = 0; j < tmpTeam.length; j++) {
-					if(tmpTeam[j].name == originalName) {
-						tmpTeam[j].status = 0;
-						break;
-					}
+		if(alternates.children.length > 0) {
+			mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
+			for(var i = 0; i < alternates.children.length; i++) {
+				alternates.children[i].addEventListener('click', function() {
+					mui('.mui-popover').popover('hide', document.getElementById('subWindow'));
+					var originalName = tmpTeamName.children[self].children[0].innerText;
+					for(var j = 0; j < tmpTeam.length; j++) {
+						if(tmpTeam[j].name == originalName) {
+							tmpTeam[j].status = 0;
+							break;
+						}
 
-				}
-				var name = this.innerText.substring(0, this.innerText.length - 1);
-				for(var j = 0; j < tmpTeam.length; j++) {
-					if(tmpTeam[j].name.toString() == name.toString()) {
-						tmpTeam[j].status = 1;
-						break;
 					}
-				}
-				console.log(name);
-				tmpTeamName.children[self].children[0].innerText = name;
-				mui.toast('换人成功', {
-					duration: 'long',
-					type: 'div'
+					var name = this.innerText.substring(0, this.innerText.length - 1);
+					for(var j = 0; j < tmpTeam.length; j++) {
+						if(tmpTeam[j].name.toString() == name.toString()) {
+							tmpTeam[j].status = 1;
+							break;
+						}
+					}
+					console.log(name);
+					tmpTeamName.children[self].children[0].innerText = name;
+					mui.toast('换人成功', {
+						duration: 'long',
+						type: 'div'
+					})
 				})
+			}
+		} else {
+			mui.toast('当前无替补', {
+				duration: 'long',
+				type: 'div'
 			})
-		}
-		}else{
-				mui.toast('当前无替补', {
-					duration: 'long',
-					type: 'div'
-				})
 		}
 	}
 
@@ -455,12 +461,12 @@ document.addEventListener("teamname", function(event) {
 	var changePeople_Team1 = document.getElementById("change1");
 	var changePeople_Team2 = document.getElementById("change2");
 	changePeople_Team1.addEventListener('click', function() {
-				clearInterval(tmp);
+		clearInterval(tmp);
 		tmp = 0;
 		choosePlayer(0);
 	})
 	changePeople_Team2.addEventListener('click', function() {
-				clearInterval(tmp);
+		clearInterval(tmp);
 		tmp = 0;
 		choosePlayer(1);
 	})
@@ -507,12 +513,12 @@ document.addEventListener("teamname", function(event) {
 							var scoreRecord2 = document.getElementById("score-record2");
 							id["firstScore"] = scoreRecord1.innerText;
 							id["secondScore"] = scoreRecord2.innerText;
-//							id["official_match_time"] = totelTime;
-//							id["single_game_time"] = totelTime / 2;
-//							id["half_time"] = 3;
-//							id["break_time"] = 5;
-//							id["each_full"] = 5;
-//							id["personal_full"] = 5;
+							//							id["official_match_time"] = totelTime;
+							//							id["single_game_time"] = totelTime / 2;
+							//							id["half_time"] = 3;
+							//							id["break_time"] = 5;
+							//							id["each_full"] = 5;
+							//							id["personal_full"] = 5;
 							var firstTeam = [];
 							var secondTeam = [];
 							for(var i = 0; i < team1.length; i++) {
@@ -521,16 +527,16 @@ document.addEventListener("teamname", function(event) {
 								player["number"] = team1[i].number;
 								player["position"] = team1[i].position;
 								player["lineup"] = team1[i].status;
-//								if(team1[i].status == 1){
-//									player["lineup"] = "首发";
-//								}else{
-//									player["lineup"] = "替补";
-//								}
-								
+								//								if(team1[i].status == 1){
+								//									player["lineup"] = "首发";
+								//								}else{
+								//									player["lineup"] = "替补";
+								//								}
+
 								player["score"] = team1[i].score;
 								player["foul"] = team1[i].foul;
 								player["asts"] = team1[i].assistant;
-								player["bdb"]=team1[i].Block;
+								player["bdb"] = team1[i].Block;
 								firstTeam.push(player);
 							}
 							for(var i = 0; i < team2.length; i++) {
@@ -539,16 +545,16 @@ document.addEventListener("teamname", function(event) {
 								player["number"] = team2[i].number;
 								player["position"] = team2[i].position;
 								player["lineup"] = team2[i].status;
-//								if(team2[i].status == 1){
-//									player["lineup"] = "首发";
-//								}else{
-//									player["lineup"] = "替补";
-//								}
-								
+								//								if(team2[i].status == 1){
+								//									player["lineup"] = "首发";
+								//								}else{
+								//									player["lineup"] = "替补";
+								//								}
+
 								player["score"] = team2[i].score;
 								player["foul"] = team2[i].foul;
 								player["asts"] = team2[i].assistant;
-								player["bdb"]=team2[i].Block;
+								player["bdb"] = team2[i].Block;
 								secondTeam.push(player);
 							}
 							id["firstTeam"] = firstTeam;
@@ -559,10 +565,11 @@ document.addEventListener("teamname", function(event) {
 
 						}
 						file.createWriter(function(writer) {
-//							alert(datestr1);
+							//							alert(datestr1);
 							writer.write(datestr1);
 							//  				    writer.onwrite =old_back();
 							writer.onwrite = function(e) {
+//								alert("1111");
 								plus.screen.lockOrientation("portrait-primary");
 								var targetPage = plus.webview.getWebviewById("html/recent-games-list.html");
 								targetPage.reload();
@@ -589,10 +596,10 @@ document.addEventListener("teamname", function(event) {
 	mui.plusReady(function() {
 		var end = document.getElementById("close");
 		var path = plus.io.convertLocalFileSystemURL("../datas/recent_games.json");
-		
+
 		end.addEventListener("tap", function() {
 
-				mui.back();
+			mui.back();
 		})
 		//  	var readJson = function(){
 		//  		$.getJSON(path,function(date){

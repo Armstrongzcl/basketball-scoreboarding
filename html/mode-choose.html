@@ -84,8 +84,9 @@
 						mui.alert("请选择两只球队");
 					} else {
 						if(mode.checked) {
-							var teamName1 = teamone.options[teamone.selectedIndex].value;
-							var teamName2 = teamtwo.options[teamtwo.selectedIndex].value;
+							var teamName1 = teamone.options[teamone.selectedIndex].id;
+							var teamName2 = teamtwo.options[teamtwo.selectedIndex].id;
+//							alert(teamName1);
 //							alert(teamName1 + "  " +teamName2);
 							var standPage=mui.openWindow({
 								url:"standard-mode-boarding.html",
@@ -140,8 +141,8 @@
 					if(lineupNum<5){
 						continue;
 					}
-					document.getElementById("teamName").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
-					document.getElementById("teamName2").innerHTML += "<option value = '" + data2[i].teamname + "'>" + data2[i].teamname + "</option>";
+					document.getElementById("teamName").innerHTML += "<option value = '" + data2[i].teamname + "' id='"+i+"'>" + data2[i].teamname + "</option>";
+					document.getElementById("teamName2").innerHTML += "<option value = '" + data2[i].teamname + "' id='"+i+"'>" + data2[i].teamname + "</option>";
 				}
 			}
 		</script>

@@ -380,7 +380,8 @@
 				"refer": [
 					"html/add-team.html",
 					"index.html",
-					"html/team-info.html"
+					"html/team-info.html",
+					"reg.html"
 				],
 				"priority": 0
 			}
