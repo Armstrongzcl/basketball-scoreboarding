@@ -217,7 +217,7 @@ document.addEventListener("teamname", function(event) {
 			var number=players[i-1].number;
 			tmpPlayer.innerHTML = '<li class="mui-table-view-cell"><a href="#">' + name + '</a></li>';
 			tmpPlayer.name=name;
-				tmpPlayer.number=number;
+			tmpPlayer.number=number;
 			tmpPlayer.addEventListener('click', function() {
 				mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
 				for(var i = 0; i < tmpTeam.length; i++) {
@@ -258,15 +258,26 @@ document.addEventListener("teamname", function(event) {
 		}
 		var scorePlayer = document.getElementById('actualsubWindow');
 		scorePlayer.innerHTML = "";
+		var players=new Array();
+		for (var j=0;j<tmpTeam.length;j++){
+			if(tmpTeam[j].status==1){
+				players.push(tmpTeam[j]);
+			}
+		}
 		for(var i = 1; i < 6; i++) {
 			var tmpPlayer = document.createElement("li");
 			var x = i + 1;
-			var name = tmpTeamName.children[i].children[0].innerText;
+//			var name = tmpTeamName.children[i].children[0].innerText;
+			var name = players[i-1].name;
+			var number=players[i-1].number;
 			tmpPlayer.innerHTML = '<li class="mui-table-view-cell"><a href="#">' + name + '</a></li>';
+			
+			tmpPlayer.name=name;
+			tmpPlayer.number=number;
 			tmpPlayer.addEventListener('click', function() {
 				mui('.mui-popover').popover('toggle', document.getElementById('subWindow'));
 				for(var i = 0; i < tmpTeam.length; i++) {
-					if(tmpTeam[i].name == name) {
+					if(tmpTeam[i].number ==this.number) {
 						if(team == 2 || team == 3) {
 							tmpTeam[i].Block++;
 							mui.toast('篮板添加成功', {
@@ -509,11 +520,12 @@ document.addEventListener("teamname", function(event) {
 								player["name"] = team1[i].name;
 								player["number"] = team1[i].number;
 								player["position"] = team1[i].position;
-								if(team1[i].status == 1){
-									player["lineup"] = "首发";
-								}else{
-									player["lineup"] = "替补";
-								}
+								player["lineup"] = team1[i].status;
+//								if(team1[i].status == 1){
+//									player["lineup"] = "首发";
+//								}else{
+//									player["lineup"] = "替补";
+//								}
 								
 								player["score"] = team1[i].score;
 								player["foul"] = team1[i].foul;
@@ -526,11 +538,12 @@ document.addEventListener("teamname", function(event) {
 								player["name"] = team2[i].name;
 								player["number"] = team2[i].number;
 								player["position"] = team2[i].position;
-								if(team2[i].status == 1){
-									player["lineup"] = "首发";
-								}else{
-									player["lineup"] = "替补";
-								}
+								player["lineup"] = team2[i].status;
+//								if(team2[i].status == 1){
+//									player["lineup"] = "首发";
+//								}else{
+//									player["lineup"] = "替补";
+//								}
 								
 								player["score"] = team2[i].score;
 								player["foul"] = team2[i].foul;

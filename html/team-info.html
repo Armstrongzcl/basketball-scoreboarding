@@ -267,17 +267,6 @@
 				var pnr = document.getElementById("playernumber").value;
 				var plu = document.getElementById("playerLineup").value;
 				if(check) {
-					if(plu!="首发"&& oldLine=="首发"){
-						lineupcount--;
-					}
-					if(plu == "首发" && oldLine!="首发") {
-						lineupcount++;
-					}
-					if(lineupcount > 5) {
-						mui.alert("首发球员不能超过五个");
-						lineupcount--;
-						check = false;
-					}
 					mui.each(numArr,function(i,n){
 						if(n==pnr&&n!=oldNum){
 							mui.alert("球员号码重复");
@@ -285,6 +274,21 @@
 							return;
 						}
 					})
+					
+					
+				}
+				if(check){
+					if(plu!="首发"&& oldLine=="首发"){
+						lineupcount--;
+					}
+					if(plu == "首发" && oldLine!="首发") {
+						lineupcount++;
+					}
+					if(lineupcount >= 5) {
+						mui.alert("首发球员不能超过五个");
+						lineupcount--;
+						check = false;
+					}
 				}
 				if(check) {
 					mui.each(numArr,function(i,n){
@@ -323,6 +327,14 @@
 				var pnr = document.getElementById("playernumber").value;
 				var plu = document.getElementById("playerLineup").value;
 				if(check) {
+					
+					mui.each(numArr,function(i,n){
+						if(n==pnr){
+							mui.alert("球员号码重复");
+							check = false;
+							return;
+						}
+					})
 					if(plu == "首发") {
 						lineupcount++;
 					}
@@ -331,13 +343,6 @@
 						lineupcount--;
 						check = false;
 					}
-					mui.each(numArr,function(i,n){
-						if(n==pnr){
-							mui.alert("球员号码重复");
-							check = false;
-							return;
-						}
-					})
 				}
 				if(check) {
 					numArr.push(pnr);
