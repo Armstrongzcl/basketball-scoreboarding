@@ -59,11 +59,14 @@
 									);
 
 									$.each(game.firstTeam, function(key, value) {
+										var lineup = "";
+										if(value.lineup == "1") lineup = "首发";
+										else lineup = "替补";
 										$("#firstTeam").append("<div class='mui-row'>" +
 											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.number + "</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.name + "</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.position + "</div>" +
-											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.lineup + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + lineup + "</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.score + "分</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.foul + "犯</div>" +
 											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.asts + "助</div>" +
@@ -71,11 +74,14 @@
 										);
 									})
 									$.each(game.secondTeam, function(key, value) {
+										var lineup = "";
+										if(value.lineup == "1") lineup = "首发";
+										else lineup = "替补";
 										$("#secondTeam").append("<div class='mui-row'>" +
 											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.number + "</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.name + "</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.position + "</div>" +
-											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.lineup + "</div>" +
+											"<div class='mui-col-sm-2 mui-col-xs-2'>" + lineup + "</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.score + "分</div>" +
 											"<div class='mui-col-sm-2 mui-col-xs-2'>" + value.foul + "犯</div>" +
 											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.asts + "助</div>" +
