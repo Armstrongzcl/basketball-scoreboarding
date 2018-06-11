@@ -518,6 +518,7 @@ document.addEventListener("teamname", function(event) {
 								player["score"] = team1[i].score;
 								player["foul"] = team1[i].foul;
 								player["asts"] = team1[i].assistant;
+								player["bdb"]=team1[i].Block;
 								firstTeam.push(player);
 							}
 							for(var i = 0; i < team2.length; i++) {
@@ -534,6 +535,7 @@ document.addEventListener("teamname", function(event) {
 								player["score"] = team2[i].score;
 								player["foul"] = team2[i].foul;
 								player["asts"] = team2[i].assistant;
+								player["bdb"]=team2[i].Block;
 								secondTeam.push(player);
 							}
 							id["firstTeam"] = firstTeam;
