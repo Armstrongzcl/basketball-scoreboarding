@@ -11,12 +11,7 @@
 	</head>
 
 	<body>
-		<div class="mui-card">
-			<!--页眉，放置标题-->
-			<div class="mui-card-header">比赛队伍</div>
-			<!--内容区-->
-			<div class="mui-card-content">
-				<script>
+		<script>
 					function GetQueryString(name) {
 
 						var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
@@ -25,7 +20,6 @@
 						return null;
 					}
 					var gaid = GetQueryString('id');
-					//$.getJSON("../datas/games.json", function(result) {
 					mui.plusReady(function() {
 						plus.io.requestFileSystem(plus.io.PRIVATE_DOC, function(fs) {
 							fs.root.getFile("datas/recent_games.json", {
@@ -43,6 +37,8 @@
 									}
 
 								    game = result[gaid];
+								    document.getElementById("firstName").innerHTML = game.firstName;
+								    document.getElementById("secondName").innerHTML = game.secondName;
 									$("#first").append("<div class='mui-col-sm-3 mui-col-xs-3'>" + game.firstClass + ":</div>" +
 										"<div class='mui-col-sm-3 mui-col-xs-3'>" + game.firstName + "</div>" +
 										"<div class='mui-col-sm-3 mui-col-xs-3'>教练：</div>" +
@@ -56,8 +52,8 @@
 									$("#score").append("<div class='mui-col-sm-5 mui-col-xs-5' style='text-align: right'>" + game.firstScore + "</div>" +
 										"<div class='mui-col-sm-2 mui-col-xs-2' style='text-align: center'>:</div>" +
 										"<div class='mui-col-sm-5 mui-col-xs-5' style='text-align: left'>" + game.secondScore + "</div>"
-									);
-
+								    );
+		
 									$.each(game.firstTeam, function(key, value) {
 										$("#firstTeam").append("<div class='mui-row'>" +
 											"<div class='mui-col-sm-1 mui-col-xs-1'>" + value.number + "</div>" +
@@ -88,8 +84,14 @@
 						});
 					});
 
-					//});
+
 				</script>
+		<div class="mui-card">
+			<!--页眉，放置标题-->
+			<div class="mui-card-header">比赛队伍</div>
+			<!--内容区-->
+			<div class="mui-card-content">
+				
 				<div style="text-align: center;" id="first" class="mui-row">
 
 				</div>
@@ -105,7 +107,7 @@
 
 		<div class="mui-card">
 			<!--页眉，放置标题-->
-			<div class="mui-card-header">新疆广汇</div>
+			<div id="firstName"  class="mui-card-header">666</div>
 			<!--内容区-->
 			<div class="mui-card-content" id="firstTeam">
 			</div>
@@ -113,7 +115,7 @@
 		</div>
 		<div class="mui-card">
 			<!--页眉，放置标题-->
-			<div class="mui-card-header">北京金隅</div>
+			<div id="secondName"  class="mui-card-header">777</div>
 			<!--内容区-->
 			<div class="mui-card-content" id="secondTeam">
 			</div>
