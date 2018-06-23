@@ -62,7 +62,9 @@ window.onload=function(){
 	var totelTime = 0;
 	var tmp=0;
 	var status=0;
+	var timecontrol=document.getElementById("timeControl");
 	start.addEventListener('click',function(){
+		timecontrol.style.borderColor="blue";
 		if(tmp==0){
 		var mainTime=document.getElementById("restTime").textContent;
 		totelTime = mainTime;
@@ -86,6 +88,7 @@ window.onload=function(){
 				seconds=0;
 				shortTime=24;
 				if(tmp!=0){
+					timecontrol.style.borderColor="red";
 				clearInterval(tmp);
 				tmp=0;
 				}
@@ -106,6 +109,7 @@ window.onload=function(){
 	},false)
 	var stop=document.getElementById("pause");
 	stop.addEventListener('click',function(){
+		timecontrol.style.borderColor="red";
 		clearInterval(tmp);
 		tmp=0;
 	})
@@ -168,6 +172,7 @@ window.onload=function(){
 		sumScore+=score;
 		document.getElementById("score-record"+team).innerText=sumScore;
 		if(tmp!=0){
+			timecontrol.style.borderColor="red";
 			clearInterval(tmp);
 			tmp=0;
 			status=1;
@@ -352,6 +357,7 @@ changePeople_Team2.addEventListener('click',function(){
        shortTimecount.addEventListener('click',function(){
        	status=1;
        	if(tmp!=0){
+       		timecontrol.style.borderColor="red";
        		clearInterval(tmp);
        		tmp=0;
        	}
