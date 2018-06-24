@@ -250,6 +250,7 @@ document.addEventListener("teamname", function(event) {
 		sumScore += score;
 		document.getElementById("score-record" + (team + 1)).innerText = sumScore;
 		if(tmp != 0) {
+			timecontrol.style.borderColor="pink";
 			clearInterval(tmp);
 			tmp = 0;
 			status = 1;
@@ -478,6 +479,7 @@ document.addEventListener("teamname", function(event) {
 	shortTimecount.addEventListener('click', function() {
 		status = 1;
 		if(tmp != 0) {
+			timecontrol.style.borderColor="pink";
 			clearInterval(tmp);
 			tmp = 0;
 		}
