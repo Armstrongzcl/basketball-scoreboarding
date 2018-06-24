@@ -127,6 +127,7 @@ document.addEventListener("teamname", function(event) {
 	var timecontrol=document.getElementById("timeControl");
 	start.addEventListener('click', function() {
 		timecontrol.style.borderColor="deepskyblue";
+		timecontrol.style.backgroundColor="aliceblue";;
 		if(tmp == 0) {
 			var mainTime = document.getElementById("restTime").textContent;
 			totelTime = mainTime;
@@ -150,7 +151,8 @@ document.addEventListener("teamname", function(event) {
 					seconds = 0;
 					shortTime = 24;
 					if(tmp != 0) {
-						timecontrol.style.borderColor="pink";
+						timecontrol.style.borderColor="red";
+						timecontrol.style.backgroundColor="lightpink";;
 						clearInterval(tmp);
 						tmp = 0;
 					}
@@ -161,6 +163,8 @@ document.addEventListener("teamname", function(event) {
 				if(shortTime == -1) {
 					shortTime = 24;
 					if(tmp != 0) {
+						timecontrol.style.borderColor="red";
+						timecontrol.style.backgroundColor="lightpink";;
 						clearInterval(tmp);
 						tmp = 0;
 					}
@@ -171,7 +175,8 @@ document.addEventListener("teamname", function(event) {
 	}, false)
 	var stop = document.getElementById("pause");
 	stop.addEventListener('click', function() {
-		timecontrol.style.borderColor="pink";
+		timecontrol.style.borderColor="red";
+		timecontrol.style.backgroundColor="lightpink";;
 		clearInterval(tmp);
 		tmp = 0;
 	})
@@ -250,7 +255,8 @@ document.addEventListener("teamname", function(event) {
 		sumScore += score;
 		document.getElementById("score-record" + (team + 1)).innerText = sumScore;
 		if(tmp != 0) {
-			timecontrol.style.borderColor="pink";
+			timecontrol.style.borderColor="red";
+			timecontrol.style.backgroundColor="lightpink";;
 			clearInterval(tmp);
 			tmp = 0;
 			status = 1;
@@ -342,12 +348,16 @@ document.addEventListener("teamname", function(event) {
 	}
 	var leftAddScore = document.getElementById("score1");
 	leftAddScore.addEventListener('click', function() {
+		timecontrol.style.borderColor="red";
+		timecontrol.style.backgroundColor="lightpink";;
 		clearInterval(tmp);
 		tmp = 0;
 		addScore(0);
 	}, false);
 	var rightAddScore = document.getElementById("score2");
 	rightAddScore.addEventListener('click', function() {
+		timecontrol.style.borderColor="red";
+		timecontrol.style.backgroundColor="lightpink";;
 		clearInterval(tmp);
 		tmp = 0;
 		addScore(1);
@@ -371,11 +381,15 @@ document.addEventListener("teamname", function(event) {
 	var LeftFoul = document.getElementById("foul1");
 	var RightFoul = document.getElementById("foul2");
 	LeftFoul.addEventListener('click', function() {
+		timecontrol.style.borderColor="red";
+		timecontrol.style.backgroundColor="lightpink";;
 		clearInterval(tmp);
 		tmp = 0;
 		addScore(6);
 	})
 	RightFoul.addEventListener('click', function() {
+		timecontrol.style.borderColor="red";
+		timecontrol.style.backgroundColor="lightpink";;
 		clearInterval(tmp);
 		tmp = 0;
 		addScore(7);
@@ -466,11 +480,15 @@ document.addEventListener("teamname", function(event) {
 	var changePeople_Team1 = document.getElementById("change1");
 	var changePeople_Team2 = document.getElementById("change2");
 	changePeople_Team1.addEventListener('click', function() {
+		timecontrol.style.borderColor="red";
+		timecontrol.style.backgroundColor="lightpink";;
 		clearInterval(tmp);
 		tmp = 0;
 		choosePlayer(0);
 	})
 	changePeople_Team2.addEventListener('click', function() {
+		timecontrol.style.borderColor="red";
+		timecontrol.style.backgroundColor="lightpink";;
 		clearInterval(tmp);
 		tmp = 0;
 		choosePlayer(1);
@@ -479,7 +497,8 @@ document.addEventListener("teamname", function(event) {
 	shortTimecount.addEventListener('click', function() {
 		status = 1;
 		if(tmp != 0) {
-			timecontrol.style.borderColor="pink";
+			timecontrol.style.borderColor="red";
+			timecontrol.style.backgroundColor="lightpink";;
 			clearInterval(tmp);
 			tmp = 0;
 		}
