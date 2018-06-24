@@ -124,7 +124,9 @@ document.addEventListener("teamname", function(event) {
 	var totelTime = 0;
 	var tmp = 0;
 	var status = 0;
+	var timecontrol=document.getElementById("timeControl");
 	start.addEventListener('click', function() {
+		timecontrol.style.borderColor="deepskyblue";
 		if(tmp == 0) {
 			var mainTime = document.getElementById("restTime").textContent;
 			totelTime = mainTime;
@@ -148,6 +150,7 @@ document.addEventListener("teamname", function(event) {
 					seconds = 0;
 					shortTime = 24;
 					if(tmp != 0) {
+						timecontrol.style.borderColor="pink";
 						clearInterval(tmp);
 						tmp = 0;
 					}
@@ -168,6 +171,7 @@ document.addEventListener("teamname", function(event) {
 	}, false)
 	var stop = document.getElementById("pause");
 	stop.addEventListener('click', function() {
+		timecontrol.style.borderColor="pink";
 		clearInterval(tmp);
 		tmp = 0;
 	})
